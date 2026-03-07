@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Makazi Admin - Reported Content</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#0df2d7", // Teal
+                        "accent": "#800020",  // Burgundy
+                        "background-light": "#FBF9F1", // Cream background as requested
+                        "background-dark": "#102220",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Manrope', sans-serif;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 antialiased">
+<div class="flex h-screen overflow-hidden">
+<!-- Sidebar Navigation -->
+<aside class="w-64 bg-white dark:bg-slate-900 border-r border-slate-200 dark:border-slate-800 flex flex-col">
+<div class="p-6 flex items-center gap-3">
+<div class="h-10 w-10 rounded-lg bg-accent flex items-center justify-center text-white">
+<span class="material-symbols-outlined">home_work</span>
+</div>
+<div>
+<h1 class="text-slate-900 dark:text-slate-100 font-bold text-lg leading-none">Makazi</h1>
+<p class="text-slate-500 text-xs mt-1">Admin Portal</p>
+</div>
+</div>
+<nav class="flex-1 px-4 space-y-1 overflow-y-auto">
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="text-sm font-medium">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg bg-primary/10 text-accent font-semibold" href="#">
+<span class="material-symbols-outlined text-accent" style="font-variation-settings: 'FILL' 1">flag</span>
+<span class="text-sm">Reported Content</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" href="#">
+<span class="material-symbols-outlined">real_estate_agent</span>
+<span class="text-sm font-medium">Listings</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" href="#">
+<span class="material-symbols-outlined">group</span>
+<span class="text-sm font-medium">Users</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" href="#">
+<span class="material-symbols-outlined">payments</span>
+<span class="text-sm font-medium">Transactions</span>
+</a>
+</nav>
+<div class="p-4 mt-auto border-t border-slate-200 dark:border-slate-800">
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-sm font-medium">Settings</span>
+</a>
+<div class="mt-4 flex items-center gap-3 px-3 py-2">
+<div class="h-8 w-8 rounded-full bg-slate-200 dark:bg-slate-700 overflow-hidden">
+<img class="h-full w-full object-cover" data-alt="Admin profile photo of a person" src="https://lh3.googleusercontent.com/aida-public/AB6AXuChNkUSe99lUifd0oV81gUXLIYAGzGHtPI-nFT_74HgyRCCVTTG7Kpq3djxv2U9anxG4LrwBbly-qLStEJW8m0XMypaRx-6_BwbcDHFJGNTp-k7i2Iim66CN_jROtg6Mq5c_OeZ_xHWtcZ8vX82zxBcgEAyZmFnjkXvi0mOOyfCCLkAEFaXVQQq81Jcf-NfkZy9q9y0K5MZkilhfFL3IUTwbJ6YYxmQ905HUt39c24lmyD7nmeJ7wbdu1sKI4oGXq9_-fh_flNdGaQ"/>
+</div>
+<div class="flex-1 overflow-hidden">
+<p class="text-sm font-medium truncate">Mwaniki K.</p>
+<p class="text-xs text-slate-500 truncate">Super Admin</p>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="flex-1 flex flex-col overflow-hidden">
+<!-- Header -->
+<header class="h-16 bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 flex items-center justify-between px-8">
+<div class="flex items-center gap-4 flex-1 max-w-xl">
+<div class="relative w-full">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-sm">search</span>
+<input class="w-full bg-slate-100 dark:bg-slate-800 border-none rounded-lg py-2 pl-10 pr-4 text-sm focus:ring-2 focus:ring-primary/50" placeholder="Search reported listings..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="relative p-2 text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-2 right-2 h-2 w-2 bg-red-500 rounded-full border-2 border-white dark:border-slate-900"></span>
+</button>
+<button class="flex items-center gap-2 px-4 py-2 bg-accent text-white rounded-lg text-sm font-semibold hover:bg-accent/90 transition-colors">
+<span class="material-symbols-outlined text-sm">open_in_new</span>
+                        View Main Site
+                    </button>
+</div>
+</header>
+<!-- Content Area -->
+<div class="flex-1 overflow-y-auto p-8">
+<div class="mb-8 flex flex-col md:flex-row md:items-end justify-between gap-4">
+<div>
+<h2 class="text-3xl font-black text-slate-900 dark:text-slate-100 tracking-tight">Reported Content</h2>
+<p class="text-slate-500 mt-1 max-w-lg leading-relaxed">Review and manage property listings flagged by the community. Investigate potential fraud cases to keep Makazi safe.</p>
+</div>
+<div class="flex items-center gap-2">
+<button class="px-4 py-2 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg text-sm font-medium text-slate-600 dark:text-slate-300 hover:bg-slate-50 transition-colors flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">download</span>
+                            Export CSV
+                        </button>
+<button class="px-4 py-2 bg-primary text-slate-900 rounded-lg text-sm font-bold hover:bg-primary/90 transition-colors flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">filter_list</span>
+                            Filter
+                        </button>
+</div>
+</div>
+<!-- Tabs -->
+<div class="mb-6 border-b border-slate-200 dark:border-slate-800">
+<div class="flex gap-8">
+<button class="pb-4 border-b-2 border-accent text-accent font-bold text-sm">Pending Review (24)</button>
+<button class="pb-4 border-b-2 border-transparent text-slate-500 font-medium text-sm hover:text-slate-700">Resolved</button>
+<button class="pb-4 border-b-2 border-transparent text-slate-500 font-medium text-sm hover:text-slate-700">Dismissed</button>
+</div>
+</div>
+<!-- Table -->
+<div class="bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 overflow-hidden shadow-sm">
+<table class="w-full text-left">
+<thead>
+<tr class="bg-slate-50 dark:bg-slate-800/50 border-b border-slate-200 dark:border-slate-800">
+<th class="px-6 py-4 text-xs font-bold text-slate-500 uppercase tracking-wider">Listing Title</th>
+<th class="px-6 py-4 text-xs font-bold text-slate-500 uppercase tracking-wider text-center">Reason</th>
+<th class="px-6 py-4 text-xs font-bold text-slate-500 uppercase tracking-wider">Reporter</th>
+<th class="px-6 py-4 text-xs font-bold text-slate-500 uppercase tracking-wider text-center">Flag Count</th>
+<th class="px-6 py-4 text-xs font-bold text-slate-500 uppercase tracking-wider text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-slate-100 dark:divide-slate-800">
+<!-- Row 1 -->
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/30 transition-colors">
+<td class="px-6 py-5">
+<div class="flex items-center gap-3">
+<div class="h-12 w-16 bg-slate-200 dark:bg-slate-800 rounded-lg overflow-hidden shrink-0">
+<img class="h-full w-full object-cover" data-alt="Interior of a modern studio apartment" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAOGAFDRkZRTM-NhqAhJhY7WcUZFin_Up8FxiRxpFd6mXXgzBORr-8jW9CI5CPe_afKohkdQ00Jpl3MRszYt0ZjxbagNLPM9BD2jpkhua1lGnCl8PyID1DE2drCQOdDkVXme83YnpB0P6bh7SU2gUC9NC3i-8dEF8_DnMQTuYpo8U-P_tKhyTK7ZhaRqlhUaSmiCPxpznHASMuel1YH_7nJgd0UCMvNfuPvcI3lOwm5iEaasurYGRzjJBR6zFv_TkOUA9feXXecXpw"/>
+</div>
+<div>
+<p class="text-sm font-bold text-slate-900 dark:text-slate-100 truncate max-w-[200px]">Modern Studio in Westlands</p>
+<p class="text-xs text-slate-500">ID: #MKZ-8821</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-5">
+<div class="flex justify-center">
+<span class="px-3 py-1 bg-yellow-100 dark:bg-yellow-900/30 text-yellow-700 dark:text-yellow-400 text-[10px] font-bold uppercase tracking-wider rounded-full">Suspicious Price</span>
+</div>
+</td>
+<td class="px-6 py-5">
+<p class="text-sm text-slate-700 dark:text-slate-300">John Kamau</p>
+<p class="text-xs text-slate-500">2 hours ago</p>
+</td>
+<td class="px-6 py-5 text-center">
+<span class="inline-flex items-center justify-center h-8 w-8 rounded-full bg-slate-100 dark:bg-slate-800 text-sm font-bold">12</span>
+</td>
+<td class="px-6 py-5">
+<div class="flex justify-end gap-2">
+<button class="px-3 py-1.5 bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-200 rounded-lg text-xs font-bold hover:bg-slate-300 transition-colors">Dismiss Report</button>
+<button class="px-3 py-1.5 bg-[#E11D48] text-white rounded-lg text-xs font-bold hover:bg-[#BE123C] transition-colors">Take Down</button>
+</div>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/30 transition-colors">
+<td class="px-6 py-5">
+<div class="flex items-center gap-3">
+<div class="h-12 w-16 bg-slate-200 dark:bg-slate-800 rounded-lg overflow-hidden shrink-0">
+<img class="h-full w-full object-cover" data-alt="Luxury villa exterior with garden" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDNXsv4rHoXjUGifIULaywYdE0jnXPWdwG6NKoAz7nHfrygrh9LNtw_YgsMMmWLZ7paio3m8CqFhr7jbW6t5Al82PZ50MQpomkcEe_ycQc1-UwHlS70bA7aZ6-ft9Cd4tCGmiBbAVmyMTOjAo_O05MYwXYguhX02OYQcVztyoRyeVGUjarNdaU9T34SpEC3uu75g_fjVG5fN4ircNjuwlazU_DF3J1mxt3JJLr54nPdWp6wFiO8-sPMLqcH_i2jMrFnGPnV09v7Rgg"/>
+</div>
+<div>
+<p class="text-sm font-bold text-slate-900 dark:text-slate-100 truncate max-w-[200px]">Luxury Villa Karen</p>
+<p class="text-xs text-slate-500">ID: #MKZ-4412</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-5">
+<div class="flex justify-center">
+<span class="px-3 py-1 bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-400 text-[10px] font-bold uppercase tracking-wider rounded-full">Fake Images</span>
+</div>
+</td>
+<td class="px-6 py-5">
+<p class="text-sm text-slate-700 dark:text-slate-300">Sarah Wanjiku</p>
+<p class="text-xs text-slate-500">5 hours ago</p>
+</td>
+<td class="px-6 py-5 text-center">
+<span class="inline-flex items-center justify-center h-8 w-8 rounded-full bg-slate-100 dark:bg-slate-800 text-sm font-bold">8</span>
+</td>
+<td class="px-6 py-5">
+<div class="flex justify-end gap-2">
+<button class="px-3 py-1.5 bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-200 rounded-lg text-xs font-bold hover:bg-slate-300 transition-colors">Dismiss Report</button>
+<button class="px-3 py-1.5 bg-[#E11D48] text-white rounded-lg text-xs font-bold hover:bg-[#BE123C] transition-colors">Take Down</button>
+</div>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/30 transition-colors">
+<td class="px-6 py-5">
+<div class="flex items-center gap-3">
+<div class="h-12 w-16 bg-slate-200 dark:bg-slate-800 rounded-lg overflow-hidden shrink-0">
+<img class="h-full w-full object-cover" data-alt="Spacious living room area" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCfiyaNY55FO6R5FUPXf8PmlEJZxqrRJf6ZIBJDZE8ZvOq6_OOghz0XAGB2Fqv_x4fyo2A220EKv7g-ZhB22IgZPnC07xhVCD4PGZ3L5lxkxeIMaLuRQ8FfAQr9ePafHbcKQSOCac-0tN483LmBQldlBeyf76CdStLra5-b8M5TrRmNAxEUVQxCd3MR5FYfSYuv6ynSj0ITZZEJHDzBJPpOiRPx-c0oZLxqQrdA5j4JJLmz5rCxuR_tcYmlJA361rPe5hvvKXps-Xs"/>
+</div>
+<div>
+<p class="text-sm font-bold text-slate-900 dark:text-slate-100 truncate max-w-[200px]">Spacious 2BR Kilimani</p>
+<p class="text-xs text-slate-500">ID: #MKZ-1052</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-5">
+<div class="flex justify-center">
+<span class="px-3 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400 text-[10px] font-bold uppercase tracking-wider rounded-full">Duplicate Listing</span>
+</div>
+</td>
+<td class="px-6 py-5">
+<p class="text-sm text-slate-700 dark:text-slate-300">Michael Otieno</p>
+<p class="text-xs text-slate-500">Yesterday</p>
+</td>
+<td class="px-6 py-5 text-center">
+<span class="inline-flex items-center justify-center h-8 w-8 rounded-full bg-slate-100 dark:bg-slate-800 text-sm font-bold">5</span>
+</td>
+<td class="px-6 py-5">
+<div class="flex justify-end gap-2">
+<button class="px-3 py-1.5 bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-200 rounded-lg text-xs font-bold hover:bg-slate-300 transition-colors">Dismiss Report</button>
+<button class="px-3 py-1.5 bg-[#E11D48] text-white rounded-lg text-xs font-bold hover:bg-[#BE123C] transition-colors">Take Down</button>
+</div>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/30 transition-colors">
+<td class="px-6 py-5">
+<div class="flex items-center gap-3">
+<div class="h-12 w-16 bg-slate-200 dark:bg-slate-800 rounded-lg overflow-hidden shrink-0">
+<img class="h-full w-full object-cover" data-alt="Small bedsitter room view" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC87EcgHOYlt1kljra-h8V7C1Y1S457np-GO_3suyDHu5MLz5SFnEKf3kkbIoQb6nrBSLbHp8sOJp6xq3C2khbCgVyHB3qgLlmFP1UIz2HfwEH8uiBwhRc-9jeMOuiCLEbcUwg5T7bt3SoYSk5PHyCn-6901IZxWu1CU9OA5m89FQsKQzyvKyCW2U-aCBXZ-eGvTXO0CMRtsgCkKkkBdGEAoLzsHgz6k5Ogr4F494mrt-wUkJqAqnOosuDm9KOHu1a2qqWxjgzeJB4"/>
+</div>
+<div>
+<p class="text-sm font-bold text-slate-900 dark:text-slate-100 truncate max-w-[200px]">Bedsitter Thika Road</p>
+<p class="text-xs text-slate-500">ID: #MKZ-2290</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-5">
+<div class="flex justify-center">
+<span class="px-3 py-1 bg-orange-100 dark:bg-orange-900/30 text-orange-700 dark:text-orange-400 text-[10px] font-bold uppercase tracking-wider rounded-full">Incorrect Location</span>
+</div>
+</td>
+<td class="px-6 py-5">
+<p class="text-sm text-slate-700 dark:text-slate-300">Alice King'ori</p>
+<p class="text-xs text-slate-500">2 days ago</p>
+</td>
+<td class="px-6 py-5 text-center">
+<span class="inline-flex items-center justify-center h-8 w-8 rounded-full bg-slate-100 dark:bg-slate-800 text-sm font-bold">15</span>
+</td>
+<td class="px-6 py-5">
+<div class="flex justify-end gap-2">
+<button class="px-3 py-1.5 bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-200 rounded-lg text-xs font-bold hover:bg-slate-300 transition-colors">Dismiss Report</button>
+<button class="px-3 py-1.5 bg-[#E11D48] text-white rounded-lg text-xs font-bold hover:bg-[#BE123C] transition-colors">Take Down</button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+<!-- Pagination Footer -->
+<div class="bg-white dark:bg-slate-900 px-6 py-4 flex items-center justify-between border-t border-slate-200 dark:border-slate-800">
+<p class="text-xs text-slate-500">Showing <span class="font-bold">1 to 4</span> of 24 results</p>
+<div class="flex items-center gap-1">
+<button class="p-1.5 rounded bg-slate-100 dark:bg-slate-800 text-slate-400 cursor-not-allowed">
+<span class="material-symbols-outlined text-sm">chevron_left</span>
+</button>
+<button class="h-8 w-8 flex items-center justify-center rounded bg-primary text-slate-900 text-xs font-bold">1</button>
+<button class="h-8 w-8 flex items-center justify-center rounded hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-600 dark:text-slate-400 text-xs font-medium transition-colors">2</button>
+<button class="h-8 w-8 flex items-center justify-center rounded hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-600 dark:text-slate-400 text-xs font-medium transition-colors">3</button>
+<button class="p-1.5 rounded hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-600 transition-colors">
+<span class="material-symbols-outlined text-sm">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Recent Activity Section -->
+<div class="mt-12">
+<h3 class="text-xl font-bold text-slate-900 dark:text-slate-100 mb-6">Recent Review Logs</h3>
+<div class="space-y-4">
+<div class="flex items-start gap-4 p-4 bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm">
+<div class="h-8 w-8 rounded-full bg-green-100 dark:bg-green-900/40 flex items-center justify-center text-green-600 dark:text-green-400 shrink-0">
+<span class="material-symbols-outlined text-base">check_circle</span>
+</div>
+<div class="flex-1">
+<p class="text-sm"><span class="font-bold">Admin Sarah</span> dismissed a report for <span class="font-bold">"Cozy Boma Suite"</span></p>
+<p class="text-xs text-slate-500 mt-0.5">Report reason was "Suspicious Price". Review concluded price is accurate for the area.</p>
+</div>
+<span class="text-[10px] text-slate-400 whitespace-nowrap">12 mins ago</span>
+</div>
+<div class="flex items-start gap-4 p-4 bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm">
+<div class="h-8 w-8 rounded-full bg-red-100 dark:bg-red-900/40 flex items-center justify-center text-red-600 dark:text-red-400 shrink-0">
+<span class="material-symbols-outlined text-base">do_not_disturb_on</span>
+</div>
+<div class="flex-1">
+<p class="text-sm"><span class="font-bold">System</span> took down <span class="font-bold">"Runda Mansion Extraordinaire"</span></p>
+<p class="text-xs text-slate-500 mt-0.5">Automated threshold reached (20+ flags for Fake Images). Listing deactivated pending manual verification.</p>
+</div>
+<span class="text-[10px] text-slate-400 whitespace-nowrap">45 mins ago</span>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>

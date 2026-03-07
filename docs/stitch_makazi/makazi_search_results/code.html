@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Makazi Search Results</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#048b7b",
+                        "accent-burgundy": "#800020",
+                        "background-light": "#FBF9F1",
+                        "background-dark": "#0f2320",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Manrope', sans-serif; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .custom-range::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 18px;
+            height: 18px;
+            background: #048b7b;
+            cursor: pointer;
+            border-radius: 50%;
+            border: 2px solid white;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 font-display">
+<!-- Top Navigation Bar -->
+<header class="sticky top-0 z-50 w-full border-b border-primary/10 bg-white/80 backdrop-blur-md dark:bg-background-dark/80">
+<div class="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8">
+<div class="flex items-center gap-8">
+<!-- Logo -->
+<div class="flex items-center gap-2 text-accent-burgundy">
+<span class="material-symbols-outlined text-3xl font-bold">corporate_fare</span>
+<h2 class="text-2xl font-extrabold tracking-tight">Makazi</h2>
+</div>
+<!-- Search Bar -->
+<div class="hidden md:flex items-center">
+<div class="relative flex items-center">
+<span class="material-symbols-outlined absolute left-3 text-primary">search</span>
+<input class="h-10 w-72 rounded-lg border-primary/20 bg-primary/5 pl-10 text-sm focus:border-primary focus:ring-1 focus:ring-primary dark:bg-primary/10" placeholder="Search Syokimau, Westlands..." type="text"/>
+</div>
+</div>
+</div>
+<!-- Nav Links & CTA -->
+<nav class="flex items-center gap-6">
+<div class="hidden lg:flex items-center gap-6 text-sm font-semibold">
+<a class="text-primary hover:text-accent-burgundy" href="#">Rentals</a>
+<a class="text-slate-600 hover:text-primary dark:text-slate-300" href="#">Short-lets</a>
+<a class="text-slate-600 hover:text-primary dark:text-slate-300" href="#">Sell</a>
+</div>
+<div class="flex items-center gap-3">
+<button class="hidden sm:flex h-10 items-center justify-center rounded-lg px-4 text-sm font-bold text-slate-700 hover:bg-primary/5 dark:text-slate-200">Log In</button>
+<button class="flex h-10 items-center justify-center rounded-lg bg-primary px-5 text-sm font-bold text-white shadow-lg shadow-primary/20 hover:bg-primary/90">Post Property</button>
+<div class="h-10 w-10 rounded-full border-2 border-primary/20 bg-cover bg-center" data-alt="User profile avatar of a smiling person" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAQ7lqJyYnmYavt5Fu31wIj4FBZsde8gr1TwXkQ1wPjmfJQDG7-0seuc9A5NL6IzQqL6uDHwIoQqf8U9lqihH-MQ-_iJosvUyppAI8BnJBrNZVT-Z2VaiHQ0sAnfAiRVOMYKDWYDfii0ZzK9aNfDaoSRpUFrAHxXyA-H35OOVSpkTCSTrAyPrmEPSGJMVyoXSVOASdaGNBUEebpv3SpM0Lp79xKD75xd9RvFpHAMjPMK9yG-6jhQen1At6FfEk599fnNavDUKhOJuw')"></div>
+</div>
+</nav>
+</div>
+</header>
+<main class="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
+<div class="flex flex-col gap-8 lg:flex-row">
+<!-- Sidebar Filter -->
+<aside class="w-full shrink-0 lg:w-64">
+<div class="sticky top-24 flex flex-col gap-6 rounded-xl border border-primary/10 bg-white p-6 shadow-sm dark:bg-slate-900">
+<div>
+<h3 class="flex items-center gap-2 text-lg font-bold text-accent-burgundy">
+<span class="material-symbols-outlined text-primary">tune</span> Filters
+                        </h3>
+</div>
+<!-- Price Range -->
+<div class="flex flex-col gap-4">
+<label class="text-sm font-bold text-slate-700 dark:text-slate-300">Price Range (Ksh)</label>
+<div class="space-y-2">
+<input class="h-2 w-full cursor-pointer appearance-none rounded-lg bg-primary/10 accent-primary custom-range" max="200000" min="5000" step="5000" type="range"/>
+<div class="flex justify-between text-xs font-medium text-primary">
+<span>5k</span>
+<span>100k</span>
+<span>200k+</span>
+</div>
+</div>
+</div>
+<hr class="border-primary/5"/>
+<!-- House Type -->
+<div class="flex flex-col gap-3">
+<p class="text-sm font-bold text-slate-700 dark:text-slate-300">House Type</p>
+<div class="space-y-2">
+<label class="flex items-center gap-3 cursor-pointer">
+<input checked="" class="h-4 w-4 border-primary/30 text-primary focus:ring-primary" name="type" type="radio"/>
+<span class="text-sm text-slate-600 dark:text-slate-400">Apartment</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer">
+<input class="h-4 w-4 border-primary/30 text-primary focus:ring-primary" name="type" type="radio"/>
+<span class="text-sm text-slate-600 dark:text-slate-400">Villa / Mansion</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer">
+<input class="h-4 w-4 border-primary/30 text-primary focus:ring-primary" name="type" type="radio"/>
+<span class="text-sm text-slate-600 dark:text-slate-400">Studio / Bedsitter</span>
+</label>
+</div>
+</div>
+<hr class="border-primary/5"/>
+<!-- Amenities -->
+<div class="flex flex-col gap-3">
+<p class="text-sm font-bold text-slate-700 dark:text-slate-300">Amenities</p>
+<div class="space-y-3">
+<label class="flex items-center justify-between cursor-pointer">
+<span class="text-sm text-slate-600 dark:text-slate-400">WiFi</span>
+<input checked="" class="h-5 w-5 rounded border-primary/30 text-primary focus:ring-primary" type="checkbox"/>
+</label>
+<label class="flex items-center justify-between cursor-pointer">
+<span class="text-sm text-slate-600 dark:text-slate-400">Parking</span>
+<input checked="" class="h-5 w-5 rounded border-primary/30 text-primary focus:ring-primary" type="checkbox"/>
+</label>
+<label class="flex items-center justify-between cursor-pointer">
+<span class="text-sm text-slate-600 dark:text-slate-400">24/7 Security</span>
+<input class="h-5 w-5 rounded border-primary/30 text-primary focus:ring-primary" type="checkbox"/>
+</label>
+<label class="flex items-center justify-between cursor-pointer">
+<span class="text-sm text-slate-600 dark:text-slate-400">Borehole</span>
+<input class="h-5 w-5 rounded border-primary/30 text-primary focus:ring-primary" type="checkbox"/>
+</label>
+</div>
+</div>
+<button class="mt-2 w-full rounded-lg bg-accent-burgundy py-2.5 text-sm font-bold text-white transition-opacity hover:opacity-90">Apply Filters</button>
+</div>
+</aside>
+<!-- Main Listing Area -->
+<div class="flex-1">
+<div class="mb-6 flex flex-col justify-between gap-4 sm:flex-row sm:items-center">
+<div>
+<h1 class="text-2xl font-extrabold text-slate-900 dark:text-white">Properties in Syokimau</h1>
+<p class="text-sm text-slate-500 dark:text-slate-400">Showing 124 results found</p>
+</div>
+<div class="flex items-center gap-2">
+<span class="text-sm text-slate-500">Sort by:</span>
+<select class="rounded-lg border-primary/20 bg-white py-1.5 pl-3 pr-8 text-sm font-semibold focus:border-primary focus:ring-primary dark:bg-slate-900">
+<option>Newest First</option>
+<option>Price: Low to High</option>
+<option>Price: High to Low</option>
+</select>
+</div>
+</div>
+<!-- Grid of Cards -->
+<div class="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3">
+<!-- Property Card 1 -->
+<div class="group overflow-hidden rounded-xl border border-primary/5 bg-white shadow-sm transition-all hover:shadow-xl dark:bg-slate-900">
+<div class="relative aspect-[4/3] overflow-hidden">
+<img class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="Modern 2 bedroom apartment interior with large windows" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCLCOvp5isqqcxEU9BJ1NVgdnTNEf9b-mAT4HaZbo1tw4AwqRN4o5jWJcMV_s36if_vq3EkvA5t4XMeMVyoh70Q2_lWJTv3YIsqA2eI91zFTFqlBtaoB1zzDx8WGRx-1lbrlEGk46INnJ7XRe9sCX1dI9-w79gVkwcCx_me1GeHbXISat5HqitwqgBfam4CyXIDCd0CZDgLzjq8GEsvXCbMr2442Jn9D1Fu03c2QDC_hE2UlTzgtSOkDX29MO2BGWn2Jg4hEheYu5w"/>
+<span class="absolute left-3 top-3 flex items-center gap-1 rounded-full bg-primary/90 px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-white backdrop-blur-sm">
+<span class="material-symbols-outlined text-xs">verified</span> Verified
+                            </span>
+<button class="absolute right-3 top-3 flex h-8 w-8 items-center justify-center rounded-full bg-white/50 text-slate-900 backdrop-blur-md hover:bg-white hover:text-accent-burgundy">
+<span class="material-symbols-outlined text-xl">favorite</span>
+</button>
+</div>
+<div class="p-4">
+<div class="mb-1 flex items-center justify-between">
+<h3 class="font-bold text-slate-900 dark:text-white truncate">2bdrm Apartment in Syokimau</h3>
+</div>
+<p class="flex items-center gap-1 text-xs text-slate-500 dark:text-slate-400 mb-3">
+<span class="material-symbols-outlined text-sm text-primary">location_on</span> Mlolongo Road, Syokimau
+                            </p>
+<div class="flex items-center gap-4 text-xs font-medium text-slate-600 dark:text-slate-400 mb-4">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-sm">bed</span> 2</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-sm">bathtub</span> 2</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-sm">square_foot</span> 850 sqft</span>
+</div>
+<div class="flex items-center justify-between border-t border-primary/5 pt-4">
+<p class="text-xl font-extrabold text-primary">Ksh 45,000<span class="text-xs font-medium text-slate-400">/mo</span></p>
+<button class="rounded-lg bg-primary/10 px-3 py-1.5 text-xs font-bold text-primary hover:bg-primary hover:text-white transition-colors">Details</button>
+</div>
+</div>
+</div>
+<!-- Property Card 2 -->
+<div class="group overflow-hidden rounded-xl border border-primary/5 bg-white shadow-sm transition-all hover:shadow-xl dark:bg-slate-900">
+<div class="relative aspect-[4/3] overflow-hidden">
+<img class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="Luxurious villa with a swimming pool and garden" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC1VesN1THAXKQQYocZjI5UoD4ulvtgnrIKrwVYGdyBR6LW6KuF7ph68E8d5p4TyG0d3PzDLnEKgdX1R6ckWwFPr8zj1lzK_S3-4L1b8TSkLTTLeJf13kLFol97SdcfJzfxeamneBmQ7t5z3msoSFYcc1ipHpEeU6xqWqxX1EaDo8ajMtXcz1-RxADzsTyTMb74aUmkwUA8yLEvBL4FBIgbzCwjw1uToEeGN1amoBq4AyM0xHKcqSxgFnG5u3fR5HfY17JJ3DT0SPk"/>
+<span class="absolute left-3 top-3 flex items-center gap-1 rounded-full bg-primary/90 px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-white backdrop-blur-sm">
+<span class="material-symbols-outlined text-xs">verified</span> Verified
+                            </span>
+<button class="absolute right-3 top-3 flex h-8 w-8 items-center justify-center rounded-full bg-white/50 text-slate-900 backdrop-blur-md hover:bg-white hover:text-accent-burgundy">
+<span class="material-symbols-outlined text-xl">favorite</span>
+</button>
+</div>
+<div class="p-4">
+<div class="mb-1 flex items-center justify-between">
+<h3 class="font-bold text-slate-900 dark:text-white truncate">Luxury Villa in 360 Court</h3>
+</div>
+<p class="flex items-center gap-1 text-xs text-slate-500 dark:text-slate-400 mb-3">
+<span class="material-symbols-outlined text-sm text-primary">location_on</span> Gateway Mall Area, Syokimau
+                            </p>
+<div class="flex items-center gap-4 text-xs font-medium text-slate-600 dark:text-slate-400 mb-4">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-sm">bed</span> 4</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-sm">bathtub</span> 3</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-sm">square_foot</span> 2,400 sqft</span>
+</div>
+<div class="flex items-center justify-between border-t border-primary/5 pt-4">
+<p class="text-xl font-extrabold text-primary">Ksh 120,000<span class="text-xs font-medium text-slate-400">/mo</span></p>
+<button class="rounded-lg bg-primary/10 px-3 py-1.5 text-xs font-bold text-primary hover:bg-primary hover:text-white transition-colors">Details</button>
+</div>
+</div>
+</div>
+<!-- Property Card 3 -->
+<div class="group overflow-hidden rounded-xl border border-primary/5 bg-white shadow-sm transition-all hover:shadow-xl dark:bg-slate-900">
+<div class="relative aspect-[4/3] overflow-hidden">
+<img class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="Chic studio apartment with modern minimalist decor" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAOTnb7hFYhLwmuuW4uL3XrrfDr8ksdUEB2AD1j0CMKdRDMyjlXnJRNMfxooPgEUf18Dd2FlkxKwTsHrw6a5E30KCED7yXBMesD_8UJ_GuuoZPk4RvX4FUA_MeTizzr8LHJ4AirRmnXnjIvbyNvL2ETX-BL0qIzdxLYlySca9ZQD8oY7OURFd3co9MCzbllWjfEcpXC3FEo0I3CGMwLT71nfVIsw_vv4RfRCEJMi-hjLrA0zlKBhsjrNOb5MGUZYS8A7u4IzN_kdCw"/>
+<span class="absolute left-3 top-3 flex items-center gap-1 rounded-full bg-primary/90 px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-white backdrop-blur-sm">
+<span class="material-symbols-outlined text-xs">verified</span> Verified
+                            </span>
+<button class="absolute right-3 top-3 flex h-8 w-8 items-center justify-center rounded-full bg-white/50 text-slate-900 backdrop-blur-md hover:bg-white hover:text-accent-burgundy">
+<span class="material-symbols-outlined text-xl">favorite</span>
+</button>
+</div>
+<div class="p-4">
+<div class="mb-1 flex items-center justify-between">
+<h3 class="font-bold text-slate-900 dark:text-white truncate">Modern Studio near Train Station</h3>
+</div>
+<p class="flex items-center gap-1 text-xs text-slate-500 dark:text-slate-400 mb-3">
+<span class="material-symbols-outlined text-sm text-primary">location_on</span> SGR Road, Syokimau
+                            </p>
+<div class="flex items-center gap-4 text-xs font-medium text-slate-600 dark:text-slate-400 mb-4">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-sm">bed</span> 1</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-sm">bathtub</span> 1</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-sm">square_foot</span> 400 sqft</span>
+</div>
+<div class="flex items-center justify-between border-t border-primary/5 pt-4">
+<p class="text-xl font-extrabold text-primary">Ksh 22,000<span class="text-xs font-medium text-slate-400">/mo</span></p>
+<button class="rounded-lg bg-primary/10 px-3 py-1.5 text-xs font-bold text-primary hover:bg-primary hover:text-white transition-colors">Details</button>
+</div>
+</div>
+</div>
+<!-- Property Card 4 -->
+<div class="group overflow-hidden rounded-xl border border-primary/5 bg-white shadow-sm transition-all hover:shadow-xl dark:bg-slate-900">
+<div class="relative aspect-[4/3] overflow-hidden">
+<img class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="Spacious 3 bedroom apartment balcony view" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA7JaB9xCxiqAyAsPZfP-V_BEug3IO61NFORv5N82rHP3yynrdR-PjaHZ7orYKHt4CpDfVs1aqWqeFy2oH1hAW1TYyAUibxUCdeKcGdw9k7Fmy56MjOVss7pYN0AS4bua01637MuGco272WOhbDEv4nItrlx-0oHg1E0YHFWMpO5gsFiMDoO2OywuSnLkmbtz4Ml8s6UpgBdKavHR-JOgTmL7kqv3NZcUWt0E7rx3gdV8i6sbllzHY7pmSBgFe_JFQNO5B-7LljHt8"/>
+<span class="absolute left-3 top-3 flex items-center gap-1 rounded-full bg-primary/90 px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-white backdrop-blur-sm">
+<span class="material-symbols-outlined text-xs">verified</span> Verified
+                            </span>
+<button class="absolute right-3 top-3 flex h-8 w-8 items-center justify-center rounded-full bg-white/50 text-slate-900 backdrop-blur-md hover:bg-white hover:text-accent-burgundy">
+<span class="material-symbols-outlined text-xl">favorite</span>
+</button>
+</div>
+<div class="p-4">
+<div class="mb-1 flex items-center justify-between">
+<h3 class="font-bold text-slate-900 dark:text-white truncate">3bdrm Master Ensuite Penthouse</h3>
+</div>
+<p class="flex items-center gap-1 text-xs text-slate-500 dark:text-slate-400 mb-3">
+<span class="material-symbols-outlined text-sm text-primary">location_on</span> Community Road, Syokimau
+                            </p>
+<div class="flex items-center gap-4 text-xs font-medium text-slate-600 dark:text-slate-400 mb-4">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-sm">bed</span> 3</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-sm">bathtub</span> 2</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-sm">square_foot</span> 1,200 sqft</span>
+</div>
+<div class="flex items-center justify-between border-t border-primary/5 pt-4">
+<p class="text-xl font-extrabold text-primary">Ksh 65,000<span class="text-xs font-medium text-slate-400">/mo</span></p>
+<button class="rounded-lg bg-primary/10 px-3 py-1.5 text-xs font-bold text-primary hover:bg-primary hover:text-white transition-colors">Details</button>
+</div>
+</div>
+</div>
+<!-- Property Card 5 -->
+<div class="group overflow-hidden rounded-xl border border-primary/5 bg-white shadow-sm transition-all hover:shadow-xl dark:bg-slate-900">
+<div class="relative aspect-[4/3] overflow-hidden">
+<img class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="Cozy townhouse exterior with a small driveway" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCgKYdxWUNgxBpPwvE6qx0PaV4psF_2YfprU1m8OaSCqLPYK_7NllqaSv5NE3nCs2drjywsvG_8wiWSEQUHXyuJnwEuL4vXILsMz1K9amRP_UA6GuxJyjmU-JXudVCMWccTVKFJNo740jiETIXWvtqMEApze1e_2NKsmIO-fg5BHn-g2TyRXnzpJHoaNnkRVlka-T7nNt5iGhg4RZ5ERTalBNmXzsvJbHghmL8sMzu9jjEA8FxcH_ilx3sqi8eav7IUzyjRfZdQvh8"/>
+<span class="absolute left-3 top-3 flex items-center gap-1 rounded-full bg-primary/90 px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-white backdrop-blur-sm">
+<span class="material-symbols-outlined text-xs">verified</span> Verified
+                            </span>
+<button class="absolute right-3 top-3 flex h-8 w-8 items-center justify-center rounded-full bg-white/50 text-slate-900 backdrop-blur-md hover:bg-white hover:text-accent-burgundy">
+<span class="material-symbols-outlined text-xl">favorite</span>
+</button>
+</div>
+<div class="p-4">
+<div class="mb-1 flex items-center justify-between">
+<h3 class="font-bold text-slate-900 dark:text-white truncate">4bdrm Townhouse - Elite Residency</h3>
+</div>
+<p class="flex items-center gap-1 text-xs text-slate-500 dark:text-slate-400 mb-3">
+<span class="material-symbols-outlined text-sm text-primary">location_on</span> Wananchi Road, Syokimau
+                            </p>
+<div class="flex items-center gap-4 text-xs font-medium text-slate-600 dark:text-slate-400 mb-4">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-sm">bed</span> 4</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-sm">bathtub</span> 4</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-sm">square_foot</span> 1,850 sqft</span>
+</div>
+<div class="flex items-center justify-between border-t border-primary/5 pt-4">
+<p class="text-xl font-extrabold text-primary">Ksh 85,000<span class="text-xs font-medium text-slate-400">/mo</span></p>
+<button class="rounded-lg bg-primary/10 px-3 py-1.5 text-xs font-bold text-primary hover:bg-primary hover:text-white transition-colors">Details</button>
+</div>
+</div>
+</div>
+<!-- Property Card 6 -->
+<div class="group overflow-hidden rounded-xl border border-primary/5 bg-white shadow-sm transition-all hover:shadow-xl dark:bg-slate-900">
+<div class="relative aspect-[4/3] overflow-hidden">
+<img class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="Modern kitchen and living room open plan" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBpmZeazbcXLNnA4dFjs-cVRsd2vkOCwbR80BcDQZL251OOLediAXvALflAkwOYrG2NMfOy3XrxOnxEDA5F3xWOBWRiYEFQXl5qrtcp6Q4qhKFUtOQTDoaIR7QZleVpcs60r76AxxJ9j04yOpsQJgcCZMo91FON1zscpWEvy5Ehzga9lhHTvhcJpAmjfOtNKhYHl8jkBwZBdoWRdw9NEu9Rg_x7lnOouTLSRZ2x20fuGQZz_ndJlHgV6eEphTglgpu-c1Yu2q_crNs"/>
+<span class="absolute left-3 top-3 flex items-center gap-1 rounded-full bg-primary/90 px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-white backdrop-blur-sm">
+<span class="material-symbols-outlined text-xs">verified</span> Verified
+                            </span>
+<button class="absolute right-3 top-3 flex h-8 w-8 items-center justify-center rounded-full bg-white/50 text-slate-900 backdrop-blur-md hover:bg-white hover:text-accent-burgundy">
+<span class="material-symbols-outlined text-xl">favorite</span>
+</button>
+</div>
+<div class="p-4">
+<div class="mb-1 flex items-center justify-between">
+<h3 class="font-bold text-slate-900 dark:text-white truncate">1bdrm Executive Suite</h3>
+</div>
+<p class="flex items-center gap-1 text-xs text-slate-500 dark:text-slate-400 mb-3">
+<span class="material-symbols-outlined text-sm text-primary">location_on</span> Airport Road, Syokimau
+                            </p>
+<div class="flex items-center gap-4 text-xs font-medium text-slate-600 dark:text-slate-400 mb-4">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-sm">bed</span> 1</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-sm">bathtub</span> 1</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-sm">square_foot</span> 600 sqft</span>
+</div>
+<div class="flex items-center justify-between border-t border-primary/5 pt-4">
+<p class="text-xl font-extrabold text-primary">Ksh 35,000<span class="text-xs font-medium text-slate-400">/mo</span></p>
+<button class="rounded-lg bg-primary/10 px-3 py-1.5 text-xs font-bold text-primary hover:bg-primary hover:text-white transition-colors">Details</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Pagination -->
+<div class="mt-12 flex justify-center">
+<nav class="flex items-center gap-1 rounded-lg border border-primary/10 bg-white p-1 dark:bg-slate-900">
+<button class="flex h-10 w-10 items-center justify-center rounded hover:bg-primary/5">
+<span class="material-symbols-outlined text-slate-600">chevron_left</span>
+</button>
+<button class="h-10 w-10 rounded bg-primary text-sm font-bold text-white shadow-md">1</button>
+<button class="h-10 w-10 rounded text-sm font-bold text-slate-600 hover:bg-primary/5">2</button>
+<button class="h-10 w-10 rounded text-sm font-bold text-slate-600 hover:bg-primary/5">3</button>
+<span class="px-2 text-slate-400">...</span>
+<button class="h-10 w-10 rounded text-sm font-bold text-slate-600 hover:bg-primary/5">12</button>
+<button class="flex h-10 w-10 items-center justify-center rounded hover:bg-primary/5">
+<span class="material-symbols-outlined text-slate-600">chevron_right</span>
+</button>
+</nav>
+</div>
+</div>
+</div>
+</main>
+<!-- Map Floating Button -->
+<div class="fixed bottom-8 left-1/2 z-40 -translate-x-1/2">
+<button class="flex items-center gap-2 rounded-full bg-accent-burgundy px-6 py-3 font-bold text-white shadow-xl shadow-accent-burgundy/30 transition-transform active:scale-95">
+<span class="material-symbols-outlined">map</span>
+            Show Map View
+        </button>
+</div>
+<!-- Simple Footer -->
+<footer class="mt-20 border-t border-primary/5 bg-white py-10 dark:bg-background-dark">
+<div class="mx-auto max-w-7xl px-4 text-center sm:px-6 lg:px-8">
+<div class="flex items-center justify-center gap-2 text-accent-burgundy mb-4">
+<span class="material-symbols-outlined text-2xl font-bold">corporate_fare</span>
+<h2 class="text-xl font-bold tracking-tight">Makazi</h2>
+</div>
+<p class="text-sm text-slate-500 dark:text-slate-400">© 2024 Makazi Platforms Ltd. All rights reserved.</p>
+<div class="mt-4 flex justify-center gap-6">
+<a class="text-xs text-slate-400 hover:text-primary" href="#">Terms of Service</a>
+<a class="text-xs text-slate-400 hover:text-primary" href="#">Privacy Policy</a>
+<a class="text-xs text-slate-400 hover:text-primary" href="#">Contact Us</a>
+</div>
+</div>
+</footer>
+</body></html>

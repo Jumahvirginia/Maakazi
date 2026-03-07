@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#048b7b", // Teal
+                        "secondary": "#800020", // Burgundy (Kenyan theme)
+                        "background-light": "#FBF9F1", // Cream
+                        "background-dark": "#0f2320",
+                        "accent-cream": "#FBF9F1",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Manrope', sans-serif;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<title>Tenant Viewing Schedule - Makazi</title>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 font-display">
+<div class="flex min-h-screen">
+<!-- Sidebar Navigation -->
+<aside class="w-72 bg-white dark:bg-slate-900 border-r border-primary/10 flex flex-col h-screen sticky top-0">
+<div class="p-6">
+<div class="flex items-center gap-3 mb-8">
+<div class="size-10 bg-primary rounded-lg flex items-center justify-center text-white">
+<span class="material-symbols-outlined">home_work</span>
+</div>
+<div>
+<h1 class="text-xl font-bold text-secondary tracking-tight uppercase">Makazi</h1>
+<p class="text-xs font-medium text-primary/70">Tenant Portal</p>
+</div>
+</div>
+<nav class="space-y-1">
+<a class="flex items-center gap-3 px-4 py-3 text-slate-600 dark:text-slate-400 hover:bg-primary/5 rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-medium text-sm">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 bg-primary/10 text-primary rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined">calendar_month</span>
+<span class="font-medium text-sm">My Visits</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-600 dark:text-slate-400 hover:bg-primary/5 rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined">favorite</span>
+<span class="font-medium text-sm">Saved Properties</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-600 dark:text-slate-400 hover:bg-primary/5 rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined">chat</span>
+<span class="font-medium text-sm">Messages</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-600 dark:text-slate-400 hover:bg-primary/5 rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-medium text-sm">Settings</span>
+</a>
+</nav>
+</div>
+<div class="mt-auto p-6 border-t border-primary/10">
+<button class="w-full bg-primary hover:bg-primary/90 text-white font-bold py-3 px-4 rounded-lg flex items-center justify-center gap-2 transition-all">
+<span class="material-symbols-outlined text-sm">search</span>
+                    Find a Home
+                </button>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="flex-1 flex flex-col min-w-0">
+<!-- Header -->
+<header class="h-20 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-primary/10 px-8 flex items-center justify-between sticky top-0 z-10">
+<div class="flex items-center gap-4 flex-1 max-w-xl">
+<div class="relative w-full">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400">search</span>
+<input class="w-full pl-10 pr-4 py-2 bg-background-light dark:bg-slate-800 border-none rounded-lg focus:ring-2 focus:ring-primary/20 text-sm" placeholder="Search visits or properties..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<button class="relative p-2 text-slate-600 dark:text-slate-400 hover:bg-primary/5 rounded-full">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-2 right-2 size-2 bg-secondary rounded-full border-2 border-white"></span>
+</button>
+<div class="flex items-center gap-3 border-l border-primary/10 pl-6">
+<div class="text-right">
+<p class="text-sm font-bold">Juma Omondi</p>
+<p class="text-xs text-slate-500">Premium Member</p>
+</div>
+<img class="size-10 rounded-full object-cover border-2 border-primary/20" data-alt="Profile picture of a Kenyan man" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDjKpRkwBjA0mkGyBVYsFScoYc0TPEbPD-BnWzT85EO4yY9_vTBQNZ5iWJ4GtQtn9hNWJuJZgr4tnybmEfVMP5l6TplQM-zpinyY8wDzU3OG5AxzpNSXb_AGcbu-ICMZg4tsbgClO33l1pHqraK6y2qYCBYsER5SMK4GgeluezVfNih0zwavviXuq_D_FUDMpgRSynXce43Hx02o8a8nrySrUZ2ItX5paMGNNr2dTgCY7ed1k4anZPSkAJ340I47Rt_MaW5nWuAKOY"/>
+</div>
+</div>
+</header>
+<!-- Dashboard Content -->
+<div class="p-8 max-w-6xl mx-auto w-full">
+<div class="mb-8">
+<h2 class="text-3xl font-extrabold text-slate-900 dark:text-white mb-2">My Visits</h2>
+<p class="text-slate-500">Track and manage your upcoming property viewings across Nairobi.</p>
+</div>
+<!-- Tabs -->
+<div class="flex gap-8 border-b border-primary/10 mb-8">
+<button class="pb-4 text-sm font-bold text-primary border-b-2 border-primary relative">
+                        Upcoming Visits
+                        <span class="ml-2 px-2 py-0.5 bg-primary/10 text-[10px] rounded-full">3</span>
+</button>
+<button class="pb-4 text-sm font-semibold text-slate-500 hover:text-slate-700 transition-colors">
+                        Past Visits
+                    </button>
+</div>
+<!-- Section: Upcoming Visits -->
+<div class="space-y-4 mb-12">
+<h3 class="text-xs font-bold uppercase tracking-widest text-secondary/70 mb-4">This Week</h3>
+<!-- Visit Card 1 -->
+<div class="bg-white dark:bg-slate-900 rounded-xl p-5 border border-primary/5 shadow-sm hover:shadow-md transition-shadow flex flex-col md:flex-row gap-6 items-center">
+<img class="w-full md:w-48 h-32 object-cover rounded-lg" data-alt="Modern apartment exterior with glass balconies" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAyMg_1DJ9illZQ-i5rpnHPmcHRsX_VpTwua62gCtvJOe5KQz-s_bQLnxEn2XP4ljhy30DQB3GTag7KhkdZ1y4l1KRyfQMa2UEibFwToqqMnotRUmdNCgXUfqTb1QONEvfLqopL9gjanB_i94zlqlL8f5rV21o3WaM7M4NMfSPhq3aaWFgEYEe9ZStD0ZGObroOlGauzTnkDAAEyVVxxXX7DDqnfZRHjZHoQUfYsCHLbj5a9lmipk49PyjCTSSzHbXCYI-YnSdiljw"/>
+<div class="flex-1 min-w-0">
+<div class="flex items-center gap-2 mb-1">
+<span class="px-2 py-0.5 bg-primary/10 text-primary text-[10px] font-bold rounded uppercase">Confirmed</span>
+<span class="text-xs text-slate-400">• Apartment</span>
+</div>
+<h4 class="text-lg font-bold truncate mb-2">Serene Valley Heights, Kilimani</h4>
+<div class="grid grid-cols-2 gap-y-2">
+<div class="flex items-center gap-2 text-sm text-slate-600 dark:text-slate-400">
+<span class="material-symbols-outlined text-sm text-primary">calendar_today</span>
+<span>Tuesday, 24th Oct</span>
+</div>
+<div class="flex items-center gap-2 text-sm text-slate-600 dark:text-slate-400">
+<span class="material-symbols-outlined text-sm text-primary">schedule</span>
+<span>10:30 AM</span>
+</div>
+<div class="flex items-center gap-2 text-sm text-slate-600 dark:text-slate-400">
+<span class="material-symbols-outlined text-sm text-primary">person</span>
+<span>Host: David Kimani</span>
+</div>
+</div>
+</div>
+<div class="flex flex-col gap-2 w-full md:w-auto">
+<button class="bg-primary text-white px-6 py-2.5 rounded-lg font-bold text-sm flex items-center justify-center gap-2 hover:bg-primary/90 transition-all">
+<span class="material-symbols-outlined text-sm">directions</span>
+                                Get Directions
+                            </button>
+<button class="text-slate-500 border border-slate-200 dark:border-slate-700 px-6 py-2.5 rounded-lg font-bold text-sm hover:bg-slate-50 transition-all">
+                                Reschedule
+                            </button>
+</div>
+</div>
+<!-- Visit Card 2 -->
+<div class="bg-white dark:bg-slate-900 rounded-xl p-5 border border-primary/5 shadow-sm hover:shadow-md transition-shadow flex flex-col md:flex-row gap-6 items-center">
+<img class="w-full md:w-48 h-32 object-cover rounded-lg" data-alt="Luxurious villa entrance with garden" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAfEXhWdxn8Qgu_-yanSY9REPYNOXMc7ZeQ_D81z4wvaiF2rYzqBdLHgay49dLr8K71H6YAXcCI4hyIMzndZ0vwHzMS3igJdpLnDXvUO3SRm3jgNqsysUtuNeA_-qmfPQqlV_s4uBYOmPdaZjETrIDH8FmLh3re18AxWLMBgrjtg6swtRVogr5M2EOf8Or3HmWaybzYU0eXpVmIo8q5ftR1XmkdDAzlB_8_TmLPiXgODINSxspiGxv2aov12cQPIOVAMvUbjHDE7IE"/>
+<div class="flex-1 min-w-0">
+<div class="flex items-center gap-2 mb-1">
+<span class="px-2 py-0.5 bg-secondary/10 text-secondary text-[10px] font-bold rounded uppercase">Pending Approval</span>
+<span class="text-xs text-slate-400">• Townhouse</span>
+</div>
+<h4 class="text-lg font-bold truncate mb-2">Garden City Residences, Thika Road</h4>
+<div class="grid grid-cols-2 gap-y-2">
+<div class="flex items-center gap-2 text-sm text-slate-600 dark:text-slate-400">
+<span class="material-symbols-outlined text-sm text-primary">calendar_today</span>
+<span>Thursday, 26th Oct</span>
+</div>
+<div class="flex items-center gap-2 text-sm text-slate-600 dark:text-slate-400">
+<span class="material-symbols-outlined text-sm text-primary">schedule</span>
+<span>02:00 PM</span>
+</div>
+<div class="flex items-center gap-2 text-sm text-slate-600 dark:text-slate-400">
+<span class="material-symbols-outlined text-sm text-primary">person</span>
+<span>Host: Martha Wanjiku</span>
+</div>
+</div>
+</div>
+<div class="flex flex-col gap-2 w-full md:w-auto">
+<button class="bg-primary/10 text-primary px-6 py-2.5 rounded-lg font-bold text-sm flex items-center justify-center gap-2 cursor-not-allowed">
+<span class="material-symbols-outlined text-sm text-primary/50">directions</span>
+                                Get Directions
+                            </button>
+<button class="text-secondary border border-secondary/20 px-6 py-2.5 rounded-lg font-bold text-sm hover:bg-secondary/5 transition-all">
+                                Cancel Visit
+                            </button>
+</div>
+</div>
+</div>
+<!-- Section: Past Visits -->
+<div class="space-y-4">
+<div class="flex items-center justify-between mb-4">
+<h3 class="text-xs font-bold uppercase tracking-widest text-slate-400">Recently Completed</h3>
+<a class="text-xs font-bold text-primary hover:underline" href="#">View All History</a>
+</div>
+<!-- Past Visit Card 1 -->
+<div class="bg-white/50 dark:bg-slate-900/50 rounded-xl p-4 border border-slate-200 dark:border-slate-800 flex items-center gap-6 opacity-80 hover:opacity-100 transition-opacity">
+<img class="size-20 object-cover rounded-lg grayscale-[50%]" data-alt="Cozy interior of a studio apartment" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCEvTiOPuHgRFYMa8MPVkuXvX8nuK1c6vpNNrPg6IC6hJjwv_wOwrcWc2e4qJRwhilAzRbapuAg-VoUvBSXttKm1zisk6Fo8Og4WyDgv_aOtr4I4Ocdf7Z0ajhX93AB1RQBrtPNy_vLqimuw2NTH8Fl0gK90PnZ_l1VrstAIPoWGvv-c7N1lSMb-yf9w4eZeKCJkZ-uTownA5BoChmVxLnjbeQ4KtMEJt_Wjnu9ot3h6potCL-JW_Rv333M65QJXEy7JVhCvN-60M0"/>
+<div class="flex-1 min-w-0">
+<h4 class="font-bold text-slate-700 dark:text-slate-300">Westlands Luxury Studios</h4>
+<p class="text-xs text-slate-500 mb-2">Visited Oct 18, 2023 • Landlord: Peter Maina</p>
+<div class="flex gap-2">
+<span class="flex items-center gap-1 text-[10px] font-bold text-green-600">
+<span class="material-symbols-outlined text-xs">check_circle</span>
+                                    COMPLETED
+                                </span>
+</div>
+</div>
+<div class="flex gap-2">
+<button class="p-2 text-primary hover:bg-primary/5 rounded-lg" title="Leave Review">
+<span class="material-symbols-outlined">rate_review</span>
+</button>
+<button class="p-2 text-slate-400 hover:bg-slate-100 rounded-lg">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+</div>
+<!-- Past Visit Card 2 -->
+<div class="bg-white/50 dark:bg-slate-900/50 rounded-xl p-4 border border-slate-200 dark:border-slate-800 flex items-center gap-6 opacity-80 hover:opacity-100 transition-opacity">
+<img class="size-20 object-cover rounded-lg grayscale-[50%]" data-alt="Modern living room with neutral colors" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDv2m9-Fk2MQlZRSVqxLFg6paf70RMiDOh4Wro6BPP7Bqs5YjLzjOOS0yfC7aoYDn6si_-BMGX3rVbghffXRZcj5Ys4IJV9uplV5aC3wz7biFTPEREYA3GsJ932ZqDouAWKKOrtDPVxqYmFvp-RBUEX2MDb3BOrlMEQhHIWzOclGFy60MJ_08nvBT-TL26ENccpvg4CBtZb7L35mNB_85KhSGxyQMEdLr5058K8DdTg1XHPJkyR7fzdyI-1sNcrNWyqSDCm7I3b-Hg"/>
+<div class="flex-1 min-w-0">
+<h4 class="font-bold text-slate-700 dark:text-slate-300">The Rubix, Lavington</h4>
+<p class="text-xs text-slate-500 mb-2">Visited Oct 15, 2023 • Landlord: Alice Njeri</p>
+<div class="flex gap-2">
+<span class="flex items-center gap-1 text-[10px] font-bold text-red-600">
+<span class="material-symbols-outlined text-xs">cancel</span>
+                                    NO SHOW
+                                </span>
+</div>
+</div>
+<div class="flex gap-2">
+<button class="p-2 text-primary hover:bg-primary/5 rounded-lg" title="Book Again">
+<span class="material-symbols-outlined">replay</span>
+</button>
+<button class="p-2 text-slate-400 hover:bg-slate-100 rounded-lg">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>

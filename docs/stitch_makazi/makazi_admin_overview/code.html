@@ -1,0 +1,253 @@
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Makazi Admin Overview</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              colors: {
+                "primary": "#048b7b",
+                "accent-burgundy": "#800020",
+                "background-light": "#FBF9F1",
+                "background-dark": "#0f2320",
+                "neutral-cream": "#FBF9F1",
+              },
+              fontFamily: {
+                "display": ["Manrope"]
+              },
+              borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+            },
+          },
+        }
+    </script>
+<style>
+        body { font-family: 'Manrope', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-neutral-cream dark:bg-background-dark text-slate-900 dark:text-slate-100 font-display">
+<div class="flex min-h-screen overflow-hidden">
+<!-- Sidebar -->
+<aside class="w-64 bg-primary text-white flex flex-col fixed h-full z-50">
+<div class="p-6 flex items-center gap-3">
+<div class="size-10 rounded-full bg-white/20 flex items-center justify-center border border-white/30 overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Makazi logo abstract geometric pattern" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDi1LuPglB71pNV1cV-lvflwjnvAOO2Z42czxnhld8UPy6iyaTceIpEf1ZD8mBEOBJWQBfGMLXavXT88e3Bjybv5FK14NVqDTlImbMfYTtJ9sHbJxJBr31ClRFD5MPH4rRCJzfxpjy_I3d7fvlMzi6DPXuTkL9Eop38Nhx752n2MgY5iHFd3_uSeQYL0hADUwkyCfws2YU9AOe-fwGDSSiay68xX6iAXqKCg-a4gkcNgXdbTxl1x3nF3017H1FguCMOCh0aA4s9qlo"/>
+</div>
+<div>
+<h1 class="font-bold text-lg leading-tight">Makazi</h1>
+<p class="text-xs text-primary/20 opacity-80 uppercase tracking-widest font-bold">Admin</p>
+</div>
+</div>
+<nav class="flex-1 px-4 py-4 space-y-1">
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg bg-white/10 text-white group" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="text-sm font-medium">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-white/5 text-white/80 hover:text-white transition-colors group" href="#">
+<span class="material-symbols-outlined">trending_up</span>
+<span class="text-sm font-medium">User Growth</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-white/5 text-white/80 hover:text-white transition-colors group" href="#">
+<span class="material-symbols-outlined">account_balance_wallet</span>
+<span class="text-sm font-medium">Rental Volume</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-white/5 text-white/80 hover:text-white transition-colors group" href="#">
+<span class="material-symbols-outlined">house</span>
+<span class="text-sm font-medium">Listings</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-white/5 text-white/80 hover:text-white transition-colors group" href="#">
+<span class="material-symbols-outlined">verified_user</span>
+<span class="text-sm font-medium">Verifications</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-white/5 text-white/80 hover:text-white transition-colors group" href="#">
+<span class="material-symbols-outlined">gpp_maybe</span>
+<span class="text-sm font-medium">Security</span>
+</a>
+</nav>
+<div class="p-4 mt-auto border-t border-white/10">
+<button class="w-full flex items-center justify-center gap-2 py-3 bg-accent-burgundy hover:bg-accent-burgundy/90 text-white rounded-lg text-sm font-bold shadow-lg transition-all">
+<span class="material-symbols-outlined text-sm">summarize</span>
+                    New Report
+                </button>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="flex-1 ml-64 p-8">
+<!-- Header Section -->
+<header class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
+<div>
+<h2 class="text-3xl font-extrabold text-slate-900 dark:text-white tracking-tight">Dashboard Overview</h2>
+<p class="text-slate-500 dark:text-slate-400 mt-1">High-level analytics and system status for Makazi platform.</p>
+</div>
+<div class="flex items-center gap-3">
+<button class="p-2 rounded-lg bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-600">
+<span class="material-symbols-outlined">calendar_today</span>
+</button>
+<button class="p-2 rounded-lg bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-600">
+<span class="material-symbols-outlined">filter_list</span>
+</button>
+<div class="h-10 w-[1px] bg-slate-200 dark:bg-slate-700 mx-1"></div>
+<div class="flex items-center gap-3 pl-2">
+<div class="text-right hidden sm:block">
+<p class="text-xs font-bold text-slate-900">Admin User</p>
+<p class="text-[10px] text-slate-500">Super Admin</p>
+</div>
+<div class="size-10 rounded-full border-2 border-primary overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="User profile avatar placeholder" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAe-3QGFTdESHqDe4PIAoOR4nJitgPiq-b0mYeh29HBLUyGjJX_DhEdo-ncCGB83qmO01W_B5-bvyhONJWq9o9v5n8U2o2HgDXf-eGJk1uGb8xdZfvx7yjtu6YgxC9NPBnqXbDBY6xQ49AOkuSADxlo3gBnjJDVRbbKL0_dQQfAtVY_XFAAapm09QYKFxxROaQdqjiK86S2PkpJyNAIjbn6c1FBVWEsXynnzB0JQjQwp16coyQZKd25l-Adf8jGSeRc-uaJ6zaFFds"/>
+</div>
+</div>
+</div>
+</header>
+<!-- Main Charts Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
+<!-- User Growth Chart -->
+<div class="bg-white dark:bg-slate-800 p-6 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm flex flex-col">
+<div class="flex justify-between items-start mb-6">
+<div>
+<p class="text-sm font-medium text-slate-500 uppercase tracking-wider">User Growth</p>
+<h3 class="text-3xl font-bold text-slate-900 dark:text-white">12,450 <span class="text-sm font-normal text-emerald-600">+12%</span></h3>
+<p class="text-xs text-slate-400">vs last 30 days</p>
+</div>
+<div class="bg-primary/10 p-2 rounded-lg text-primary">
+<span class="material-symbols-outlined">group</span>
+</div>
+</div>
+<div class="flex-1 min-h-[220px] w-full flex items-end justify-between px-2 pt-4">
+<!-- Custom Visual Representation of Growth -->
+<div class="w-[8%] bg-primary/20 rounded-t-sm h-[40%]"></div>
+<div class="w-[8%] bg-primary/20 rounded-t-sm h-[55%]"></div>
+<div class="w-[8%] bg-primary/20 rounded-t-sm h-[45%]"></div>
+<div class="w-[8%] bg-primary/20 rounded-t-sm h-[70%]"></div>
+<div class="w-[8%] bg-primary/20 rounded-t-sm h-[60%]"></div>
+<div class="w-[8%] bg-primary/40 rounded-t-sm h-[85%]"></div>
+<div class="w-[8%] bg-primary/40 rounded-t-sm h-[75%]"></div>
+<div class="w-[8%] bg-primary/60 rounded-t-sm h-[90%]"></div>
+<div class="w-[8%] bg-primary rounded-t-sm h-[100%]"></div>
+</div>
+<div class="flex justify-around mt-4 pt-4 border-t border-slate-100 dark:border-slate-700">
+<span class="text-[11px] font-bold text-slate-400 uppercase">Week 1</span>
+<span class="text-[11px] font-bold text-slate-400 uppercase">Week 2</span>
+<span class="text-[11px] font-bold text-slate-400 uppercase">Week 3</span>
+<span class="text-[11px] font-bold text-slate-400 uppercase">Week 4</span>
+</div>
+</div>
+<!-- Rental Volume Chart -->
+<div class="bg-white dark:bg-slate-800 p-6 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm flex flex-col">
+<div class="flex justify-between items-start mb-6">
+<div>
+<p class="text-sm font-medium text-slate-500 uppercase tracking-wider">Rental Volume (Kes)</p>
+<h3 class="text-3xl font-bold text-slate-900 dark:text-white">4.2M <span class="text-sm font-normal text-emerald-600">+8%</span></h3>
+<p class="text-xs text-slate-400">vs last 30 days</p>
+</div>
+<div class="bg-accent-burgundy/10 p-2 rounded-lg text-accent-burgundy">
+<span class="material-symbols-outlined">payments</span>
+</div>
+</div>
+<div class="flex-1 min-h-[220px] w-full relative">
+<!-- SVG Chart Path Simulation -->
+<svg class="w-full h-full" preserveaspectratio="none" viewbox="0 0 100 40">
+<path d="M0 40 L0 30 Q 12 10 25 25 T 50 15 T 75 35 T 100 5 L 100 40 Z" fill="url(#grad)"></path>
+<path d="M0 30 Q 12 10 25 25 T 50 15 T 75 35 T 100 5" fill="none" stroke="#800020" stroke-width="0.5"></path>
+<defs>
+<lineargradient id="grad" x1="0%" x2="0%" y1="0%" y2="100%">
+<stop offset="0%" style="stop-color:#800020;stop-opacity:0.2"></stop>
+<stop offset="100%" style="stop-color:#800020;stop-opacity:0"></stop>
+</lineargradient>
+</defs>
+</svg>
+</div>
+<div class="flex justify-around mt-4 pt-4 border-t border-slate-100 dark:border-slate-700">
+<span class="text-[11px] font-bold text-slate-400 uppercase">Week 1</span>
+<span class="text-[11px] font-bold text-slate-400 uppercase">Week 2</span>
+<span class="text-[11px] font-bold text-slate-400 uppercase">Week 3</span>
+<span class="text-[11px] font-bold text-slate-400 uppercase">Week 4</span>
+</div>
+</div>
+</div>
+<!-- Metric Cards -->
+<h4 class="text-lg font-bold text-slate-900 dark:text-white mb-4">System Metrics</h4>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<!-- Active Listings -->
+<div class="bg-white dark:bg-slate-800 p-6 rounded-xl border-l-4 border-primary shadow-sm">
+<div class="flex items-center justify-between mb-2">
+<p class="text-sm font-medium text-slate-500 uppercase tracking-wider">Active Listings</p>
+<span class="material-symbols-outlined text-primary text-xl">house</span>
+</div>
+<div class="flex items-end gap-2">
+<h4 class="text-2xl font-extrabold text-slate-900 dark:text-white">1,240</h4>
+<span class="text-xs font-bold text-emerald-600 mb-1">+3%</span>
+</div>
+</div>
+<!-- Pending Verifications -->
+<div class="bg-white dark:bg-slate-800 p-6 rounded-xl border-l-4 border-amber-500 shadow-sm">
+<div class="flex items-center justify-between mb-2">
+<p class="text-sm font-medium text-slate-500 uppercase tracking-wider">Pending Verifications</p>
+<span class="material-symbols-outlined text-amber-500 text-xl">pending_actions</span>
+</div>
+<div class="flex items-end gap-2">
+<h4 class="text-2xl font-extrabold text-slate-900 dark:text-white">42</h4>
+<span class="text-xs font-bold text-rose-600 mb-1">-12%</span>
+</div>
+</div>
+<!-- Reported Fraud -->
+<div class="bg-white dark:bg-slate-800 p-6 rounded-xl border-l-4 border-accent-burgundy shadow-sm">
+<div class="flex items-center justify-between mb-2">
+<p class="text-sm font-medium text-slate-500 uppercase tracking-wider">Reported Fraud</p>
+<span class="material-symbols-outlined text-accent-burgundy text-xl">warning</span>
+</div>
+<div class="flex items-end gap-2">
+<h4 class="text-2xl font-extrabold text-slate-900 dark:text-white">5</h4>
+<span class="text-xs font-bold text-slate-400 mb-1">0%</span>
+</div>
+</div>
+</div>
+<!-- Recent Activity Table Placeholder (Secondary Area) -->
+<div class="mt-8 bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm overflow-hidden">
+<div class="px-6 py-4 border-b border-slate-100 dark:border-slate-700 flex justify-between items-center">
+<h4 class="font-bold text-slate-900 dark:text-white">Recent System Activity</h4>
+<button class="text-xs font-bold text-primary hover:underline uppercase tracking-wider">View All</button>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left">
+<thead class="bg-slate-50 dark:bg-slate-900/50">
+<tr>
+<th class="px-6 py-3 text-[10px] font-bold text-slate-400 uppercase tracking-widest">Activity</th>
+<th class="px-6 py-3 text-[10px] font-bold text-slate-400 uppercase tracking-widest">User</th>
+<th class="px-6 py-3 text-[10px] font-bold text-slate-400 uppercase tracking-widest">Status</th>
+<th class="px-6 py-3 text-[10px] font-bold text-slate-400 uppercase tracking-widest">Time</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-slate-100 dark:divide-slate-700">
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-900/30 transition-colors">
+<td class="px-6 py-4 text-sm font-medium">New Listing Verified: Sunset Towers 4B</td>
+<td class="px-6 py-4 text-sm text-slate-500">M. Kamau</td>
+<td class="px-6 py-4"><span class="px-2 py-1 rounded-full bg-emerald-100 text-emerald-700 text-[10px] font-bold uppercase">Success</span></td>
+<td class="px-6 py-4 text-xs text-slate-400">2 mins ago</td>
+</tr>
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-900/30 transition-colors">
+<td class="px-6 py-4 text-sm font-medium">Bulk Payment Processed</td>
+<td class="px-6 py-4 text-sm text-slate-500">System Admin</td>
+<td class="px-6 py-4"><span class="px-2 py-1 rounded-full bg-emerald-100 text-emerald-700 text-[10px] font-bold uppercase">Success</span></td>
+<td class="px-6 py-4 text-xs text-slate-400">15 mins ago</td>
+</tr>
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-900/30 transition-colors">
+<td class="px-6 py-4 text-sm font-medium">Verification Denied: ID 4402</td>
+<td class="px-6 py-4 text-sm text-slate-500">K. Otieno</td>
+<td class="px-6 py-4"><span class="px-2 py-1 rounded-full bg-rose-100 text-rose-700 text-[10px] font-bold uppercase">Denied</span></td>
+<td class="px-6 py-4 text-xs text-slate-400">45 mins ago</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</main>
+</div>
+</body></html>

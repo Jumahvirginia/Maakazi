@@ -1,9 +1,3 @@
-# Local environment variables (Supabase keys)
-.env
-
-# OS-specific files
-.DS_Store
-Thumbs.db
-
-# Any node modules if you add them later
 node_modules/
+.env
+.DS_Store

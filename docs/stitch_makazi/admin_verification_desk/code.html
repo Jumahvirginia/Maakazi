@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Admin Verification Desk - Makazi</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#048b7b", // Teal
+                        "secondary": "#7c1c2b", // Burgundy (Kenyan themed accent)
+                        "background-light": "#FBF9F1", // Cream
+                        "background-dark": "#0f2320",
+                        "error": "#E11D48",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Manrope', sans-serif;
+            background-color: #FBF9F1;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background-light text-slate-900 font-display">
+<div class="flex h-screen overflow-hidden">
+<!-- Sidebar Navigation -->
+<aside class="w-64 bg-white border-r border-slate-200 flex flex-col shrink-0">
+<div class="p-6 flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg bg-secondary flex items-center justify-center text-white">
+<span class="material-symbols-outlined">domain</span>
+</div>
+<div>
+<h1 class="text-slate-900 font-bold text-lg leading-tight">Makazi Admin</h1>
+<p class="text-slate-500 text-xs uppercase tracking-wider font-semibold">Verification Desk</p>
+</div>
+</div>
+<nav class="flex-1 px-4 space-y-1">
+<a class="flex items-center gap-3 px-3 py-2 text-slate-600 hover:bg-primary/10 hover:text-primary rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="text-sm font-medium">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 bg-primary/10 text-primary rounded-lg" href="#">
+<span class="material-symbols-outlined">verified_user</span>
+<span class="text-sm font-medium">Verifications</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-slate-600 hover:bg-primary/10 hover:text-primary rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined">real_estate_agent</span>
+<span class="text-sm font-medium">Landlords</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-slate-600 hover:bg-primary/10 hover:text-primary rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined">apartment</span>
+<span class="text-sm font-medium">Properties</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-slate-600 hover:bg-primary/10 hover:text-primary rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined">payments</span>
+<span class="text-sm font-medium">Transactions</span>
+</a>
+<div class="pt-4 mt-4 border-t border-slate-100">
+<a class="flex items-center gap-3 px-3 py-2 text-slate-600 hover:bg-primary/10 hover:text-primary rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-sm font-medium">Settings</span>
+</a>
+</div>
+</nav>
+<div class="p-4 border-t border-slate-100">
+<div class="flex items-center gap-3 mb-4 px-3">
+<div class="w-8 h-8 rounded-full bg-slate-200 overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Admin profile avatar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBYJsO6QcI4qiywTJm2jUWmhLPASNcD50tpsFbao7UQY3lkHUX2rXK0k_jMq2BKVY68GNMQG6sSjOIi8Lc8KFSJVeiPbotMrBjMg-z1CiMvV6NFkU6GuFvNW0-7IhBgr6ush6agfbTOrPwQ3R-j3sCwOMahu8eGltL93WDm061aOohVCJko0uFTc4vKktjPbekEL-W0zpGspFjIdCr7FM2DNGPSJGiRwU9Y8cmfnUhEnXu94L9Fo-3Sx2zeSsIEWD6_RY4rTq7UB0g"/>
+</div>
+<div class="flex-1 overflow-hidden">
+<p class="text-sm font-semibold text-slate-900 truncate">Josphat Kamau</p>
+<p class="text-xs text-slate-500 truncate">Super Admin</p>
+</div>
+</div>
+<button class="w-full flex items-center justify-center gap-2 px-4 py-2 text-error font-semibold text-sm border border-error/20 rounded-lg hover:bg-error/5 transition-colors">
+<span class="material-symbols-outlined text-sm">logout</span>
+                    Logout
+                </button>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 flex flex-col overflow-hidden">
+<!-- Header -->
+<header class="h-16 bg-white border-b border-slate-200 flex items-center justify-between px-8 shrink-0">
+<div class="flex items-center gap-4 flex-1">
+<div class="relative w-96">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-xl">search</span>
+<input class="w-full pl-10 pr-4 py-2 bg-slate-100 border-none rounded-lg text-sm focus:ring-2 focus:ring-primary/50 transition-all" placeholder="Search by name, ID or document type..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 text-slate-500 hover:bg-slate-100 rounded-full relative">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 bg-secondary rounded-full border-2 border-white"></span>
+</button>
+<div class="h-8 w-px bg-slate-200 mx-2"></div>
+<button class="bg-primary text-white px-4 py-2 rounded-lg text-sm font-bold flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">download</span>
+                        Export Report
+                    </button>
+</div>
+</header>
+<!-- Content -->
+<div class="flex-1 overflow-y-auto p-8">
+<!-- Page Title & Stats -->
+<div class="mb-8">
+<h2 class="text-3xl font-extrabold text-slate-900 tracking-tight mb-2">Landlord Verification Desk</h2>
+<p class="text-slate-500 max-w-2xl">Review and manage pending legal documentation for Kenyan landlords. Ensure all submissions meet the Makazi platform compliance standards.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+<div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+<p class="text-slate-500 text-sm font-medium mb-1">Total Pending</p>
+<div class="flex items-end justify-between">
+<h3 class="text-2xl font-bold text-slate-900 leading-none">142</h3>
+<span class="text-secondary text-xs font-bold bg-secondary/10 px-2 py-1 rounded">+12% this week</span>
+</div>
+</div>
+<div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+<p class="text-slate-500 text-sm font-medium mb-1">Approved Today</p>
+<div class="flex items-end justify-between">
+<h3 class="text-2xl font-bold text-slate-900 leading-none">28</h3>
+<span class="text-primary text-xs font-bold bg-primary/10 px-2 py-1 rounded">Target: 40</span>
+</div>
+</div>
+<div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+<p class="text-slate-500 text-sm font-medium mb-1">Rejected Rate</p>
+<div class="flex items-end justify-between">
+<h3 class="text-2xl font-bold text-slate-900 leading-none">4.2%</h3>
+<span class="text-slate-500 text-xs font-bold bg-slate-100 px-2 py-1 rounded">Stable</span>
+</div>
+</div>
+<div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+<p class="text-slate-500 text-sm font-medium mb-1">Avg. Review Time</p>
+<div class="flex items-end justify-between">
+<h3 class="text-2xl font-bold text-slate-900 leading-none">4.5 hrs</h3>
+<span class="text-primary text-xs font-bold bg-primary/10 px-2 py-1 rounded">Fast</span>
+</div>
+</div>
+</div>
+<!-- Table Content -->
+<div class="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden">
+<div class="px-6 py-4 border-b border-slate-100 flex items-center justify-between">
+<div class="flex gap-4">
+<button class="text-sm font-bold border-b-2 border-primary text-primary pb-1">Pending (142)</button>
+<button class="text-sm font-semibold text-slate-400 hover:text-slate-600 transition-colors pb-1">Flagged (12)</button>
+<button class="text-sm font-semibold text-slate-400 hover:text-slate-600 transition-colors pb-1">Archived</button>
+</div>
+<div class="flex items-center gap-2">
+<button class="p-1.5 text-slate-400 hover:bg-slate-50 rounded border border-slate-200">
+<span class="material-symbols-outlined text-xl">filter_list</span>
+</button>
+<button class="p-1.5 text-slate-400 hover:bg-slate-50 rounded border border-slate-200">
+<span class="material-symbols-outlined text-xl">sort</span>
+</button>
+</div>
+</div>
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-slate-50/50">
+<th class="px-6 py-4 text-xs font-bold text-slate-500 uppercase tracking-wider">Landlord Name</th>
+<th class="px-6 py-4 text-xs font-bold text-slate-500 uppercase tracking-wider">Document Type</th>
+<th class="px-6 py-4 text-xs font-bold text-slate-500 uppercase tracking-wider">Date Submitted</th>
+<th class="px-6 py-4 text-xs font-bold text-slate-500 uppercase tracking-wider">Status</th>
+<th class="px-6 py-4 text-xs font-bold text-slate-500 uppercase tracking-wider text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-slate-100">
+<!-- Row 1 -->
+<tr class="hover:bg-slate-50/80 transition-colors group">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center text-primary font-bold text-xs">EK</div>
+<span class="text-sm font-bold text-slate-900">Ezekiel Kipchoge</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<div class="flex flex-col">
+<span class="text-sm font-medium text-slate-700">Land Title Deed</span>
+<span class="text-xs text-slate-400 leading-none">Ref: TD-99283-MSA</span>
+</div>
+</td>
+<td class="px-6 py-4 text-sm text-slate-600">Oct 24, 2023 · 14:20</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold bg-amber-100 text-amber-700">Pending Review</span>
+</td>
+<td class="px-6 py-4 text-right space-x-2">
+<button class="text-xs font-bold text-primary hover:underline underline-offset-4 mr-2">View Document</button>
+<button class="px-3 py-1.5 bg-primary text-white text-xs font-bold rounded shadow-sm hover:bg-primary/90 transition-all">Approve</button>
+<button class="px-3 py-1.5 bg-error text-white text-xs font-bold rounded shadow-sm hover:bg-error/90 transition-all">Reject</button>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-slate-50/80 transition-colors group">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-secondary/10 flex items-center justify-center text-secondary font-bold text-xs">MN</div>
+<span class="text-sm font-bold text-slate-900">Mary Njeri</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<div class="flex flex-col">
+<span class="text-sm font-medium text-slate-700">National ID</span>
+<span class="text-xs text-slate-400 leading-none">ID No: 33451209</span>
+</div>
+</td>
+<td class="px-6 py-4 text-sm text-slate-600">Oct 25, 2023 · 09:15</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold bg-amber-100 text-amber-700">Pending Review</span>
+</td>
+<td class="px-6 py-4 text-right space-x-2">
+<button class="text-xs font-bold text-primary hover:underline underline-offset-4 mr-2">View Document</button>
+<button class="px-3 py-1.5 bg-primary text-white text-xs font-bold rounded shadow-sm hover:bg-primary/90 transition-all">Approve</button>
+<button class="px-3 py-1.5 bg-error text-white text-xs font-bold rounded shadow-sm hover:bg-error/90 transition-all">Reject</button>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-slate-50/80 transition-colors group">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center text-slate-600 font-bold text-xs">DO</div>
+<span class="text-sm font-bold text-slate-900">David Otieno</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<div class="flex flex-col">
+<span class="text-sm font-medium text-slate-700">Certificate of Lease</span>
+<span class="text-xs text-slate-400 leading-none">Ref: CL-1029-NBI</span>
+</div>
+</td>
+<td class="px-6 py-4 text-sm text-slate-600">Oct 25, 2023 · 11:45</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold bg-amber-100 text-amber-700">Pending Review</span>
+</td>
+<td class="px-6 py-4 text-right space-x-2">
+<button class="text-xs font-bold text-primary hover:underline underline-offset-4 mr-2">View Document</button>
+<button class="px-3 py-1.5 bg-primary text-white text-xs font-bold rounded shadow-sm hover:bg-primary/90 transition-all">Approve</button>
+<button class="px-3 py-1.5 bg-error text-white text-xs font-bold rounded shadow-sm hover:bg-error/90 transition-all">Reject</button>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="hover:bg-slate-50/80 transition-colors group">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center text-primary font-bold text-xs">SW</div>
+<span class="text-sm font-bold text-slate-900">Sarah Wambui</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<div class="flex flex-col">
+<span class="text-sm font-medium text-slate-700">KRA PIN Certificate</span>
+<span class="text-xs text-slate-400 leading-none">Ref: KRA-912234</span>
+</div>
+</td>
+<td class="px-6 py-4 text-sm text-slate-600">Oct 25, 2023 · 16:30</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold bg-amber-100 text-amber-700">Pending Review</span>
+</td>
+<td class="px-6 py-4 text-right space-x-2">
+<button class="text-xs font-bold text-primary hover:underline underline-offset-4 mr-2">View Document</button>
+<button class="px-3 py-1.5 bg-primary text-white text-xs font-bold rounded shadow-sm hover:bg-primary/90 transition-all">Approve</button>
+<button class="px-3 py-1.5 bg-error text-white text-xs font-bold rounded shadow-sm hover:bg-error/90 transition-all">Reject</button>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="px-6 py-4 bg-slate-50 border-t border-slate-100 flex items-center justify-between">
+<p class="text-xs font-medium text-slate-500">Showing 4 of 142 pending requests</p>
+<div class="flex items-center gap-2">
+<button class="px-3 py-1 border border-slate-200 rounded bg-white text-slate-400 cursor-not-allowed">
+<span class="material-symbols-outlined text-sm">chevron_left</span>
+</button>
+<button class="px-3 py-1 border border-slate-200 rounded bg-white text-slate-700 hover:bg-slate-50 shadow-sm transition-all font-bold text-xs">1</button>
+<button class="px-3 py-1 border border-slate-200 rounded bg-white text-slate-700 hover:bg-slate-50 shadow-sm transition-all font-bold text-xs">2</button>
+<button class="px-3 py-1 border border-slate-200 rounded bg-white text-slate-700 hover:bg-slate-50 shadow-sm transition-all font-bold text-xs">3</button>
+<span class="px-1 text-slate-400">...</span>
+<button class="px-3 py-1 border border-slate-200 rounded bg-white text-slate-700 hover:bg-slate-50 shadow-sm transition-all font-bold text-xs">36</button>
+<button class="px-3 py-1 border border-slate-200 rounded bg-white text-slate-700 hover:bg-slate-50 shadow-sm transition-all">
+<span class="material-symbols-outlined text-sm">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+<!-- Document Preview Modal (Mockup overlay) -->
+<div class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm hidden" id="modal-preview">
+<div class="bg-white rounded-2xl w-full max-w-4xl max-h-[90vh] overflow-hidden flex flex-col shadow-2xl">
+<div class="px-6 py-4 border-b border-slate-100 flex items-center justify-between bg-slate-50">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">description</span>
+<h3 class="text-slate-900 font-bold">Document Preview: Land Title Deed</h3>
+</div>
+<button class="p-2 hover:bg-slate-200 rounded-full transition-colors">
+<span class="material-symbols-outlined text-slate-500">close</span>
+</button>
+</div>
+<div class="flex-1 overflow-y-auto p-8 bg-slate-200 flex justify-center">
+<!-- Mockup for a Title Deed document -->
+<div class="w-full max-w-2xl bg-white shadow-lg p-12 border-8 border-double border-slate-100">
+<div class="text-center mb-8">
+<h4 class="text-xl font-bold uppercase text-slate-800">The Republic of Kenya</h4>
+<p class="text-slate-600 font-serif">Certificate of Title</p>
+<hr class="w-32 mx-auto border-slate-900 mt-2"/>
+</div>
+<div class="space-y-6 text-sm leading-relaxed text-slate-700">
+<p>This is to certify that <span class="font-bold underline">EZEKIEL KIPCHOGE</span> is the proprietor of an estate in fee simple of all that piece of land situate in the <span class="font-bold">Mombasa District</span> known as <span class="font-bold">NYALI/SEC.X/992</span>.</p>
+<p>Subject to the provisions of the Registered Land Act and the encumbrances noted hereon.</p>
+<div class="py-8 text-center opacity-30 select-none">
+<span class="material-symbols-outlined text-9xl">sticker</span>
+</div>
+<div class="flex justify-between items-end pt-8">
+<div class="text-left">
+<p class="border-t border-slate-900 pt-1 font-bold">Registrar of Titles</p>
+<p class="text-xs italic">Nairobi Land Registry</p>
+</div>
+<div class="text-right">
+<p class="text-xs">Date: 12th January 2018</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="px-6 py-4 border-t border-slate-100 bg-white flex items-center justify-between">
+<div class="flex items-center gap-2">
+<button class="p-2 text-slate-500 hover:bg-slate-100 rounded-lg">
+<span class="material-symbols-outlined">zoom_in</span>
+</button>
+<button class="p-2 text-slate-500 hover:bg-slate-100 rounded-lg">
+<span class="material-symbols-outlined">zoom_out</span>
+</button>
+<button class="p-2 text-slate-500 hover:bg-slate-100 rounded-lg">
+<span class="material-symbols-outlined">print</span>
+</button>
+</div>
+<div class="flex gap-3">
+<button class="px-6 py-2 border border-slate-200 text-slate-700 font-bold rounded-lg hover:bg-slate-50">Cancel</button>
+<button class="px-6 py-2 bg-error text-white font-bold rounded-lg hover:bg-error/90 shadow-md transition-all">Reject</button>
+<button class="px-6 py-2 bg-primary text-white font-bold rounded-lg hover:bg-primary/90 shadow-md transition-all">Approve Document</button>
+</div>
+</div>
+</div>
+</div>
+</body></html>

@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Search Results - Makazi</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#048b7b", // Teal
+                        "secondary": "#800020", // Burgundy
+                        "background-light": "#FBF9F1", // Cream
+                        "background-dark": "#0f2320",
+                        "slate-custom": "#4A5568", // Slate Grey
+                    },
+                    fontFamily: {
+                        "display": ["Manrope", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Manrope', sans-serif;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 font-display">
+<div class="relative flex min-h-screen w-full flex-col overflow-x-hidden">
+<!-- Header -->
+<header class="flex items-center justify-between whitespace-nowrap border-b border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-6 md:px-10 py-3 sticky top-0 z-50">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-3">
+<div class="size-8 bg-secondary rounded-lg flex items-center justify-center text-white">
+<span class="material-symbols-outlined">home_pin</span>
+</div>
+<h2 class="text-secondary text-xl font-extrabold leading-tight tracking-tight">Makazi</h2>
+</div>
+<div class="hidden lg:flex items-center gap-6">
+<a class="text-slate-600 dark:text-slate-300 text-sm font-semibold hover:text-primary transition-colors" href="#">Home</a>
+<a class="text-primary text-sm font-bold border-b-2 border-primary leading-normal" href="#">Rentals</a>
+<a class="text-slate-600 dark:text-slate-300 text-sm font-semibold hover:text-primary transition-colors" href="#">Short-stays</a>
+</div>
+</div>
+<div class="flex flex-1 justify-end items-center gap-4">
+<label class="hidden md:flex flex-col min-w-40 h-10 max-w-md flex-1">
+<div class="flex w-full flex-1 items-stretch rounded-lg h-full overflow-hidden border border-slate-200 dark:border-slate-700">
+<div class="text-slate-400 flex bg-slate-50 dark:bg-slate-800 items-center justify-center px-3">
+<span class="material-symbols-outlined text-xl">search</span>
+</div>
+<input class="flex w-full min-w-0 flex-1 border-none bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-slate-100 focus:ring-0 px-2 text-sm" placeholder="Search for neighborhoods..." value="Nairobi CBD"/>
+</div>
+</label>
+<button class="flex min-w-[120px] cursor-pointer items-center justify-center rounded-lg h-10 px-5 bg-primary text-white text-sm font-bold shadow-sm hover:bg-primary/90 transition-all">
+<span>List Property</span>
+</button>
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10 border-2 border-primary/20" data-alt="User profile avatar portrait" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAagFQkNkxzt9kMK_f3AkaX1eYpphHeuNMUHmstTtlSXQ2gnVgu1z98OWj6a4U_MFvu-RnnpqURMszr_QG66n3hgqKpxEJ00_NHoyjMMR0_T6F1DFphP3kj7oP1SGM-7Zc0XfkEtFxoKgcsyGDn7nF9e7OK7JjX6R_fmxvvR5UStduA0gKVKak_SdT2RVIHiG-EmYnpDLm8AhykH6_g42LpbEFpLhe2Offrz6rOHHlNUVyeQczuRs4xsXHrnXgK7bIAUFoi_Kkvq04");'></div>
+</div>
+</header>
+<main class="flex flex-1 w-full max-w-[1440px] mx-auto">
+<!-- Sidebar Filters -->
+<aside class="hidden md:flex w-72 flex-col border-r border-slate-200 dark:border-slate-800 p-6 gap-6 bg-white/50 dark:bg-slate-900/50 backdrop-blur-sm">
+<div>
+<h1 class="text-slate-900 dark:text-slate-100 text-lg font-bold">Filters</h1>
+<p class="text-slate-500 text-xs font-medium uppercase tracking-wider mt-1">Refine your search</p>
+</div>
+<div class="flex flex-col gap-1">
+<div class="flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-primary/5 transition-colors cursor-pointer group">
+<span class="material-symbols-outlined text-slate-custom group-hover:text-primary">payments</span>
+<p class="text-slate-700 dark:text-slate-300 text-sm font-semibold">Price Range</p>
+</div>
+<div class="flex items-center gap-3 px-3 py-2.5 rounded-lg bg-primary/10 text-primary">
+<span class="material-symbols-outlined">apartment</span>
+<p class="text-sm font-bold">House Type</p>
+</div>
+<div class="flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-primary/5 transition-colors cursor-pointer group">
+<span class="material-symbols-outlined text-slate-custom group-hover:text-primary">bed</span>
+<p class="text-slate-700 dark:text-slate-300 text-sm font-semibold">Bedrooms</p>
+</div>
+<div class="flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-primary/5 transition-colors cursor-pointer group">
+<span class="material-symbols-outlined text-slate-custom group-hover:text-primary">wifi</span>
+<p class="text-slate-700 dark:text-slate-300 text-sm font-semibold">Amenities</p>
+</div>
+<div class="flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-primary/5 transition-colors cursor-pointer group">
+<span class="material-symbols-outlined text-slate-custom group-hover:text-primary">explore</span>
+<p class="text-slate-700 dark:text-slate-300 text-sm font-semibold">Neighborhood</p>
+</div>
+</div>
+<div class="mt-4 pt-6 border-t border-slate-200 dark:border-slate-800">
+<button class="w-full flex items-center justify-center gap-2 rounded-lg h-11 bg-primary text-white text-sm font-bold shadow-md shadow-primary/20">
+<span>Apply Filters</span>
+</button>
+</div>
+</aside>
+<!-- Main Content: Empty State -->
+<section class="flex-1 flex flex-col items-center justify-center p-8 bg-background-light dark:bg-background-dark min-h-[calc(100vh-64px)]">
+<div class="max-w-xl w-full flex flex-col items-center text-center">
+<!-- Friendly Illustration -->
+<div class="relative mb-8 group">
+<div class="absolute inset-0 bg-primary/5 rounded-full scale-150 blur-3xl opacity-50 group-hover:opacity-80 transition-opacity"></div>
+<div class="relative size-48 md:size-64 flex items-center justify-center text-slate-custom">
+<span class="material-symbols-outlined !text-[120px] md:!text-[160px] opacity-20 absolute select-none">search</span>
+<span class="material-symbols-outlined !text-[80px] md:!text-[100px] drop-shadow-sm">search_off</span>
+</div>
+</div>
+<!-- Text Content -->
+<div class="flex flex-col gap-4 animate-in fade-in slide-in-from-bottom-4 duration-700">
+<h2 class="text-slate-900 dark:text-slate-100 text-2xl md:text-3xl font-extrabold leading-tight tracking-tight">
+                            No houses match your search
+                        </h2>
+<p class="text-slate-custom dark:text-slate-400 text-base md:text-lg font-medium leading-relaxed max-w-md mx-auto">
+                            Try adjusting your filters or searching in a different area (e.g., <span class="text-primary font-bold cursor-pointer hover:underline">Westlands</span> or <span class="text-primary font-bold cursor-pointer hover:underline">Kilimani</span>)
+                        </p>
+</div>
+<!-- CTA Button -->
+<div class="mt-10 flex flex-col sm:flex-row gap-4 animate-in fade-in slide-in-from-bottom-8 duration-1000">
+<button class="flex min-w-[200px] items-center justify-center gap-2 rounded-xl h-14 px-8 bg-primary text-white text-base font-bold shadow-lg shadow-primary/25 hover:scale-[1.02] active:scale-95 transition-all">
+<span class="material-symbols-outlined">filter_list_off</span>
+<span>Clear All Filters</span>
+</button>
+<button class="flex min-w-[200px] items-center justify-center gap-2 rounded-xl h-14 px-8 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 text-base font-bold border border-slate-200 dark:border-slate-700 hover:bg-slate-50 transition-all">
+<span>Browse All Areas</span>
+</button>
+</div>
+</div>
+<!-- Recommended Section (Subtle) -->
+<div class="mt-20 w-full max-w-5xl">
+<div class="flex items-center justify-between mb-6 px-4">
+<h3 class="text-slate-900 dark:text-slate-100 text-xl font-bold">Recommended for you</h3>
+<a class="text-primary font-bold text-sm flex items-center gap-1 hover:underline" href="#">
+                            See all <span class="material-symbols-outlined text-xs">arrow_forward_ios</span>
+</a>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 px-4">
+<div class="group flex flex-col gap-3">
+<div class="aspect-[4/3] rounded-xl overflow-hidden relative shadow-sm">
+<div class="absolute inset-0 bg-slate-200 animate-pulse bg-cover bg-center group-hover:scale-110 transition-transform duration-500" data-alt="Modern luxury house in Westlands" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCk6E53TTg624D6RglYNRRklmRBGqMVohOE56Y47ymSHKzezq33x1SSj7U3kBDSSd-ckXWCUFH9noCUeRAhBJWXIbM-B8xwfMKuYmI1cTy-DkDUK3mTGziMLGFPb2T1uxQ5H45SAxsWUGxT_EvVC75sBnR0mxw4RaH8fIlwWiCXV4BW3US9digYdYMtKhIxv91WTnWThj4_KkNmLSi8ja-21GaF3vWFWs8uMxiIP0OeaquE7EOCUaEWM7TWGnxwBWETgwY95oHAfPM');"></div>
+<div class="absolute top-3 right-3 bg-white/90 backdrop-blur rounded-full p-1.5 text-secondary cursor-pointer hover:bg-secondary hover:text-white transition-colors">
+<span class="material-symbols-outlined text-sm font-bold">favorite</span>
+</div>
+</div>
+<div>
+<p class="text-slate-900 dark:text-slate-100 font-bold">Westlands Heights</p>
+<p class="text-primary font-bold text-sm">KSh 45,000 /mo</p>
+</div>
+</div>
+<div class="group flex flex-col gap-3">
+<div class="aspect-[4/3] rounded-xl overflow-hidden relative shadow-sm">
+<div class="absolute inset-0 bg-slate-200 animate-pulse bg-cover bg-center group-hover:scale-110 transition-transform duration-500" data-alt="Studio apartment in Kilimani interior" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBgmk_UYbgSiwbd9CBiXE6d8ZWHkb_t_a2G7QE96guHGV5w2BeaQqPW6C-Rkivv6250X51SoFOVBGfuBpDvvAFEBT98iZXjKFhtBLotg3rLdY06ZjlaTAQsZbPzfCPhtBEYAzH1zsSpRaj_1pjOCqPbkmrerR5w_B9l4HxuLD4MF9OGGf8Do3Z7-pOyyVLdkX_9APptK6OOgAoQjXVG6q2jZe682DZ-Ic-l7tyb1A_wNbpDiSbjbGKpBuwriG4-CAQEinHskTV4l8Y');"></div>
+<div class="absolute top-3 right-3 bg-white/90 backdrop-blur rounded-full p-1.5 text-slate-400 cursor-pointer hover:bg-secondary hover:text-white transition-colors">
+<span class="material-symbols-outlined text-sm">favorite</span>
+</div>
+</div>
+<div>
+<p class="text-slate-900 dark:text-slate-100 font-bold">Kilimani Studio</p>
+<p class="text-primary font-bold text-sm">KSh 30,000 /mo</p>
+</div>
+</div>
+<div class="hidden sm:flex group flex-col gap-3">
+<div class="aspect-[4/3] rounded-xl overflow-hidden relative shadow-sm w-full">
+<div class="absolute inset-0 bg-slate-200 animate-pulse bg-cover bg-center group-hover:scale-110 transition-transform duration-500" data-alt="Spacious villa in Karen Nairobi" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuARrwd_Q8XiL6s9y_rBkXimN7niyboDrvKOyT_HNt_w6H-Oh5L8_xRMSpfRKHM7T4AU9gQ9Ntf9ULm3hpB1yMgDK9xmL80T8gHIMHnOmyW1L6TvfVsZLeYHeUToproUx7VVKC9urCc27ey8l0KGBdk1qreJJNDxHMwqjlD0aSqfMffjafKNmByj4fkZwia4cxyzoXVPjfjp0uQ1rX2eyKqmj1VpAU0X62E0fn889XBKv3Q02U3dS___0Bzzsq6UJuz_qEnNSj9_uYw');"></div>
+<div class="absolute top-3 right-3 bg-white/90 backdrop-blur rounded-full p-1.5 text-slate-400 cursor-pointer hover:bg-secondary hover:text-white transition-colors">
+<span class="material-symbols-outlined text-sm">favorite</span>
+</div>
+</div>
+<div>
+<p class="text-slate-900 dark:text-slate-100 font-bold">Karen Residency</p>
+<p class="text-primary font-bold text-sm">KSh 120,000 /mo</p>
+</div>
+</div>
+<div class="hidden lg:flex group flex-col gap-3">
+<div class="aspect-[4/3] rounded-xl overflow-hidden relative shadow-sm w-full">
+<div class="absolute inset-0 bg-slate-200 animate-pulse bg-cover bg-center group-hover:scale-110 transition-transform duration-500" data-alt="Cozy loft in Langata" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDAB3hHP3HnQkpwFdPZSNslxaGzhfbPJHAcDwgHI0Emv7mrphrSJEeHklHhFQOfZFHaEzG9CNVuT8DW6FCjp3RkyomKMVoKFUjDlfZxVTN93hhjcdCEoIGg30ynX2adkYqItEM1GELn8ix1cUhxvuHTClkU3Id-rpblW_5ZalnwZMhLdKykRCvei_c8zzSxUKVHJJKqjYeWpzWVk635QCBYeTINcB-8dkCxb1rcJBCpSO6fbUcXg2TumDKf0bUloS4v7YE3HpUjGlc');"></div>
+<div class="absolute top-3 right-3 bg-white/90 backdrop-blur rounded-full p-1.5 text-slate-400 cursor-pointer hover:bg-secondary hover:text-white transition-colors">
+<span class="material-symbols-outlined text-sm">favorite</span>
+</div>
+</div>
+<div>
+<p class="text-slate-900 dark:text-slate-100 font-bold">Langata Lofts</p>
+<p class="text-primary font-bold text-sm">KSh 55,000 /mo</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 py-6 text-center">
+<p class="text-slate-500 text-sm font-medium">© 2024 Makazi Rentals Kenya. All rights reserved.</p>
+</footer>
+</div>
+</body></html>

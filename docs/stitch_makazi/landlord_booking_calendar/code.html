@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Landlord Booking Calendar - Makazi</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#048b7b",
+                        "accent": "#800020", // Burgundy accent for Kenyan theme
+                        "background-light": "#FBF9F1", // Cream background
+                        "background-dark": "#0f2320",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 antialiased">
+<div class="flex h-screen overflow-hidden">
+<!-- Sidebar Navigation -->
+<aside class="w-64 bg-primary flex flex-col h-full text-white">
+<div class="p-6 flex items-center gap-3">
+<div class="bg-white/20 p-2 rounded-lg">
+<span class="material-symbols-outlined text-white text-3xl">domain</span>
+</div>
+<div>
+<h1 class="text-xl font-extrabold tracking-tight">Makazi</h1>
+<p class="text-xs text-white/70 uppercase tracking-widest">Landlord Portal</p>
+</div>
+</div>
+<nav class="flex-1 px-4 py-6 space-y-2">
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-white/10 transition-colors" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-medium">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-white/10 transition-colors" href="#">
+<span class="material-symbols-outlined">apartment</span>
+<span class="font-medium">Properties</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg bg-white/20 shadow-sm transition-colors" href="#">
+<span class="material-symbols-outlined">calendar_month</span>
+<span class="font-medium">Calendar</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-white/10 transition-colors" href="#">
+<span class="material-symbols-outlined">groups</span>
+<span class="font-medium">Tenants</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-white/10 transition-colors" href="#">
+<span class="material-symbols-outlined">account_balance_wallet</span>
+<span class="font-medium">Payments</span>
+</a>
+</nav>
+<div class="p-4 border-t border-white/10">
+<button class="w-full flex items-center justify-center gap-2 bg-accent hover:bg-red-900 text-white py-3 rounded-lg font-bold transition-all shadow-lg">
+<span class="material-symbols-outlined">add_circle</span>
+<span>Add Property</span>
+</button>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="flex-1 flex flex-col overflow-hidden">
+<!-- Header -->
+<header class="h-16 bg-white border-b border-slate-200 px-8 flex items-center justify-between">
+<div class="flex items-center gap-4">
+<h2 class="text-lg font-bold text-slate-800">Booking Calendar</h2>
+<div class="flex bg-slate-100 p-1 rounded-lg">
+<button class="px-4 py-1.5 text-sm font-semibold rounded-md bg-white shadow-sm text-primary">Month</button>
+<button class="px-4 py-1.5 text-sm font-semibold rounded-md text-slate-500 hover:text-slate-700">Week</button>
+<button class="px-4 py-1.5 text-sm font-semibold rounded-md text-slate-500 hover:text-slate-700">Day</button>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<div class="relative">
+<span class="material-symbols-outlined text-slate-400 absolute left-3 top-1/2 -translate-y-1/2">search</span>
+<input class="pl-10 pr-4 py-2 bg-slate-100 border-none rounded-full text-sm w-64 focus:ring-2 focus:ring-primary" placeholder="Search bookings..." type="text"/>
+</div>
+<div class="flex items-center gap-3">
+<button class="relative p-2 text-slate-500 hover:bg-slate-100 rounded-full transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 bg-accent rounded-full border-2 border-white"></span>
+</button>
+<div class="h-8 w-8 rounded-full bg-slate-200 overflow-hidden border border-slate-300">
+<img alt="Landlord profile" data-alt="Close up portrait of a professional landlord" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCSsUipqcl4IzU4DVWZlXW-vi7UYzQ9XWAHExlXuDTYcMbJBLyTVIjtllsZEVEVhhgC3H-PSyAgJUmzy7Ad-QrkNIihQRPu9OO8_xDPV2QG70JfNRgRcw5gONlMPbJ6bKqEhHxSfVJpxJYmNmE-cogti2jpNCQyCzKEM9kgo3bNEJNxUlhKUvHlqyFEpQdalKBIdc9DGYdr3v_3hqAdcOgvB29bQHHNrhsPGKblRChgoVytbHFA1KnLLiP2DGtaICCYnmYpE_7qamE"/>
+</div>
+</div>
+</div>
+</header>
+<!-- Calendar Area -->
+<div class="flex-1 flex overflow-hidden">
+<!-- Main Calendar Grid -->
+<div class="flex-1 overflow-y-auto p-8">
+<div class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
+<div class="flex items-center justify-between p-6 border-b border-slate-100">
+<div class="flex items-center gap-4">
+<h3 class="text-xl font-bold text-slate-800">October 2023</h3>
+<div class="flex gap-1">
+<button class="p-1 hover:bg-slate-100 rounded transition-colors"><span class="material-symbols-outlined">chevron_left</span></button>
+<button class="p-1 hover:bg-slate-100 rounded transition-colors"><span class="material-symbols-outlined">chevron_right</span></button>
+</div>
+</div>
+<button class="text-sm font-bold text-primary flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">today</span>
+                                Today
+                            </button>
+</div>
+<!-- Calendar Body -->
+<div class="calendar-grid border-b border-slate-100 bg-slate-50">
+<div class="py-3 text-center text-xs font-bold text-slate-400 uppercase tracking-wider">Sun</div>
+<div class="py-3 text-center text-xs font-bold text-slate-400 uppercase tracking-wider">Mon</div>
+<div class="py-3 text-center text-xs font-bold text-slate-400 uppercase tracking-wider">Tue</div>
+<div class="py-3 text-center text-xs font-bold text-slate-400 uppercase tracking-wider">Wed</div>
+<div class="py-3 text-center text-xs font-bold text-slate-400 uppercase tracking-wider">Thu</div>
+<div class="py-3 text-center text-xs font-bold text-slate-400 uppercase tracking-wider">Fri</div>
+<div class="py-3 text-center text-xs font-bold text-slate-400 uppercase tracking-wider">Sat</div>
+</div>
+<div class="calendar-grid bg-white">
+<!-- Previous month dates -->
+<div class="h-32 border-r border-b border-slate-100 p-2 text-slate-300 font-medium">27</div>
+<div class="h-32 border-r border-b border-slate-100 p-2 text-slate-300 font-medium">28</div>
+<div class="h-32 border-r border-b border-slate-100 p-2 text-slate-300 font-medium">29</div>
+<div class="h-32 border-r border-b border-slate-100 p-2 text-slate-300 font-medium">30</div>
+<!-- Current month -->
+<div class="h-32 border-r border-b border-slate-100 p-2 text-slate-800 font-medium bg-slate-50/30">1</div>
+<div class="h-32 border-r border-b border-slate-100 p-2 text-slate-800 font-medium bg-slate-50/30">2</div>
+<div class="h-32 border-r border-b border-slate-100 p-2 text-slate-800 font-medium bg-slate-50/30">3</div>
+<div class="h-32 border-r border-b border-slate-100 p-2 text-slate-800 font-medium">4</div>
+<div class="h-32 border-r border-b border-slate-100 p-2 text-slate-800 font-medium">5</div>
+<div class="h-32 border-r border-b border-slate-100 p-2 text-slate-800 font-medium">6</div>
+<!-- Viewing marked day -->
+<div class="h-32 border-r border-b border-slate-100 p-2 text-slate-800 font-medium relative group cursor-pointer">
+<span>7</span>
+<div class="mt-2 px-2 py-1 bg-primary/10 border-l-4 border-primary rounded text-[10px] font-bold text-primary truncate">2 Viewings scheduled</div>
+</div>
+<div class="h-32 border-r border-b border-slate-100 p-2 text-slate-800 font-medium">8</div>
+<div class="h-32 border-r border-b border-slate-100 p-2 text-slate-800 font-medium">9</div>
+<div class="h-32 border-r border-b border-slate-100 p-2 text-slate-800 font-medium">10</div>
+<div class="h-32 border-r border-b border-slate-100 p-2 text-slate-800 font-medium">11</div>
+<div class="h-32 border-r border-b border-slate-100 p-2 text-slate-800 font-medium">12</div>
+<div class="h-32 border-r border-b border-slate-100 p-2 text-slate-800 font-medium">13</div>
+<div class="h-32 border-r border-b border-slate-100 p-2 text-slate-800 font-medium">14</div>
+<div class="h-32 border-r border-b border-slate-100 p-2 text-slate-800 font-medium">15</div>
+<div class="h-32 border-r border-b border-slate-100 p-2 text-slate-800 font-medium">16</div>
+<div class="h-32 border-r border-b border-slate-100 p-2 text-slate-800 font-medium">17</div>
+<div class="h-32 border-r border-b border-slate-100 p-2 text-slate-800 font-medium">18</div>
+<div class="h-32 border-r border-b border-slate-100 p-2 text-slate-800 font-medium">19</div>
+<div class="h-32 border-r border-b border-slate-100 p-2 text-slate-800 font-medium">20</div>
+<div class="h-32 border-r border-b border-slate-100 p-2 text-slate-800 font-medium">21</div>
+<div class="h-32 border-r border-b border-slate-100 p-2 text-slate-800 font-medium">22</div>
+<div class="h-32 border-r border-b border-slate-100 p-2 text-slate-800 font-medium">23</div>
+<!-- Active selected day -->
+<div class="h-32 border-r border-b border-slate-100 p-2 text-white font-bold bg-primary ring-4 ring-primary/20 ring-inset">
+<span>24</span>
+<div class="mt-2 px-2 py-1 bg-white/20 rounded text-[10px] truncate uppercase tracking-tight">3 Viewings</div>
+</div>
+<div class="h-32 border-r border-b border-slate-100 p-2 text-slate-800 font-medium">25</div>
+<div class="h-32 border-r border-b border-slate-100 p-2 text-slate-800 font-medium">26</div>
+<div class="h-32 border-r border-b border-slate-100 p-2 text-slate-800 font-medium">27</div>
+<div class="h-32 border-r border-b border-slate-100 p-2 text-slate-800 font-medium">28</div>
+<div class="h-32 border-r border-b border-slate-100 p-2 text-slate-800 font-medium">29</div>
+<div class="h-32 border-r border-b border-slate-100 p-2 text-slate-800 font-medium">30</div>
+<div class="h-32 border-r border-b border-slate-100 p-2 text-slate-800 font-medium">31</div>
+</div>
+</div>
+</div>
+<!-- Right Side Schedule Panel -->
+<aside class="w-96 bg-white border-l border-slate-200 overflow-y-auto">
+<div class="p-6 border-b border-slate-100">
+<h3 class="text-xl font-bold text-slate-800">Viewing Schedule</h3>
+<p class="text-slate-500 text-sm font-medium">Tuesday, Oct 24, 2023</p>
+</div>
+<div class="p-6 space-y-6">
+<!-- Booking Card 1 -->
+<div class="group relative bg-background-light p-4 rounded-xl border border-transparent hover:border-primary/30 transition-all">
+<div class="flex items-start justify-between">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-slate-200 overflow-hidden">
+<img alt="Kevin Mwangi" data-alt="Portrait of a young Kenyan professional man" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC4VV0Ty-KVdePj1TPmz5mkHWEJrt0UOcO33GK93kcZ8InRCdx7e3IlJzDAvnI_SUrFqR7DQWiR7WuJhoLNoTL0u5NTEXtHEuPvtQhSKX7McrsyGbq5T0RVpc-8C7mY3BiwjojaIrlm9LdQCPEsrdSdPovCwyQZpOozPv_i5GJtNyP2hYFoimKMxAzQK-wJiFDyCJiu1Kf35uBHc9eYpfEDhU22n_h7Oehnndgi-JopT2OFFe3rp5vhPWLrSFGHz8zC9MQ7zJLA0qA"/>
+</div>
+<div>
+<h4 class="font-bold text-slate-800">Kevin Mwangi</h4>
+<span class="text-xs font-bold text-accent px-2 py-0.5 bg-accent/10 rounded-full">New Lead</span>
+</div>
+</div>
+<p class="text-xs font-bold text-slate-400">10:30 AM</p>
+</div>
+<div class="mt-4 space-y-2">
+<div class="flex items-center gap-2 text-slate-600">
+<span class="material-symbols-outlined text-sm">apartment</span>
+<span class="text-sm">2bdrm Apt in Syokimau</span>
+</div>
+<div class="flex items-center gap-2 text-slate-600">
+<span class="material-symbols-outlined text-sm">call</span>
+<span class="text-sm font-medium">+254 712 345 678</span>
+</div>
+</div>
+<div class="mt-4 flex gap-2">
+<button class="flex-1 bg-primary text-white text-xs font-bold py-2 rounded-lg hover:bg-primary/90 transition-colors">Confirm</button>
+<button class="px-3 py-2 border border-slate-200 rounded-lg hover:bg-slate-100 transition-colors">
+<span class="material-symbols-outlined text-sm text-slate-500">more_horiz</span>
+</button>
+</div>
+</div>
+<!-- Booking Card 2 -->
+<div class="group relative bg-background-light p-4 rounded-xl border border-transparent hover:border-primary/30 transition-all">
+<div class="flex items-start justify-between">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-slate-200 overflow-hidden">
+<img alt="Sarah Wangari" data-alt="Portrait of a Kenyan woman professional" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDvOodxz2a94oP0U3VrXFTuIrSab1uXQnRfyaun_JsBYRxycyN7sWMBS4gkQmLro1VPp2D2Ub9lOVpaWCg7tKDlfvai5CeFHBAL0Xvd1GgTyedS47g4e49i74fzXL0rC0XfYLFuWKcjn-ztUbbLGYN9e311AC6EIAwoHst2zHy2CxDhDWHWLKisvIKRqISrPELlXs-TZ3Ng_0C_CX4x2of0qm8fqLXDBFSIJIUSo1dvMGYeW8DZCgslmaKQ-rHEa-SD0mW1kH5UKho"/>
+</div>
+<div>
+<h4 class="font-bold text-slate-800">Sarah Wangari</h4>
+<span class="text-xs font-bold text-primary px-2 py-0.5 bg-primary/10 rounded-full">Confirmed</span>
+</div>
+</div>
+<p class="text-xs font-bold text-slate-400">02:00 PM</p>
+</div>
+<div class="mt-4 space-y-2">
+<div class="flex items-center gap-2 text-slate-600">
+<span class="material-symbols-outlined text-sm">apartment</span>
+<span class="text-sm">1bdrm Studio, Kilimani</span>
+</div>
+<div class="flex items-center gap-2 text-slate-600">
+<span class="material-symbols-outlined text-sm">call</span>
+<span class="text-sm font-medium">+254 798 123 456</span>
+</div>
+</div>
+<div class="mt-4 flex gap-2">
+<button class="flex-1 border border-primary text-primary text-xs font-bold py-2 rounded-lg hover:bg-primary/5 transition-colors">Message</button>
+<button class="px-3 py-2 border border-slate-200 rounded-lg hover:bg-slate-100 transition-colors">
+<span class="material-symbols-outlined text-sm text-slate-500">more_horiz</span>
+</button>
+</div>
+</div>
+<!-- Booking Card 3 -->
+<div class="group relative bg-background-light p-4 rounded-xl border border-transparent hover:border-primary/30 transition-all">
+<div class="flex items-start justify-between">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-slate-200 overflow-hidden">
+<img alt="David Otieno" data-alt="Portrait of a man smiling" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDP_RiXCr8HwDQBgFSicdIi-wL2_E-a414oG6CAcKwbt9Q9H0drhLUk2MIH65ZD17JsnjHGUlG00PfVzXitb4b4nNlXQJPIbEw5buhhFuLwzTwIySLUKPyA9GC7q3dmtPWl3kQ0qd8IqvB4hBDmtPlxWYvYF_gVcc0F0gzylTMwKuup0sKbTR9nLkE_NVOdKaqNv0ZNZTYemobsyo4hdZmD_0LZc2X2uuJ6iUgori0sR2-VmEYio3fDcqpKmykbSxUwQyomWKb2UyA"/>
+</div>
+<div>
+<h4 class="font-bold text-slate-800">David Otieno</h4>
+<span class="text-xs font-bold text-slate-500 px-2 py-0.5 bg-slate-200 rounded-full">Tentative</span>
+</div>
+</div>
+<p class="text-xs font-bold text-slate-400">04:30 PM</p>
+</div>
+<div class="mt-4 space-y-2">
+<div class="flex items-center gap-2 text-slate-600">
+<span class="material-symbols-outlined text-sm">apartment</span>
+<span class="text-sm">3bdrm Maisonette, Langata</span>
+</div>
+<div class="flex items-center gap-2 text-slate-600">
+<span class="material-symbols-outlined text-sm">call</span>
+<span class="text-sm font-medium">+254 722 000 111</span>
+</div>
+</div>
+<div class="mt-4 flex gap-2">
+<button class="flex-1 bg-primary text-white text-xs font-bold py-2 rounded-lg hover:bg-primary/90 transition-colors">Confirm</button>
+<button class="px-3 py-2 border border-slate-200 rounded-lg hover:bg-slate-100 transition-colors">
+<span class="material-symbols-outlined text-sm text-slate-500">more_horiz</span>
+</button>
+</div>
+</div>
+</div>
+</aside>
+</div>
+</main>
+</div>
+</body></html>

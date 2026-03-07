@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#048b7b", // Teal
+                        "secondary": "#800020", // Burgundy (Kenyan theme)
+                        "background-light": "#FBF9F1", // Cream
+                        "background-dark": "#0f2320",
+                        "slate-grey": "#4A5568",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Manrope', sans-serif;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<title>Makazi | Tenant Inbox</title>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 font-display">
+<div class="relative flex h-screen w-full flex-col overflow-hidden">
+<!-- Top Navigation Bar -->
+<header class="flex items-center justify-between border-b border-primary/10 bg-white px-8 py-3 shrink-0">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-2 text-secondary">
+<div class="size-8 flex items-center justify-center bg-secondary text-white rounded-lg">
+<span class="material-symbols-outlined">corporate_fare</span>
+</div>
+<h2 class="text-xl font-bold leading-tight tracking-tight text-secondary">Makazi</h2>
+</div>
+<nav class="hidden md:flex items-center gap-6">
+<a class="text-slate-grey hover:text-primary text-sm font-semibold transition-colors" href="#">Dashboard</a>
+<a class="text-primary text-sm font-bold border-b-2 border-primary pb-1" href="#">Messages</a>
+<a class="text-slate-grey hover:text-primary text-sm font-semibold transition-colors" href="#">My Rentals</a>
+<a class="text-slate-grey hover:text-primary text-sm font-semibold transition-colors" href="#">Payments</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<div class="relative hidden sm:block">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-grey text-lg">search</span>
+<input class="pl-10 pr-4 py-2 bg-slate-100 border-none rounded-lg text-sm focus:ring-2 focus:ring-primary w-64" placeholder="Search properties..." type="text"/>
+</div>
+<button class="p-2 hover:bg-slate-100 rounded-full text-slate-grey">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<div class="h-8 w-8 rounded-full bg-primary/20 border border-primary/10 flex items-center justify-center overflow-hidden">
+<img alt="User Profile" class="w-full h-full object-cover" data-alt="Portrait of a smiling young man" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCt_rVf4lX5iaKdWfjfX1wJg7AN1gaqnHWYGpHUlwe2_USbLK85S-kmQJCjnUOCGccB-EBYDW7M5nA83NiU8tkbMKwKXRsTx9SuUdkjA-sEbkDz9wtAxzgh7Qzyd67CT8eAF4J9Sj6lpYfrd-_NGwTQyt2RtbkdlPaqXb4BHIZD9VYEoJp5zRJjijBdAxr0ghPvUOg8JwNImoZledsLbu6_859KQtS95YWtOZ2PsuysI85dvcs24fgArCEfpF0yeywLALYOFbETCu0"/>
+</div>
+</div>
+</header>
+<main class="flex flex-1 overflow-hidden">
+<!-- Left Sidebar: Conversation List -->
+<aside class="w-80 border-r border-primary/10 bg-white flex flex-col shrink-0">
+<div class="p-4 border-b border-primary/5">
+<div class="flex items-center justify-between mb-4">
+<h1 class="text-lg font-bold text-slate-900">Inbox</h1>
+<button class="bg-primary/10 text-primary p-1.5 rounded-lg hover:bg-primary/20 transition-colors">
+<span class="material-symbols-outlined text-sm">edit_square</span>
+</button>
+</div>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-grey text-lg">search</span>
+<input class="w-full pl-10 pr-4 py-2 bg-background-light border-none rounded-lg text-sm focus:ring-1 focus:ring-primary" placeholder="Filter chats..." type="text"/>
+</div>
+</div>
+<div class="flex-1 overflow-y-auto">
+<!-- Active Chat -->
+<div class="flex items-center gap-3 px-4 py-4 bg-primary/5 border-l-4 border-primary cursor-pointer">
+<div class="relative">
+<div class="h-12 w-12 rounded-full bg-slate-200 overflow-hidden">
+<img alt="Landlord Avatar" class="w-full h-full object-cover" data-alt="Professional man in a business suit" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCCq_o-kaEmTpBBXUBK6vxqy2WElZAYmYEFdluBjic-GbA9nfOkt41tCEhjOaCXXWJ4mm4FLVdFtkkXjHA4miA9m9E0HgMwn6vNR8ESVNsfgK5jp2YMEQkjVfVFz6ZwfbMxjKuR8QbUHi0uAbtbf8WQzjbbl13Eo0-mFrveelitDfZhgPaI3ZOoQbzs_tSBHDRJNLxIkzdLM453DfJTzgx3xUjidSfdgBsC-h3SVRZMF5Zzd6QeLmJ6hGB6CeKHsX8gv3LWfN66DCU"/>
+</div>
+<span class="absolute bottom-0 right-0 h-3 w-3 bg-green-500 border-2 border-white rounded-full"></span>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex justify-between items-baseline">
+<p class="text-sm font-bold text-slate-900 truncate">John Kamau</p>
+<span class="text-[10px] text-primary font-bold">10:45 AM</span>
+</div>
+<p class="text-xs text-secondary font-semibold truncate">1bdrm Ruaka Heights</p>
+<p class="text-xs text-slate-grey truncate mt-1">Can we schedule the repair for Tuesday?</p>
+</div>
+</div>
+<!-- Chat Item 2 -->
+<div class="flex items-center gap-3 px-4 py-4 hover:bg-background-light border-l-4 border-transparent cursor-pointer transition-colors">
+<div class="h-12 w-12 rounded-full bg-slate-200 overflow-hidden">
+<img alt="Landlord Avatar" class="w-full h-full object-cover" data-alt="Business woman smiling at camera" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDtH7Olk4JNt7cfCALW2tXoEAXVry4Kl7rrk5jx7NJhNOXlU0QddRYunsoiQ0wRpdYsP_6K_bZKx65Fq-35si_9mF5yEtrgl7pzP9H4yKbfanArXsySfqd2z9s0MppNYQphS3cpzsxgbQd7Px6udzLacASOYJGgyTVqj7FyaWIoN8ELpk6MBtdRlU6oA5_Z5qNB6K_C3nX5zczlZG6_Vb3_z_EqrZ2rM4A7mdh68XxVvdm3gbw192LvPO2y8oAvMZHSKxpguSxHkCw"/>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex justify-between items-baseline">
+<p class="text-sm font-bold text-slate-900 truncate">Sarah Njeri</p>
+<span class="text-[10px] text-slate-grey">Yesterday</span>
+</div>
+<p class="text-xs text-secondary font-semibold truncate">Syokimau Studio Loft</p>
+<p class="text-xs text-slate-grey truncate mt-1">Rent receipt received, thanks!</p>
+</div>
+</div>
+<!-- Chat Item 3 -->
+<div class="flex items-center gap-3 px-4 py-4 hover:bg-background-light border-l-4 border-transparent cursor-pointer transition-colors">
+<div class="h-12 w-12 rounded-full bg-slate-200 overflow-hidden">
+<img alt="Landlord Avatar" class="w-full h-full object-cover" data-alt="Modern profile photo of a woman" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDV2BHfP0oFqp7SVatAaywMdmA-1pzajrZai2_Ihcxz9X_UbDFNVKolsuFVu2A2BsAl2Zy8YfK19xQ4tiAaN-vbxm74C2HTtiWe8muxkuep22XvgA3LnqZ8i8THP2yzuKtZuXq-hQXCOS_DMhXaZWW6bFG6qXwLP0K-lwl3tQVo5I1LcFddTGvP9NGWIY04WYYc2itcNEi-R40rVwijq1-LpuFJ3jA1__A618ZnI2H2y0mmAV9xpMhUUZkhYSXOu3qzG6D-xtGm-5Q"/>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex justify-between items-baseline">
+<p class="text-sm font-bold text-slate-900 truncate">Grace Wanjiku</p>
+<span class="text-[10px] text-slate-grey">Oct 24</span>
+</div>
+<p class="text-xs text-secondary font-semibold truncate">Kileleshwa Garden Apt</p>
+<p class="text-xs text-slate-grey truncate mt-1">The lease agreement is ready for signing.</p>
+</div>
+</div>
+</div>
+<div class="p-4 bg-white border-t border-primary/5">
+<button class="w-full flex items-center justify-center gap-2 py-2 bg-secondary text-white rounded-lg font-bold text-sm hover:bg-secondary/90 transition-all">
+<span class="material-symbols-outlined text-base">support_agent</span>
+                        Contact Support
+                    </button>
+</div>
+</aside>
+<!-- Right Side: Chat Window -->
+<section class="flex-1 flex flex-col bg-background-light">
+<!-- Chat Header -->
+<div class="bg-white px-6 py-4 border-b border-primary/10 flex items-center justify-between shadow-sm">
+<div class="flex items-center gap-4">
+<div class="h-10 w-10 rounded-full bg-slate-200 overflow-hidden">
+<img alt="John Avatar" class="w-full h-full object-cover" data-alt="John the landlord portrait" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAawYFs2XtzmwrkC0fK75Pio3F6xDFNSdpPnenfm12cfkBDQUW5SPcGSyar_HRVCNoEvnhw5yWDifnonEwnQjeY8NNTxIxer27-FG7wY3O3L8xfAuEoa_CrD-dh02qfC0M6-fvWdRaJ-pJaEwd4BxDQAGwcRlg9RspHR9kFaZlUFqjHiAjDt2y5KKf9HA-OWGqOzqQk_dk2brg1aoyV5D9-DnefGQSQ4hlBFRMWOf1mvsE0fTruMz25P-Y_D29TcYlBlh6nSH_S4Xo"/>
+</div>
+<div>
+<h3 class="text-base font-bold text-slate-900 leading-none">John Kamau</h3>
+<p class="text-xs text-secondary font-bold mt-1 uppercase tracking-wider">1bdrm Ruaka Heights • Unit 4B</p>
+</div>
+</div>
+<div class="flex gap-2">
+<button class="p-2 text-slate-grey hover:bg-slate-100 rounded-lg">
+<span class="material-symbols-outlined">call</span>
+</button>
+<button class="p-2 text-slate-grey hover:bg-slate-100 rounded-lg">
+<span class="material-symbols-outlined">info</span>
+</button>
+</div>
+</div>
+<!-- Chat History -->
+<div class="flex-1 overflow-y-auto p-6 space-y-4">
+<!-- Date Separator -->
+<div class="flex justify-center my-4">
+<span class="bg-slate-200/50 text-slate-grey text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-widest">Today</span>
+</div>
+<!-- Received Message -->
+<div class="flex items-end gap-2 max-w-[70%]">
+<div class="h-8 w-8 rounded-full bg-slate-200 overflow-hidden shrink-0">
+<img alt="Landlord Avatar" class="w-full h-full object-cover" data-alt="Landlord profile" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD0RCWYTrwLYnVcWp-Jp-wXjkKOr9X6BND7kq-czFUPP2zEAbkva5MGH3hZ9fOXQzAdWgH6slL5sHlBSgkjW5oH-GjWoCCzdDte5fZmz7JDYd64MKUEJQboIajHiHFLbSri608rQNBdHZ-ZRUuDlvWWJv778aZgeC-KlFXgQN2ULFHsae8jNjWrFQ3x-NtUPtJBRuviZL0NU9URD6Sap1BHX_BIifyO2ghnF-ZLwgkoQtpk6HfyGPdrsvQPjxmfoJFwMdQzgm-moF0"/>
+</div>
+<div class="bg-white p-4 rounded-2xl rounded-bl-none shadow-sm border border-primary/5">
+<p class="text-sm text-slate-900 leading-relaxed">Hello, I received your request regarding the kitchen sink leak. Is it an emergency or can it wait until the morning?</p>
+<span class="text-[10px] text-slate-grey mt-1 block">09:15 AM</span>
+</div>
+</div>
+<!-- Sent Message -->
+<div class="flex flex-row-reverse items-end gap-2 max-w-[70%] ml-auto">
+<div class="bg-primary text-white p-4 rounded-2xl rounded-br-none shadow-md">
+<p class="text-sm leading-relaxed">It's a slow drip, so we can wait until tomorrow. Tuesday afternoon works best for me if that fits your schedule.</p>
+<span class="text-[10px] text-white/70 mt-1 block text-right">09:42 AM</span>
+</div>
+</div>
+<!-- Received Message -->
+<div class="flex items-end gap-2 max-w-[70%]">
+<div class="h-8 w-8 rounded-full bg-slate-200 overflow-hidden shrink-0">
+<img alt="Landlord Avatar" class="w-full h-full object-cover" data-alt="Landlord profile" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCaLkyyvnQPZ1gG-jem6_WACS_NuH3zumOo-uMEJy-NoOatLVnM687e8VxHqaKhqS9yis6AroJpjTo-B6Wf3lFGlGrVTTuS87Vz_gt-AYlmhoT04NkdNnEppjuJ3NpVFmLz9a2wVrcznLH-TTXYpPLPmwvAyDaj7QoYvabKmTS1hbfDn_hfLgArdL42-oqPwpdMNkDel0bs1kb9XN4ek1JGwjPpNtfpqRqIBRjjvlAGXBrLsUhSjL0cZZd2CgFsYWfU7uq3KT3tMFA"/>
+</div>
+<div class="bg-white p-4 rounded-2xl rounded-bl-none shadow-sm border border-primary/5">
+<p class="text-sm text-slate-900 leading-relaxed">Perfect. Can we schedule the repair for Tuesday? My plumber will be in the area around 2 PM.</p>
+<span class="text-[10px] text-slate-grey mt-1 block">10:45 AM</span>
+</div>
+</div>
+</div>
+<!-- Message Input Area -->
+<div class="p-4 bg-white border-t border-primary/10">
+<div class="flex items-center gap-3 max-w-5xl mx-auto">
+<button class="text-slate-grey hover:text-primary transition-colors">
+<span class="material-symbols-outlined">add_circle</span>
+</button>
+<div class="flex-1 relative">
+<input class="w-full py-3 px-4 bg-background-light border-none rounded-xl focus:ring-2 focus:ring-primary/50 transition-all text-sm pr-12" placeholder="Type your message..." type="text"/>
+<button class="absolute right-3 top-1/2 -translate-y-1/2 text-slate-grey hover:text-primary transition-colors">
+<span class="material-symbols-outlined">sentiment_satisfied</span>
+</button>
+</div>
+<button class="bg-primary text-white p-3 rounded-xl hover:bg-primary/90 transition-all shadow-lg shadow-primary/20 flex items-center justify-center">
+<span class="material-symbols-outlined">send</span>
+</button>
+</div>
+<div class="mt-2 text-center">
+<p class="text-[10px] text-slate-grey font-medium uppercase tracking-tighter">Powered by Makazi Secure Messaging</p>
+</div>
+</div>
+</section>
+</main>
+</div>
+</body></html>

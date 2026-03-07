@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Makazi - Tenant Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#048b7b",
+                        "accent": "#800020", // Burgundy
+                        "background-light": "#FBF9F1", // Cream
+                        "background-dark": "#0f2320",
+                        "neutral-soft": "#e8e4d9",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Manrope', sans-serif;
+            background-color: #FBF9F1;
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 font-display">
+<div class="relative flex min-h-screen flex-col">
+<!-- Top Navigation Bar -->
+<header class="sticky top-0 z-50 w-full border-b border-primary/10 bg-background-light/80 backdrop-blur-md dark:bg-background-dark/80">
+<div class="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
+<div class="flex items-center gap-8">
+<!-- Logo -->
+<div class="flex items-center gap-2 text-primary">
+<div class="flex h-10 w-10 items-center justify-center rounded-xl bg-primary text-white">
+<span class="material-symbols-outlined">home_work</span>
+</div>
+<h2 class="text-2xl font-extrabold tracking-tight text-slate-900 dark:text-slate-100">Makazi</h2>
+</div>
+<!-- Search Bar -->
+<div class="hidden md:block">
+<div class="relative flex items-center">
+<span class="material-symbols-outlined absolute left-3 text-primary/60">search</span>
+<input class="h-11 w-80 rounded-full border-none bg-neutral-soft/50 pl-11 pr-4 text-sm focus:ring-2 focus:ring-primary/20 dark:bg-slate-800" placeholder="Search areas or apartments..." type="text"/>
+</div>
+</div>
+</div>
+<!-- Navigation Links -->
+<nav class="hidden lg:flex items-center gap-8">
+<a class="text-sm font-semibold text-primary border-b-2 border-primary pb-1" href="#">Dashboard</a>
+<a class="text-sm font-medium text-slate-600 hover:text-primary dark:text-slate-400" href="#">Saved Homes</a>
+<a class="text-sm font-medium text-slate-600 hover:text-primary dark:text-slate-400" href="#">Applications</a>
+<a class="text-sm font-medium text-slate-600 hover:text-primary dark:text-slate-400" href="#">Messages</a>
+</nav>
+<!-- User Controls -->
+<div class="flex items-center gap-4">
+<button class="relative flex h-10 w-10 items-center justify-center rounded-full bg-neutral-soft/50 text-slate-700 dark:bg-slate-800 dark:text-slate-200">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute right-2.5 top-2.5 flex h-2 w-2 rounded-full bg-accent"></span>
+</button>
+<div class="h-10 w-10 overflow-hidden rounded-full border-2 border-primary/20">
+<img class="h-full w-full object-cover" data-alt="User profile picture of a young man" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAyuAZW49XQbLTiFR2p5fjVS6gtPZhOeKQOCbH49mto23Sq-851XkQJse20alJ32DL4_-UqM9zwR4TlS7duto0RQQk4XhTkqgAJpe7b6ODqzzD4BBN0lw3tm-MUqYknuYzTo3ML_ehUrDzsa3EAEO3SQrmJOMqvG5cnGDfLhfVf26I9-56tQKvHFLvtA4Fd7t4d0uK74Bsz7Frigtx4br-cH6dDfAFDDJyXrpkZMwpJI7iJysZcDvyQ91yWyMwM2WIfrfTxwv2N7Xs"/>
+</div>
+</div>
+</div>
+</header>
+<main class="mx-auto w-full max-w-7xl flex-1 px-6 py-8">
+<!-- Header Welcome -->
+<div class="mb-10">
+<h1 class="text-3xl font-extrabold text-slate-900 dark:text-white">Jambo, Kamau!</h1>
+<p class="mt-2 text-slate-600 dark:text-slate-400">Welcome back to your Makazi portal. You have 3 active applications.</p>
+</div>
+<!-- Stats Overview (Small Cards) -->
+<div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4 mb-10">
+<div class="rounded-xl bg-white p-5 shadow-sm border border-primary/5 dark:bg-slate-800/50">
+<div class="flex items-center gap-3">
+<div class="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10 text-primary">
+<span class="material-symbols-outlined">favorite</span>
+</div>
+<div>
+<p class="text-xs font-semibold uppercase tracking-wider text-slate-500">Saved</p>
+<p class="text-xl font-bold">12 Homes</p>
+</div>
+</div>
+</div>
+<div class="rounded-xl bg-white p-5 shadow-sm border border-primary/5 dark:bg-slate-800/50">
+<div class="flex items-center gap-3">
+<div class="flex h-10 w-10 items-center justify-center rounded-lg bg-accent/10 text-accent">
+<span class="material-symbols-outlined">description</span>
+</div>
+<div>
+<p class="text-xs font-semibold uppercase tracking-wider text-slate-500">Active</p>
+<p class="text-xl font-bold">3 Apps</p>
+</div>
+</div>
+</div>
+<div class="rounded-xl bg-white p-5 shadow-sm border border-primary/5 dark:bg-slate-800/50">
+<div class="flex items-center gap-3">
+<div class="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10 text-primary">
+<span class="material-symbols-outlined">calendar_today</span>
+</div>
+<div>
+<p class="text-xs font-semibold uppercase tracking-wider text-slate-500">Viewings</p>
+<p class="text-xl font-bold">Today 2PM</p>
+</div>
+</div>
+</div>
+<div class="rounded-xl bg-white p-5 shadow-sm border border-primary/5 dark:bg-slate-800/50">
+<div class="flex items-center gap-3">
+<div class="flex h-10 w-10 items-center justify-center rounded-lg bg-accent/10 text-accent">
+<span class="material-symbols-outlined">payments</span>
+</div>
+<div>
+<p class="text-xs font-semibold uppercase tracking-wider text-slate-500">Wallet</p>
+<p class="text-xl font-bold">Ksh 4.2k</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Saved Homes Section -->
+<section class="mb-12">
+<div class="mb-6 flex items-center justify-between">
+<h2 class="text-2xl font-bold text-slate-900 dark:text-white">Saved Homes</h2>
+<a class="text-sm font-semibold text-primary hover:underline" href="#">View all favorites</a>
+</div>
+<div class="flex gap-6 overflow-x-auto pb-4 hide-scrollbar">
+<!-- Property Card 1 -->
+<div class="min-w-[320px] max-w-[320px] group overflow-hidden rounded-2xl bg-white shadow-md transition-transform hover:-translate-y-1 dark:bg-slate-800/50">
+<div class="relative h-48 w-full bg-cover bg-center" data-alt="Modern apartment exterior with glass balconies in Nairobi" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDG78QlCoggoKMangMFgJQxKHofuKvlvHJNYc-rjboOZo2gZCbYsUpqmDnX1jf0-5zpbg21Az-uCSfNann-GuFQej4eUZdcI97MgZpxbiZtI7raoj6azPAUAe2g8EOYjJZLEVXAnC6gzHcB3dx19u37ApXaiyGUYGzNvuhzLbBfuTe4w-ZQJ2qkK9gOTB_YgLC5kGwzHfIWn4qnPxBQOnGONlDwfWXb2b11tkYw_BPrvZ2q7ud91NE0mzD-dPF6oIxYC6TT1lWBYvo')">
+<button class="absolute right-4 top-4 flex h-10 w-10 items-center justify-center rounded-full bg-white/90 text-accent shadow-lg backdrop-blur-sm">
+<span class="material-symbols-outlined fill-1">favorite</span>
+</button>
+<div class="absolute bottom-4 left-4 rounded-lg bg-primary px-3 py-1 text-xs font-bold text-white uppercase tracking-wider">Westlands</div>
+</div>
+<div class="p-5">
+<div class="flex justify-between items-start">
+<div>
+<h3 class="font-bold text-slate-900 dark:text-white text-lg">Emerald Garden Apts</h3>
+<p class="text-sm text-slate-500 flex items-center gap-1"><span class="material-symbols-outlined text-sm">location_on</span> Waiyaki Way, Nairobi</p>
+</div>
+<div class="text-right">
+<p class="font-bold text-primary">Ksh 65k</p>
+<p class="text-[10px] uppercase text-slate-400">Per Month</p>
+</div>
+</div>
+<div class="mt-4 flex gap-4 border-t border-slate-100 pt-4 dark:border-slate-700">
+<div class="flex items-center gap-1 text-slate-600 dark:text-slate-400 text-sm">
+<span class="material-symbols-outlined text-sm">bed</span> 2 Bed
+                                </div>
+<div class="flex items-center gap-1 text-slate-600 dark:text-slate-400 text-sm">
+<span class="material-symbols-outlined text-sm">shower</span> 2 Bath
+                                </div>
+<div class="flex items-center gap-1 text-slate-600 dark:text-slate-400 text-sm">
+<span class="material-symbols-outlined text-sm">square_foot</span> 850sqft
+                                </div>
+</div>
+</div>
+</div>
+<!-- Property Card 2 -->
+<div class="min-w-[320px] max-w-[320px] group overflow-hidden rounded-2xl bg-white shadow-md transition-transform hover:-translate-y-1 dark:bg-slate-800/50">
+<div class="relative h-48 w-full bg-cover bg-center" data-alt="Luxury suburban villa with manicured garden in Karen" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDmNG0I2JIymPg8-5pHk4ate_TYkOqrGNPFWUiHGSi5MxQcXcnxV9D7ycbRg8g4GMEAYlFrwcbAzKYZ_zTi7k3guGdZaDdw071ZZJq1oxPJonJ7uK_prJJiEi0qTXphs2EK1iJi6XL-VGi_XWaaxGw0ByGgHnIP9uzCaB4K2-gDezUH_B4sN5xaYmcUfhpEWhtFve7-bzuFHHYCaly8V7q-6Ctj0gpjVo8kxQoboQ7eroR1bzZPhFUAC75Hn3zTwTUSRyUw0mE9FHg')">
+<button class="absolute right-4 top-4 flex h-10 w-10 items-center justify-center rounded-full bg-white/90 text-accent shadow-lg backdrop-blur-sm">
+<span class="material-symbols-outlined fill-1">favorite</span>
+</button>
+<div class="absolute bottom-4 left-4 rounded-lg bg-primary px-3 py-1 text-xs font-bold text-white uppercase tracking-wider">Karen</div>
+</div>
+<div class="p-5">
+<div class="flex justify-between items-start">
+<div>
+<h3 class="font-bold text-slate-900 dark:text-white text-lg">The Palms Villa</h3>
+<p class="text-sm text-slate-500 flex items-center gap-1"><span class="material-symbols-outlined text-sm">location_on</span> Mbagathi Ridge</p>
+</div>
+<div class="text-right">
+<p class="font-bold text-primary">Ksh 120k</p>
+<p class="text-[10px] uppercase text-slate-400">Per Month</p>
+</div>
+</div>
+<div class="mt-4 flex gap-4 border-t border-slate-100 pt-4 dark:border-slate-700">
+<div class="flex items-center gap-1 text-slate-600 dark:text-slate-400 text-sm">
+<span class="material-symbols-outlined text-sm">bed</span> 4 Bed
+                                </div>
+<div class="flex items-center gap-1 text-slate-600 dark:text-slate-400 text-sm">
+<span class="material-symbols-outlined text-sm">shower</span> 3 Bath
+                                </div>
+<div class="flex items-center gap-1 text-slate-600 dark:text-slate-400 text-sm">
+<span class="material-symbols-outlined text-sm">pool</span> Pool
+                                </div>
+</div>
+</div>
+</div>
+<!-- Property Card 3 -->
+<div class="min-w-[320px] max-w-[320px] group overflow-hidden rounded-2xl bg-white shadow-md transition-transform hover:-translate-y-1 dark:bg-slate-800/50">
+<div class="relative h-48 w-full bg-cover bg-center" data-alt="Contemporary multi-story home with large windows in Lavington" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBQRPVFAj8itX7UoRg5gY4HHh3dIMEj4xsRVH4tCp2NVqtMwkdSJvpBMOyfingdnCMb0SedFNdA5IqkchXFiNymuYK4hpzhgO1hma_ag7HjO76IFBoWvmZ1uaJpCrzvT_m99dwE_ob2DWlUxPb_RusAsfN0YXzjspS1s0JQFH9n_4NBYOXBqee3N_SHb7tzGiOWwAY-vK3WagsaEtB1jNPkECgxHfPZVWsh3lbJPc4TrBn0EHnRvhCge5gfMNUtl1RwC0fncWTSo8Y')">
+<button class="absolute right-4 top-4 flex h-10 w-10 items-center justify-center rounded-full bg-white/90 text-accent shadow-lg backdrop-blur-sm">
+<span class="material-symbols-outlined fill-1">favorite</span>
+</button>
+<div class="absolute bottom-4 left-4 rounded-lg bg-primary px-3 py-1 text-xs font-bold text-white uppercase tracking-wider">Lavington</div>
+</div>
+<div class="p-5">
+<div class="flex justify-between items-start">
+<div>
+<h3 class="font-bold text-slate-900 dark:text-white text-lg">Skyline Heights</h3>
+<p class="text-sm text-slate-500 flex items-center gap-1"><span class="material-symbols-outlined text-sm">location_on</span> James Gichuru Rd</p>
+</div>
+<div class="text-right">
+<p class="font-bold text-primary">Ksh 45k</p>
+<p class="text-[10px] uppercase text-slate-400">Per Month</p>
+</div>
+</div>
+<div class="mt-4 flex gap-4 border-t border-slate-100 pt-4 dark:border-slate-700">
+<div class="flex items-center gap-1 text-slate-600 dark:text-slate-400 text-sm">
+<span class="material-symbols-outlined text-sm">bed</span> 1 Bed
+                                </div>
+<div class="flex items-center gap-1 text-slate-600 dark:text-slate-400 text-sm">
+<span class="material-symbols-outlined text-sm">shower</span> 1 Bath
+                                </div>
+<div class="flex items-center gap-1 text-slate-600 dark:text-slate-400 text-sm">
+<span class="material-symbols-outlined text-sm">fitness_center</span> Gym
+                                </div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Application Status Section -->
+<section>
+<div class="mb-6 flex items-center justify-between">
+<h2 class="text-2xl font-bold text-slate-900 dark:text-white">Application Status</h2>
+<button class="flex items-center gap-2 rounded-lg bg-primary px-4 py-2 text-sm font-bold text-white transition-colors hover:bg-primary/90">
+<span class="material-symbols-outlined text-lg">add</span>
+                        New Application
+                    </button>
+</div>
+<div class="overflow-hidden rounded-2xl bg-white shadow-sm border border-primary/5 dark:bg-slate-800/50">
+<table class="w-full text-left">
+<thead class="bg-neutral-soft/30 dark:bg-slate-700/50">
+<tr>
+<th class="px-6 py-4 text-xs font-bold uppercase tracking-wider text-slate-500">Property</th>
+<th class="px-6 py-4 text-xs font-bold uppercase tracking-wider text-slate-500">Landlord/Agency</th>
+<th class="px-6 py-4 text-xs font-bold uppercase tracking-wider text-slate-500">Submitted</th>
+<th class="px-6 py-4 text-xs font-bold uppercase tracking-wider text-slate-500">Status</th>
+<th class="px-6 py-4 text-xs font-bold uppercase tracking-wider text-slate-500 text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-slate-100 dark:divide-slate-700">
+<tr class="hover:bg-primary/5 transition-colors">
+<td class="px-6 py-5">
+<div class="flex items-center gap-3">
+<div class="h-10 w-10 flex-shrink-0 rounded-lg bg-cover bg-center" data-alt="Small thumbnail of Emerald Garden Apartment" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCdkZ6BOpnhkbwBLKAn0iV_Kj37BloKiVXW3iOMwNf4lMZ__0unbZIfGIv0PIyrK5FpMAr4Xg_INohoP4rd0qtjUnd45-1i8RDR3ScECKDFlWd43lU176cbdyFm41sU3mrzaTJGfEpF9phoeGjjifI_oWmApLJmCWTPl6BXpnbN1Q3q4MSckP5r7ofYC4Qn1DRiCgwZ3rGctSsDDpC6azIQJ2g8gvkSIl0mRHJnESGPNnFheoHXsAqF5kgjjeEfQHi4iUMhRy_unCU')"></div>
+<div>
+<p class="font-bold text-slate-900 dark:text-white">Emerald Garden Apts</p>
+<p class="text-xs text-slate-500">Unit 4B - 2 Bedroom</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-5 text-sm">
+<div class="flex items-center gap-2">
+<div class="h-6 w-6 rounded-full bg-accent/10 flex items-center justify-center text-[10px] font-bold text-accent">HA</div>
+<span>Heritage Agencies</span>
+</div>
+</td>
+<td class="px-6 py-5 text-sm text-slate-600 dark:text-slate-400">Oct 24, 2023</td>
+<td class="px-6 py-5">
+<span class="inline-flex items-center rounded-full bg-primary/10 px-2.5 py-0.5 text-xs font-bold text-primary">
+                                        Approved
+                                    </span>
+</td>
+<td class="px-6 py-5 text-right">
+<button class="text-sm font-bold text-primary hover:text-primary/80">Pay Deposit</button>
+</td>
+</tr>
+<tr class="hover:bg-primary/5 transition-colors">
+<td class="px-6 py-5">
+<div class="flex items-center gap-3">
+<div class="h-10 w-10 flex-shrink-0 rounded-lg bg-cover bg-center" data-alt="Small thumbnail of Skyline Heights Apartment" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuB_aGLeTec2M-FhgziH16ck3yZ6WECH_kvTHMmft5D9nknhCztAXV-wfLPvi_qFRChm0DZyW7kbNs9eo1B5nKgwZQ8OJ5ED6D41sK55imHaBZAgZCKcJzcCqHWhQw8D0TEIUeLu6RwvLYVACJi8iibQOC9T2lTRGnwu4qyUtkN4a_CCfXkVCE2jN5u2NUwACx8jPVi3q9DB_28LKZ60VW2JnVef2sw_tOe44AriFM8RuIYjY4XlRbPWdEFjrcIGD9F-qRnjjLcGyQ8')"></div>
+<div>
+<p class="font-bold text-slate-900 dark:text-white">Skyline Heights</p>
+<p class="text-xs text-slate-500">Unit 12C - Studio</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-5 text-sm">
+<div class="flex items-center gap-2">
+<div class="h-6 w-6 rounded-full bg-primary/10 flex items-center justify-center text-[10px] font-bold text-primary">JM</div>
+<span>John Mutua</span>
+</div>
+</td>
+<td class="px-6 py-5 text-sm text-slate-600 dark:text-slate-400">Oct 28, 2023</td>
+<td class="px-6 py-5">
+<span class="inline-flex items-center rounded-full bg-blue-500/10 px-2.5 py-0.5 text-xs font-bold text-blue-600">
+                                        Viewing Scheduled
+                                    </span>
+</td>
+<td class="px-6 py-5 text-right">
+<button class="text-sm font-bold text-slate-500 hover:text-slate-700">Reschedule</button>
+</td>
+</tr>
+<tr class="hover:bg-primary/5 transition-colors">
+<td class="px-6 py-5">
+<div class="flex items-center gap-3">
+<div class="h-10 w-10 flex-shrink-0 rounded-lg bg-cover bg-center" data-alt="Small thumbnail of The Palms Villa" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCW_VBJWJ8K4I9jkd8yPsRtN2jUbOZlPgi3EMayVlTrerYivgCy0itawGcNsIR6w3aKI555qHb2a767soMDy1j_AAmNmkkT8vI6WQQw4aHvLH1tRAVu0h2_gkIKmQTyFIgiHqA429zMBgq6X50ARawA0RlQYt2Oyx15MP4vb1hV8U2p5drBgp31Vpss26knsP9pqcyxlDUBqXm-KoOwwKejHJL0-lcTjQs_-xkvrD14jtOf28uPsrFCgfPVBij_y15eBRUPTr7Npg0')"></div>
+<div>
+<p class="font-bold text-slate-900 dark:text-white">The Palms Villa</p>
+<p class="text-xs text-slate-500">Villa #7 - 4 Bedroom</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-5 text-sm">
+<div class="flex items-center gap-2">
+<div class="h-6 w-6 rounded-full bg-accent/10 flex items-center justify-center text-[10px] font-bold text-accent">LA</div>
+<span>Luxury Assets Ltd</span>
+</div>
+</td>
+<td class="px-6 py-5 text-sm text-slate-600 dark:text-slate-400">Nov 02, 2023</td>
+<td class="px-6 py-5">
+<span class="inline-flex items-center rounded-full bg-amber-500/10 px-2.5 py-0.5 text-xs font-bold text-amber-600">
+                                        Pending
+                                    </span>
+</td>
+<td class="px-6 py-5 text-right">
+<button class="text-sm font-bold text-slate-500 hover:text-slate-700">Cancel</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="mt-auto border-t border-primary/5 bg-white py-10 dark:bg-slate-900/50">
+<div class="mx-auto max-w-7xl px-6 flex flex-col md:flex-row justify-between items-center gap-4">
+<div class="flex items-center gap-2 text-primary opacity-50 grayscale">
+<span class="material-symbols-outlined">home_work</span>
+<span class="font-bold">Makazi Kenya</span>
+</div>
+<div class="flex gap-8 text-sm text-slate-500">
+<a class="hover:text-primary" href="#">Support</a>
+<a class="hover:text-primary" href="#">Privacy Policy</a>
+<a class="hover:text-primary" href="#">Terms of Service</a>
+</div>
+<div class="text-sm text-slate-400">
+                    © 2023 Makazi Rental Platform. All rights reserved.
+                </div>
+</div>
+</footer>
+</div>
+</body></html>

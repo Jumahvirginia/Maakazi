@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Add New Listing - Step 1 | Makazi</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#048b7b",
+                        "accent": "#800020", // Burgundy accent
+                        "background-light": "#FBF9F1", // Cream background
+                        "background-dark": "#0f2320",
+                        "surface": "#ffffff",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .step-active {
+            color: #048b7b;
+        }
+        .step-pending {
+            color: #94a3b8;
+        }
+    </style>
+</head>
+<body class="font-display bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 min-h-screen">
+<div class="layout-container flex h-full grow flex-col">
+<!-- Top Navigation Bar -->
+<header class="flex items-center justify-between whitespace-nowrap border-b border-primary/10 bg-surface dark:bg-slate-900 px-6 lg:px-10 py-3 sticky top-0 z-50">
+<div class="flex items-center gap-4">
+<div class="size-8 flex items-center justify-center bg-primary rounded-lg text-white">
+<span class="material-symbols-outlined">home_work</span>
+</div>
+<h2 class="text-slate-900 dark:text-white text-xl font-extrabold leading-tight tracking-tight">Makazi</h2>
+</div>
+<nav class="hidden md:flex items-center gap-8">
+<a class="text-slate-600 dark:text-slate-300 text-sm font-semibold hover:text-primary transition-colors" href="#">Dashboard</a>
+<a class="text-primary text-sm font-bold border-b-2 border-primary pb-1" href="#">My Listings</a>
+<a class="text-slate-600 dark:text-slate-300 text-sm font-semibold hover:text-primary transition-colors" href="#">Bookings</a>
+<a class="text-slate-600 dark:text-slate-300 text-sm font-semibold hover:text-primary transition-colors" href="#">Payments</a>
+</nav>
+<div class="flex items-center gap-4">
+<button class="p-2 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-primary/10 hover:text-primary transition-all">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="p-2 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-primary/10 hover:text-primary transition-all">
+<span class="material-symbols-outlined">settings</span>
+</button>
+<div class="h-10 w-10 rounded-full border-2 border-primary/20 bg-cover bg-center overflow-hidden" data-alt="User profile avatar of a professional landlord" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCgYNrt-7NUgZZVPIfdnk8gm580G9jdM3-YwjtiVEQsAJS2gxm-MQ_yR8hEDiouNUriutGG2JCl2detjwVwW7ZOr9-kpgn8OUr9Da3sZbyWXP0FkpPrvnruST7d46YIWnQfPayUDwGTdmLay53-LX6Xaz_tHkMySyMM3lXO1oyMyUWJQ-7zK3r1ymKcWgCX-DGh2mf3Cz_f_5Qu2MdFU2moy1e_jDr84jtwqGQR68k6SoVOsicEEJbEBopAg57J1lShatF6yFUspcM')">
+</div>
+</div>
+</header>
+<main class="flex-1 flex flex-col items-center py-8 px-4">
+<!-- Form Container -->
+<div class="w-full max-w-4xl bg-surface dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-800 overflow-hidden">
+<!-- Progress Stepper -->
+<div class="bg-slate-50 dark:bg-slate-800/50 p-6 border-b border-slate-200 dark:border-slate-800">
+<div class="flex items-center justify-between max-w-2xl mx-auto relative">
+<!-- Connecting Line -->
+<div class="absolute top-5 left-0 w-full h-0.5 bg-slate-200 dark:bg-slate-700 -z-0"></div>
+<div class="absolute top-5 left-0 w-1/3 h-0.5 bg-primary -z-0"></div>
+<!-- Step 1 -->
+<div class="relative z-10 flex flex-col items-center gap-2 group">
+<div class="size-10 rounded-full bg-primary text-white flex items-center justify-center shadow-lg shadow-primary/20">
+<span class="material-symbols-outlined">map</span>
+</div>
+<span class="text-xs font-bold text-primary text-center">Location &amp; Price</span>
+</div>
+<!-- Step 2 -->
+<div class="relative z-10 flex flex-col items-center gap-2">
+<div class="size-10 rounded-full bg-white dark:bg-slate-900 border-2 border-slate-200 dark:border-slate-700 text-slate-400 flex items-center justify-center">
+<span class="material-symbols-outlined">list_alt</span>
+</div>
+<span class="text-xs font-semibold text-slate-400 text-center">Features</span>
+</div>
+<!-- Step 3 -->
+<div class="relative z-10 flex flex-col items-center gap-2">
+<div class="size-10 rounded-full bg-white dark:bg-slate-900 border-2 border-slate-200 dark:border-slate-700 text-slate-400 flex items-center justify-center">
+<span class="material-symbols-outlined">add_a_photo</span>
+</div>
+<span class="text-xs font-semibold text-slate-400 text-center">Photos</span>
+</div>
+</div>
+</div>
+<!-- Form Content -->
+<div class="p-8 lg:p-12">
+<div class="mb-8">
+<h1 class="text-3xl font-extrabold text-slate-900 dark:text-white mb-2">Basic Information</h1>
+<p class="text-slate-500 dark:text-slate-400">Tell us where your property is located and set your monthly rent.</p>
+</div>
+<form class="space-y-8">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<!-- Location -->
+<div class="flex flex-col gap-2">
+<label class="text-sm font-bold text-slate-700 dark:text-slate-300 flex items-center gap-2">
+<span class="material-symbols-outlined text-accent text-lg">location_on</span>
+                                    Location (Area)
+                                </label>
+<select class="w-full h-12 rounded-lg border-slate-200 dark:border-slate-700 dark:bg-slate-800 focus:ring-primary focus:border-primary text-slate-900 dark:text-white px-4">
+<option disabled="" selected="" value="">Select area (e.g. Westlands)</option>
+<option value="westlands">Westlands</option>
+<option value="kilimani">Kilimani</option>
+<option value="lavington">Lavington</option>
+<option value="kileleshwa">Kileleshwa</option>
+<option value="karen">Karen</option>
+<option value="langata">Lang'ata</option>
+</select>
+</div>
+<!-- House Type -->
+<div class="flex flex-col gap-2">
+<label class="text-sm font-bold text-slate-700 dark:text-slate-300 flex items-center gap-2">
+<span class="material-symbols-outlined text-accent text-lg">apartment</span>
+                                    House Type
+                                </label>
+<select class="w-full h-12 rounded-lg border-slate-200 dark:border-slate-700 dark:bg-slate-800 focus:ring-primary focus:border-primary text-slate-900 dark:text-white px-4">
+<option disabled="" selected="" value="">Select property type</option>
+<option value="bedsitter">Bedsitter</option>
+<option value="1br">1 Bedroom Apartment</option>
+<option value="2br">2 Bedroom Apartment</option>
+<option value="3br">3 Bedroom Apartment</option>
+<option value="studio">Studio</option>
+<option value="mansionette">Mansionette</option>
+</select>
+</div>
+<!-- Price -->
+<div class="flex flex-col gap-2">
+<label class="text-sm font-bold text-slate-700 dark:text-slate-300 flex items-center gap-2">
+<span class="material-symbols-outlined text-accent text-lg">payments</span>
+                                    Price (Ksh per month)
+                                </label>
+<div class="relative">
+<span class="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 font-bold">Ksh</span>
+<input class="w-full h-12 pl-14 rounded-lg border-slate-200 dark:border-slate-700 dark:bg-slate-800 focus:ring-primary focus:border-primary text-slate-900 dark:text-white" placeholder="e.g. 45,000" type="number"/>
+</div>
+</div>
+<!-- Security Deposit -->
+<div class="flex flex-col gap-2">
+<label class="text-sm font-bold text-slate-700 dark:text-slate-300 flex items-center gap-2">
+<span class="material-symbols-outlined text-accent text-lg">security</span>
+                                    Security Deposit (Ksh)
+                                </label>
+<div class="relative">
+<span class="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 font-bold">Ksh</span>
+<input class="w-full h-12 pl-14 rounded-lg border-slate-200 dark:border-slate-700 dark:bg-slate-800 focus:ring-primary focus:border-primary text-slate-900 dark:text-white" placeholder="e.g. 45,000" type="number"/>
+</div>
+</div>
+</div>
+<!-- Map Preview Mock -->
+<div class="rounded-xl overflow-hidden border border-slate-200 dark:border-slate-800 h-64 bg-slate-100 dark:bg-slate-800 relative">
+<div class="absolute inset-0 bg-cover bg-center opacity-70" data-alt="Stylized map showing Nairobi property location pin" data-location="Nairobi, Kenya" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuB7wpimHpa368E5kT1RLx1XnA_q-O4veozCN-1klhTbsNegMUlqv1o6qC20zvnty5OX4m_emy1QF3szr9oVibO_KJX382arOW9DN81vbfEkaEGKJbZP-zie1CJywTP5s5yb5fNK_M5bAmaxEN3_Qi7Q449fJ2bA4nEwsDCeKbeZE5TotkObMxBdrMgcxdSzCb6sXFe3EeN7q7poVC1n_2ranCfOYL3K4ItQaR1O2H6SqgaApHDcYkGS0GjICNdLJsuZBldrQVnLfKg')">
+</div>
+<div class="absolute inset-0 flex items-center justify-center">
+<div class="bg-white/90 dark:bg-slate-900/90 backdrop-blur-sm p-4 rounded-lg shadow-xl border border-primary/20 flex items-center gap-3">
+<div class="size-8 rounded-full bg-accent text-white flex items-center justify-center">
+<span class="material-symbols-outlined text-sm">push_pin</span>
+</div>
+<span class="font-bold text-slate-800 dark:text-white">Pin your exact location</span>
+</div>
+</div>
+</div>
+<!-- Navigation Buttons -->
+<div class="flex justify-between items-center pt-8 border-t border-slate-100 dark:border-slate-800">
+<button class="px-6 py-3 rounded-lg font-bold text-slate-500 hover:text-slate-700 hover:bg-slate-100 dark:text-slate-400 dark:hover:text-slate-200 dark:hover:bg-slate-800 transition-all" type="button">
+                                Cancel
+                            </button>
+<button class="px-10 py-3 bg-primary hover:bg-primary/90 text-white rounded-lg font-bold shadow-lg shadow-primary/30 transition-all flex items-center gap-2" type="submit">
+                                Next Step
+                                <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</div>
+</form>
+</div>
+</div>
+<!-- Help Section -->
+<div class="mt-8 flex items-center gap-6 text-slate-500 dark:text-slate-400 text-sm">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-lg">help_outline</span>
+<span>Need help?</span>
+</div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-lg">verified</span>
+<span>Verified Listings</span>
+</div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-lg">lock</span>
+<span>Secure Platform</span>
+</div>
+</div>
+</main>
+<footer class="py-6 px-10 border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 mt-auto">
+<div class="flex flex-col md:flex-row justify-between items-center gap-4">
+<p class="text-slate-500 dark:text-slate-400 text-sm">© 2024 Makazi Rentals Kenya. All rights reserved.</p>
+<div class="flex gap-6">
+<a class="text-xs font-semibold text-slate-500 hover:text-primary" href="#">Privacy Policy</a>
+<a class="text-xs font-semibold text-slate-500 hover:text-primary" href="#">Terms of Service</a>
+<a class="text-xs font-semibold text-slate-500 hover:text-primary" href="#">Support</a>
+</div>
+</div>
+</footer>
+</div>
+</body></html>
