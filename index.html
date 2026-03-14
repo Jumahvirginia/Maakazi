@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Makazi – Find Your Perfect Rental in Kenya</title>
+  <meta name="description" content="Verified rental homes in Nairobi, Kiambu, Kilimani and more. Secure, transparent, and built for Kenyans." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <div id="app">
+
+    <!-- ========== HEADER ========== -->
+    <header class="site-header" id="site-header">
+      <div class="header-inner">
+        <a href="/" class="logo" aria-label="Makazi Home">
+          <span class="material-symbols-outlined logo-icon" aria-hidden="true">home_work</span>
+          <span class="logo-text">Makazi</span>
+        </a>
+
+        <nav class="main-nav" id="main-nav" aria-label="Main navigation">
+          <ul class="nav-list">
+            <li><a href="#" class="nav-link">Browse Homes</a></li>
+            <li><a href="#" class="nav-link">List Property</a></li>
+            <li><a href="#" class="nav-link">About Us</a></li>
+            <li><a href="#" class="nav-link">Help</a></li>
+          </ul>
+        </nav>
+
+        <div class="header-actions">
+          <a href="#" class="btn-login" id="btn-login">Login</a>
+          <a href="#" class="btn-signup" id="btn-signup">Sign Up</a>
+        </div>
+
+        <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="main-nav">
+          <span class="material-symbols-outlined">menu</span>
+        </button>
+      </div>
+    </header>
+
+    <!-- ========== HERO ========== -->
+    <section class="hero" id="hero">
+      <div class="hero-inner">
+        <h1 class="hero-title">
+          Find Your Perfect Home&nbsp;in&nbsp;<span class="highlight">Kenya</span>
+        </h1>
+        <p class="hero-subtitle">
+          Verified rentals in Westlands, Kiambu, Kilimani and more. Secure, transparent, and built for Kenyans.
+        </p>
+
+        <!-- Search Bar -->
+        <form class="search-bar" id="search-bar" action="#" method="get" role="search" aria-label="Search properties">
+
+          <div class="search-field">
+            <span class="material-symbols-outlined field-icon" aria-hidden="true">location_on</span>
+            <div class="field-content">
+              <label for="location-filter" class="field-label">Location</label>
+              <input
+                type="text"
+                id="location-filter"
+                name="location"
+                class="field-input"
+                placeholder="Westlands, Kiambu…"
+                autocomplete="off"
+              />
+            </div>
+          </div>
+
+          <div class="search-divider" aria-hidden="true"></div>
+
+          <div class="search-field">
+            <span class="material-symbols-outlined field-icon" aria-hidden="true">home</span>
+            <div class="field-content">
+              <label for="house-type-filter" class="field-label">House Type</label>
+              <select id="house-type-filter" name="house_type" class="field-select">
+                <option value="">Any type</option>
+                <option value="apartment">Apartment</option>
+                <option value="studio">Studio</option>
+                <option value="villa">Villa</option>
+                <option value="townhouse">Townhouse</option>
+                <option value="bedsitter">Bedsitter</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="search-divider" aria-hidden="true"></div>
+
+          <div class="search-field">
+            <span class="material-symbols-outlined field-icon" aria-hidden="true">payments</span>
+            <div class="field-content">
+              <label for="search-input" class="field-label">Budget</label>
+              <input
+                type="text"
+                id="search-input"
+                name="budget"
+                class="field-input"
+                placeholder="e.g. Ksh 20k – 150k"
+                autocomplete="off"
+              />
+            </div>
+          </div>
+
+          <button type="submit" class="search-btn" id="search-btn">
+            <span class="material-symbols-outlined search-btn-icon" aria-hidden="true">search</span>
+            <span class="search-btn-text">Search</span>
+          </button>
+        </form>
+
+        <p class="hero-trust">
+          <span class="material-symbols-outlined trust-icon" aria-hidden="true">verified</span>
+          Trusted by <strong>1,200+</strong> tenants across Nairobi
+        </p>
+      </div>
+    </section>
+
+  </div><!-- /#app -->
+
+  <script src="js/app.js" defer></script>
+</body>
+</html>
