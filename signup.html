@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Makazi - Sign Up</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com" />
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+	<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+	<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+	<link rel="stylesheet" href="css/styles.css" />
+</head>
+<body class="signup-page">
+	<div class="signup-shell">
+		<header class="site-header" id="site-header">
+			<div class="header-inner">
+				<a href="index.html" class="logo" aria-label="Makazi Home">
+					<span class="material-symbols-outlined logo-icon" aria-hidden="true">home_work</span>
+					<span class="logo-text">Makazi</span>
+				</a>
+
+				<nav class="main-nav" aria-label="Main navigation">
+					<ul class="nav-list">
+						<li><a href="index.html" class="nav-link">Home</a></li>
+						<li><a href="#" class="nav-link">Browse Homes</a></li>
+						<li><a href="#" class="nav-link">Help</a></li>
+					</ul>
+				</nav>
+
+				<div class="header-actions auth-header-actions">
+					<a href="login.html" class="btn-login">Login</a>
+					<a href="signup.html" class="btn-signup">Sign Up</a>
+				</div>
+			</div>
+		</header>
+
+		<main class="signup-main" aria-labelledby="signup-title">
+			<section class="signup-card">
+				<div class="signup-intro">
+					<h1 id="signup-title">Welcome to Makazi</h1>
+					<p>Create your account and get started.</p>
+				</div>
+
+				<div class="signup-role-toggle" aria-label="User role">
+					<input type="radio" name="signup-role" id="role-tenant" value="tenant" checked />
+					<label for="role-tenant">Looking for a house</label>
+
+					<input type="radio" name="signup-role" id="role-landlord" value="landlord" />
+					<label for="role-landlord">I am a Landlord</label>
+				</div>
+
+				<form class="signup-form" autocomplete="on">
+					<div class="form-field">
+						<label for="signup-name">Full Name</label>
+						<input id="signup-name" name="full_name" type="text" placeholder="e.g. Wanjiku Kamau" required />
+					</div>
+
+					<div class="form-field">
+						<label for="signup-email">Email Address</label>
+						<input id="signup-email" name="email" type="email" placeholder="name@example.com" required />
+					</div>
+
+					<div class="form-field">
+						<label for="signup-password">Password</label>
+						<input id="signup-password" name="password" type="password" placeholder="Create a secure password" required />
+					</div>
+
+					<button type="submit" id="btn-signup" class="signup-submit">Create Account</button>
+				</form>
+
+				<p class="signup-footer-link">
+					Already have an account?
+					<a href="login.html">Log In</a>
+				</p>
+			</section>
+		</main>
+	</div>
+	<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+	<script type="module" src="js/auth.js"></script>
+</body>
+</html>

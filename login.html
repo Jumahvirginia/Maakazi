@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Makazi - Login</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com" />
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+	<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+	<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+	<link rel="stylesheet" href="css/styles.css" />
+</head>
+<body class="signup-page">
+	<div class="signup-shell">
+		<header class="site-header" id="site-header">
+			<div class="header-inner">
+				<a href="index.html" class="logo" aria-label="Makazi Home">
+					<span class="material-symbols-outlined logo-icon" aria-hidden="true">home_work</span>
+					<span class="logo-text">Makazi</span>
+				</a>
+
+				<nav class="main-nav" aria-label="Main navigation">
+					<ul class="nav-list">
+						<li><a href="index.html" class="nav-link">Home</a></li>
+						<li><a href="#" class="nav-link">Browse Homes</a></li>
+						<li><a href="#" class="nav-link">Help</a></li>
+					</ul>
+				</nav>
+
+				<div class="header-actions auth-header-actions">
+					<a href="login.html" class="btn-login">Login</a>
+					<a href="signup.html" class="btn-signup">Sign Up</a>
+				</div>
+			</div>
+		</header>
+
+		<main class="signup-main" aria-labelledby="login-title">
+			<section class="signup-card">
+				<div class="signup-intro">
+					<h1 id="login-title">Welcome to Makazi</h1>
+					<p>Log in to continue to your account.</p>
+				</div>
+
+				<form class="signup-form" autocomplete="on">
+					<div class="form-field">
+						<label for="login-email">Email Address</label>
+						<input id="login-email" name="email" type="email" placeholder="name@example.com" required />
+					</div>
+
+					<div class="form-field">
+						<label for="login-password">Password</label>
+						<input id="login-password" name="password" type="password" placeholder="Enter your password" required />
+					</div>
+
+					<button type="submit" id="btn-login" class="signup-submit">Login</button>
+				</form>
+
+				<p class="signup-footer-link">
+					Don't have an account?
+					<a href="signup.html">Sign Up</a>
+				</p>
+			</section>
+		</main>
+	</div>
+	<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+	<script type="module" src="js/auth.js"></script>
+</body>
+</html>
