@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Makazi - Landlord Dashboard</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com" />
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+	<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+	<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+	<link rel="stylesheet" href="css/styles.css" />
+</head>
+<body class="landlord-dashboard-page">
+	<div class="landlord-dashboard">
+		<aside class="ld-sidebar" id="ld-sidebar" aria-label="Landlord sidebar">
+			<div class="ld-sidebar-top">
+				<a href="index.html" class="logo ld-sidebar-logo" aria-label="Makazi Home">
+					<span class="material-symbols-outlined logo-icon" aria-hidden="true">home_work</span>
+					<span class="logo-text ld-logo-text">Makazi</span>
+				</a>
+
+				<button class="ld-sidebar-toggle" id="ld-sidebar-toggle" type="button" aria-label="Collapse sidebar" aria-expanded="true">
+					<span class="material-symbols-outlined" id="ld-sidebar-toggle-icon" aria-hidden="true">chevron_left</span>
+				</button>
+			</div>
+
+			<nav class="ld-nav" aria-label="Dashboard navigation">
+				<a href="landlord_dashboard.html" class="ld-nav-link is-active">
+					<span class="material-symbols-outlined" aria-hidden="true">dashboard</span>
+					<span class="ld-link-text">Overview</span>
+				</a>
+				<a href="docs/stitch_makazi/manage_listings_table_view/code.html" class="ld-nav-link">
+					<span class="material-symbols-outlined" aria-hidden="true">home</span>
+					<span class="ld-link-text">My Listings</span>
+				</a>
+				<a href="docs/stitch_makazi/tenant_inbox_messaging/code.html" class="ld-nav-link">
+					<span class="material-symbols-outlined" aria-hidden="true">chat</span>
+					<span class="ld-link-text">Inquiries</span>
+				</a>
+				<a href="docs/stitch_makazi/landlord_booking_calendar/code.html" class="ld-nav-link">
+					<span class="material-symbols-outlined" aria-hidden="true">calendar_month</span>
+					<span class="ld-link-text">Calendar</span>
+				</a>
+				<a href="docs/stitch_makazi/tenant_profile_settings/code.html" class="ld-nav-link">
+					<span class="material-symbols-outlined" aria-hidden="true">person</span>
+					<span class="ld-link-text">Profile</span>
+				</a>
+				<a href="docs/stitch_makazi/tenant_profile_settings/code.html" class="ld-nav-link">
+					<span class="material-symbols-outlined" aria-hidden="true">settings</span>
+					<span class="ld-link-text">Settings</span>
+				</a>
+			</nav>
+
+			<div class="ld-sidebar-footer">
+				<a href="docs/stitch_makazi/add_new_listing_step_1/code.html" class="ld-add-listing-btn">
+					<span class="material-symbols-outlined" aria-hidden="true">add</span>
+					<span class="ld-link-text">Add New Listing</span>
+				</a>
+			</div>
+		</aside>
+
+		<main class="ld-main">
+			<div class="ld-content-shell">
+				<header class="ld-topbar">
+					<div class="ld-topbar-left">
+						<button class="ld-mobile-menu-btn" id="ld-mobile-menu-btn" type="button" aria-label="Open sidebar" aria-expanded="false">
+							<span class="material-symbols-outlined" aria-hidden="true">menu</span>
+						</button>
+
+						<h1 class="ld-title">Welcome back, <span id="landlord-name">Landlord Name</span></h1>
+					</div>
+
+					<div class="ld-top-actions">
+						<button class="ld-icon-btn" type="button" aria-label="Notifications">
+							<span class="material-symbols-outlined" aria-hidden="true">notifications</span>
+						</button>
+						<div class="ld-avatar" aria-label="User profile avatar">
+							<span class="material-symbols-outlined" aria-hidden="true">person</span>
+						</div>
+					</div>
+				</header>
+
+				<div class="ld-overview-head">
+					<h2>Dashboard Overview</h2>
+					<p>Real-time performance of your rental properties across Kenya.</p>
+				</div>
+
+				<section class="ld-stats" aria-label="Overview statistics">
+					<article class="ld-stat-card ld-stat-card--status">
+						<div class="ld-stat-icon ld-stat-icon--teal" aria-hidden="true">
+							<span class="material-symbols-outlined">verified_user</span>
+						</div>
+						<p class="ld-stat-label">Account Status</p>
+						<span class="ld-status-badge" id="stat-account-status">
+							<span class="material-symbols-outlined" aria-hidden="true">check_circle</span>
+							Verified
+						</span>
+					</article>
+
+					<article class="ld-stat-card">
+						<div class="ld-stat-icon ld-stat-icon--blue" aria-hidden="true">
+							<span class="material-symbols-outlined">chat</span>
+						</div>
+						<p class="ld-stat-label">Total Listings</p>
+						<strong class="ld-stat-value" id="stat-total-listings">--</strong>
+					</article>
+
+					<article class="ld-stat-card">
+						<div class="ld-stat-icon ld-stat-icon--mint" aria-hidden="true">
+							<span class="material-symbols-outlined">mark_email_unread</span>
+						</div>
+						<p class="ld-stat-label">Active Inquiries</p>
+						<strong class="ld-stat-value" id="stat-active-inquiries">--</strong>
+					</article>
+				</section>
+
+				<section class="ld-content-grid" aria-label="Dashboard content">
+					<article class="ld-panel">
+						<div class="ld-panel-header">
+							<h2>Recent Inquiries</h2>
+						</div>
+
+						<div class="ld-table-wrap">
+							<table class="ld-table" aria-label="Recent inquiries">
+								<thead>
+									<tr>
+										<th scope="col">Tenant Name</th>
+										<th scope="col">Property Title</th>
+										<th scope="col">Status</th>
+										<th scope="col">Date</th>
+									</tr>
+								</thead>
+								<tbody id="inquiries-table-body">
+									<tr>
+										<td colspan="4" class="ld-empty-cell">No inquiries available.</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</article>
+
+					<article class="ld-panel ld-chart-panel">
+						<div class="ld-panel-header">
+							<h2>Listing Performance</h2>
+						</div>
+						<div class="ld-chart-placeholder" role="img" aria-label="Listing performance chart placeholder">
+							<canvas id="listing-performance-chart" aria-label="Listing performance chart"></canvas>
+						</div>
+					</article>
+
+					<article class="ld-panel ld-chart-panel">
+						<div class="ld-panel-header">
+							<h2>Inquiry Trends</h2>
+						</div>
+						<div class="ld-chart-placeholder" role="img" aria-label="Inquiry trends chart placeholder">
+							<canvas id="inquiry-trends-chart" aria-label="Inquiry trends chart"></canvas>
+						</div>
+					</article>
+				</section>
+			</div>
+		</main>
+	</div>
+
+	<script>
+		(function () {
+			const sidebar = document.getElementById("ld-sidebar");
+			const collapseBtn = document.getElementById("ld-sidebar-toggle");
+			const collapseIcon = document.getElementById("ld-sidebar-toggle-icon");
+			const mobileBtn = document.getElementById("ld-mobile-menu-btn");
+
+			if (collapseBtn && sidebar) {
+				collapseBtn.addEventListener("click", function () {
+					const collapsed = sidebar.classList.toggle("is-collapsed");
+					collapseBtn.setAttribute("aria-expanded", String(!collapsed));
+					if (collapseIcon) {
+						collapseIcon.textContent = collapsed ? "chevron_right" : "chevron_left";
+					}
+				});
+			}
+
+			if (mobileBtn && sidebar) {
+				mobileBtn.addEventListener("click", function () {
+					const open = sidebar.classList.toggle("is-open");
+					mobileBtn.setAttribute("aria-expanded", String(open));
+				});
+			}
+		})();
+	</script>
+</body>
+</html>
