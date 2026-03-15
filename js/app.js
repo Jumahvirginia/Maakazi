@@ -87,7 +87,7 @@ async function fetchListings() {
       detailLine.append(locationIcon, ` ${location} - ${type}`);
 
       const actionBtn = document.createElement("a");
-      actionBtn.href = "#";
+      actionBtn.href = "docs/stitch_makazi/makazi_property_detail/code.html";
       actionBtn.className = "listing-btn";
       actionBtn.textContent = "View Details";
 
