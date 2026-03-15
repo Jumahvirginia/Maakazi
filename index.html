@@ -110,15 +110,22 @@
           </button>
         </form>
 
-        <p class="hero-trust">
-          <span class="material-symbols-outlined trust-icon" aria-hidden="true">verified</span>
-          Trusted by <strong>1,200+</strong> tenants across Nairobi
-        </p>
+      </div>
+    </section>
+
+    <!-- ========== FEATURED LISTINGS ========== -->
+    <section class="featured-listings" id="featured-listings" aria-labelledby="featured-listings-title">
+      <div class="featured-listings-inner">
+        <h2 class="featured-listings-title" id="featured-listings-title">Featured Listings</h2>
+        <p class="featured-listings-subtitle">Hand-picked homes in top neighborhoods across Nairobi.</p>
+
+        <div class="featured-grid" id="featured-grid"></div>
       </div>
     </section>
 
   </div><!-- /#app -->
 
-  <script src="js/app.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script type="module" src="js/app.js"></script>
 </body>
 </html>

@@ -387,6 +387,159 @@ button {
 }
 
 /* =============================================
+   FEATURED LISTINGS
+   ============================================= */
+.featured-listings {
+  padding: var(--space-2xl) var(--space-lg) var(--space-3xl);
+  background:
+    radial-gradient(circle at 15% 5%, rgba(4, 139, 123, 0.08), transparent 30%),
+    linear-gradient(180deg, #f9fcfc 0%, #f2f7f6 100%);
+}
+
+.featured-listings-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.featured-listings-title {
+  font-size: clamp(1.5rem, 3.5vw, 2rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--clr-primary);
+  margin-bottom: var(--space-xs);
+}
+
+.featured-listings-subtitle {
+  color: var(--clr-slate-500);
+  margin-bottom: var(--space-xl);
+  max-width: 44ch;
+}
+
+.featured-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-xl);
+}
+
+.listing-card {
+  background: linear-gradient(180deg, #ffffff 0%, #fcfefe 100%);
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  border-radius: var(--radius-2xl);
+  overflow: hidden;
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.08);
+  transition: transform 0.22s var(--ease), box-shadow 0.22s var(--ease), border-color 0.22s var(--ease);
+}
+
+.listing-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 30px rgba(15, 23, 42, 0.12);
+  border-color: rgba(4, 139, 123, 0.24);
+}
+
+.listing-image-placeholder {
+  position: relative;
+  height: 236px;
+  background:
+    radial-gradient(circle at 75% 25%, rgba(255, 255, 255, 0.2), transparent 36%),
+    linear-gradient(135deg, #e5e9ee 0%, #ced7e2 100%);
+}
+
+.listing-image-placeholder::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 0;
+  height: 45%;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.22));
+}
+
+.listing-image-placeholder-westlands {
+  background:
+    radial-gradient(circle at 80% 20%, rgba(136, 10, 35, 0.35), transparent 40%),
+    linear-gradient(135deg, #ead4da 0%, #d7b3bd 100%);
+}
+
+.listing-image-placeholder-kilimani {
+  background:
+    radial-gradient(circle at 75% 25%, rgba(4, 139, 123, 0.28), transparent 40%),
+    linear-gradient(135deg, #d8ece5 0%, #a7cec2 100%);
+}
+
+.listing-image-placeholder-kiambu {
+  background:
+    radial-gradient(circle at 75% 25%, rgba(136, 10, 35, 0.2), transparent 40%),
+    linear-gradient(135deg, #dde7ef 0%, #bdd0d8 100%);
+}
+
+.listing-badge {
+  position: absolute;
+  top: var(--space-md);
+  left: var(--space-md);
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  padding: 0.2rem 0.6rem;
+  border-radius: var(--radius-full);
+  background: rgba(255, 255, 255, 0.92);
+  color: var(--clr-primary-dark);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+}
+
+.listing-card-body {
+  padding: 1.1rem var(--space-lg) var(--space-lg);
+}
+
+.listing-name {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--clr-slate-900);
+  margin-bottom: var(--space-xs);
+}
+
+.listing-price {
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: var(--clr-primary-dark);
+  margin-bottom: var(--space-md);
+}
+
+.listing-location {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  color: var(--clr-slate-500);
+  font-size: 0.9rem;
+  margin-bottom: var(--space-lg);
+}
+
+.listing-location .material-symbols-outlined {
+  color: var(--clr-burgundy);
+  font-size: 1.1rem;
+}
+
+.listing-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 0.72rem 1rem;
+  border-radius: var(--radius-lg);
+  background: linear-gradient(90deg, var(--clr-primary) 0%, var(--clr-burgundy) 100%);
+  color: var(--clr-white);
+  font-size: 0.9rem;
+  font-weight: 700;
+  box-shadow: 0 8px 16px rgba(4, 139, 123, 0.16);
+  transition: transform 0.18s var(--ease), filter 0.18s var(--ease);
+}
+
+.listing-btn:hover,
+.listing-btn:focus-visible {
+  transform: translateY(-1px);
+  filter: brightness(0.96);
+}
+
+/* =============================================
    RESPONSIVE – Tablet (≥ 600px)
    ============================================= */
 @media (min-width: 600px) {
@@ -410,6 +563,10 @@ button {
 
   .search-btn-text {
     display: none;
+  }
+
+  .featured-listings {
+    padding: var(--space-3xl) var(--space-lg);
   }
 }
 
@@ -454,5 +611,9 @@ button {
 
   .search-btn {
     padding: var(--space-md) var(--space-xl);
+  }
+
+  .featured-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
