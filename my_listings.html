@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Makazi - My Listings</title>
+  <link rel="icon" href="data:," />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body class="landlord-dashboard-page">
+  <div class="landlord-dashboard">
+    <aside class="ld-sidebar" id="ld-sidebar" aria-label="Landlord sidebar">
+      <div class="ld-sidebar-top">
+        <a href="index.html" class="logo ld-sidebar-logo" aria-label="Makazi Home">
+          <span class="material-symbols-outlined logo-icon" aria-hidden="true">home_work</span>
+          <span class="logo-text ld-logo-text">Makazi</span>
+        </a>
+
+        <button class="ld-sidebar-toggle" id="ld-sidebar-toggle" type="button" aria-label="Collapse sidebar" aria-expanded="true">
+          <span class="material-symbols-outlined" id="ld-sidebar-toggle-icon" aria-hidden="true">chevron_left</span>
+        </button>
+      </div>
+
+      <nav class="ld-nav" aria-label="Dashboard navigation">
+        <a href="landlord_dashboard.html" class="ld-nav-link">
+          <span class="material-symbols-outlined" aria-hidden="true">dashboard</span>
+          <span class="ld-link-text">Overview</span>
+        </a>
+        <a href="my_listings.html" class="ld-nav-link is-active">
+          <span class="material-symbols-outlined" aria-hidden="true">home</span>
+          <span class="ld-link-text">My Listings</span>
+        </a>
+        <a href="docs/stitch_makazi/tenant_inbox_messaging/code.html" class="ld-nav-link">
+          <span class="material-symbols-outlined" aria-hidden="true">chat</span>
+          <span class="ld-link-text">Inquiries</span>
+        </a>
+        <a href="docs/stitch_makazi/landlord_booking_calendar/code.html" class="ld-nav-link">
+          <span class="material-symbols-outlined" aria-hidden="true">calendar_month</span>
+          <span class="ld-link-text">Calendar</span>
+        </a>
+        <a href="docs/stitch_makazi/tenant_profile_settings/code.html" class="ld-nav-link">
+          <span class="material-symbols-outlined" aria-hidden="true">person</span>
+          <span class="ld-link-text">Profile</span>
+        </a>
+        <a href="docs/stitch_makazi/tenant_profile_settings/code.html" class="ld-nav-link">
+          <span class="material-symbols-outlined" aria-hidden="true">settings</span>
+          <span class="ld-link-text">Settings</span>
+        </a>
+      </nav>
+
+      <div class="ld-sidebar-footer">
+        <a href="add_new_listing.html" class="ld-add-listing-btn">
+          <span class="material-symbols-outlined" aria-hidden="true">add</span>
+          <span class="ld-link-text">Add New Listing</span>
+        </a>
+      </div>
+    </aside>
+
+    <main class="ld-main">
+      <div class="ld-content-shell">
+        <header class="ld-topbar">
+          <div class="ld-topbar-left">
+            <button class="ld-mobile-menu-btn" id="ld-mobile-menu-btn" type="button" aria-label="Open sidebar" aria-expanded="false">
+              <span class="material-symbols-outlined" aria-hidden="true">menu</span>
+            </button>
+            <h1 class="ld-title">Manage Your Listings</h1>
+          </div>
+
+          <div class="ld-top-actions">
+            <button class="ld-icon-btn" type="button" aria-label="Notifications">
+              <span class="material-symbols-outlined" aria-hidden="true">notifications</span>
+            </button>
+            <div class="ld-avatar" aria-label="User profile avatar">
+              <span class="material-symbols-outlined" aria-hidden="true">person</span>
+            </div>
+          </div>
+        </header>
+
+        <section class="ml-quick-stats" aria-label="Listing quick stats">
+          <article class="ml-mini-stat">
+            <p>Total Properties</p>
+            <strong id="ml-total-properties">0</strong>
+          </article>
+          <article class="ml-mini-stat">
+            <p>Live on Site</p>
+            <strong id="ml-live-properties">0</strong>
+          </article>
+          <article class="ml-mini-stat">
+            <p>Pending Review</p>
+            <strong id="ml-pending-properties">0</strong>
+          </article>
+        </section>
+
+        <section class="ld-panel ml-controls-panel" aria-label="Search and filter listings">
+          <div class="ml-search-wrap">
+            <span class="material-symbols-outlined" aria-hidden="true">search</span>
+            <input id="ml-search" type="search" placeholder="Search by title or location" />
+          </div>
+
+          <div class="ml-filter-tabs" role="tablist" aria-label="Listing status filters">
+            <button type="button" class="ml-filter-tab is-active" data-filter="all" aria-selected="true">All Listings</button>
+            <button type="button" class="ml-filter-tab" data-filter="approved" aria-selected="false">Live</button>
+            <button type="button" class="ml-filter-tab" data-filter="pending" aria-selected="false">Pending</button>
+          </div>
+        </section>
+
+        <section class="ld-panel" aria-label="Listings table">
+          <div class="ld-table-wrap">
+            <table class="ld-table ml-listings-table" aria-label="My listings table">
+              <thead>
+                <tr>
+                  <th scope="col">Property</th>
+                  <th scope="col">Title &amp; Location</th>
+                  <th scope="col">Price</th>
+                  <th scope="col">Status</th>
+                  <th scope="col">Actions</th>
+                </tr>
+              </thead>
+              <tbody id="ml-listings-body">
+                <tr>
+                  <td colspan="5" class="ld-empty-cell">Loading listings...</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="ml-empty-state" id="ml-empty-state" hidden>
+            <span class="material-symbols-outlined" aria-hidden="true">home_work</span>
+            <h2>No listings yet</h2>
+            <p>You haven't listed any properties yet.</p>
+          </div>
+        </section>
+
+      </div>
+    </main>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script type="module" src="js/my-listings.js"></script>
+</body>
+</html>
