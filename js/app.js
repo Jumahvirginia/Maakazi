@@ -22,7 +22,10 @@ async function fetchListings() {
   }
 
   try {
-    const { data, error } = await supabaseClient.from("listings").select("*");
+    const { data, error } = await supabaseClient
+      .from("listings")
+      .select("*")
+      .eq("status", "approved");
 
     if (error) {
       console.error("Error fetching listings:", error);
@@ -31,7 +34,7 @@ async function fetchListings() {
     }
 
     if (!data || data.length === 0) {
-      featuredGrid.innerHTML = '<p class="listings-empty">No listings available</p>';
+      featuredGrid.innerHTML = '<p class="listings-empty">No properties available yet</p>';
       return;
     }
 

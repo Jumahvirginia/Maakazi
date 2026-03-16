@@ -8,6 +8,7 @@
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 	<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
 	<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 	<link rel="stylesheet" href="css/styles.css" />
 </head>
 <body class="landlord-dashboard-page">
@@ -29,7 +30,7 @@
 					<span class="material-symbols-outlined" aria-hidden="true">dashboard</span>
 					<span class="ld-link-text">Overview</span>
 				</a>
-				<a href="docs/stitch_makazi/manage_listings_table_view/code.html" class="ld-nav-link">
+				<a href="my_listings.html" class="ld-nav-link">
 					<span class="material-symbols-outlined" aria-hidden="true">home</span>
 					<span class="ld-link-text">My Listings</span>
 				</a>
@@ -52,7 +53,7 @@
 			</nav>
 
 			<div class="ld-sidebar-footer">
-				<a href="docs/stitch_makazi/add_new_listing_step_1/code.html" class="ld-add-listing-btn">
+				<a href="add_new_listing.html" class="ld-add-listing-btn">
 					<span class="material-symbols-outlined" aria-hidden="true">add</span>
 					<span class="ld-link-text">Add New Listing</span>
 				</a>
@@ -67,7 +68,7 @@
 							<span class="material-symbols-outlined" aria-hidden="true">menu</span>
 						</button>
 
-						<h1 class="ld-title">Welcome back, <span id="landlord-name">Landlord Name</span></h1>
+						<h1 class="ld-title">Welcome back, <span class="ld-name-highlight" id="landlord-name">Landlord Name</span></h1>
 					</div>
 
 					<div class="ld-top-actions">
@@ -79,11 +80,6 @@
 						</div>
 					</div>
 				</header>
-
-				<div class="ld-overview-head">
-					<h2>Dashboard Overview</h2>
-					<p>Real-time performance of your rental properties across Kenya.</p>
-				</div>
 
 				<section class="ld-stats" aria-label="Overview statistics">
 					<article class="ld-stat-card ld-stat-card--status">
@@ -161,30 +157,7 @@
 		</main>
 	</div>
 
-	<script>
-		(function () {
-			const sidebar = document.getElementById("ld-sidebar");
-			const collapseBtn = document.getElementById("ld-sidebar-toggle");
-			const collapseIcon = document.getElementById("ld-sidebar-toggle-icon");
-			const mobileBtn = document.getElementById("ld-mobile-menu-btn");
-
-			if (collapseBtn && sidebar) {
-				collapseBtn.addEventListener("click", function () {
-					const collapsed = sidebar.classList.toggle("is-collapsed");
-					collapseBtn.setAttribute("aria-expanded", String(!collapsed));
-					if (collapseIcon) {
-						collapseIcon.textContent = collapsed ? "chevron_right" : "chevron_left";
-					}
-				});
-			}
-
-			if (mobileBtn && sidebar) {
-				mobileBtn.addEventListener("click", function () {
-					const open = sidebar.classList.toggle("is-open");
-					mobileBtn.setAttribute("aria-expanded", String(open));
-				});
-			}
-		})();
-	</script>
+	<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+	<script type="module" src="js/landlord-dashboard.js"></script>
 </body>
 </html>
