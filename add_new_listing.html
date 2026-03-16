@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Makazi - Add New Listing</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body class="landlord-dashboard-page add-listing-page">
+  <div class="landlord-dashboard">
+    <aside class="ld-sidebar" id="ld-sidebar" aria-label="Landlord sidebar">
+      <div class="ld-sidebar-top">
+        <a href="index.html" class="logo ld-sidebar-logo" aria-label="Makazi Home">
+          <span class="material-symbols-outlined logo-icon" aria-hidden="true">home_work</span>
+          <span class="logo-text ld-logo-text">Makazi</span>
+        </a>
+
+        <button class="ld-sidebar-toggle" id="ld-sidebar-toggle" type="button" aria-label="Collapse sidebar" aria-expanded="true">
+          <span class="material-symbols-outlined" id="ld-sidebar-toggle-icon" aria-hidden="true">chevron_left</span>
+        </button>
+      </div>
+
+      <nav class="ld-nav" aria-label="Dashboard navigation">
+        <a href="landlord_dashboard.html" class="ld-nav-link">
+          <span class="material-symbols-outlined" aria-hidden="true">dashboard</span>
+          <span class="ld-link-text">Overview</span>
+        </a>
+        <a href="my_listings.html" class="ld-nav-link is-active">
+          <span class="material-symbols-outlined" aria-hidden="true">home</span>
+          <span class="ld-link-text">My Listings</span>
+        </a>
+        <a href="docs/stitch_makazi/tenant_inbox_messaging/code.html" class="ld-nav-link">
+          <span class="material-symbols-outlined" aria-hidden="true">chat</span>
+          <span class="ld-link-text">Inquiries</span>
+        </a>
+        <a href="docs/stitch_makazi/landlord_booking_calendar/code.html" class="ld-nav-link">
+          <span class="material-symbols-outlined" aria-hidden="true">calendar_month</span>
+          <span class="ld-link-text">Calendar</span>
+        </a>
+        <a href="docs/stitch_makazi/tenant_profile_settings/code.html" class="ld-nav-link">
+          <span class="material-symbols-outlined" aria-hidden="true">person</span>
+          <span class="ld-link-text">Profile</span>
+        </a>
+        <a href="docs/stitch_makazi/tenant_profile_settings/code.html" class="ld-nav-link">
+          <span class="material-symbols-outlined" aria-hidden="true">settings</span>
+          <span class="ld-link-text">Settings</span>
+        </a>
+      </nav>
+
+      <div class="ld-sidebar-footer">
+        <a href="add_new_listing.html" class="ld-add-listing-btn">
+          <span class="material-symbols-outlined" aria-hidden="true">add</span>
+          <span class="ld-link-text">Add New Listing</span>
+        </a>
+      </div>
+    </aside>
+
+    <main class="ld-main">
+      <div class="ld-content-shell anl-content-shell">
+        <header class="ld-topbar">
+          <div class="ld-topbar-left">
+            <button class="ld-mobile-menu-btn" id="ld-mobile-menu-btn" type="button" aria-label="Open sidebar" aria-expanded="false">
+              <span class="material-symbols-outlined" aria-hidden="true">menu</span>
+            </button>
+            <h1 class="ld-title">Add New Listing</h1>
+          </div>
+
+          <div class="ld-top-actions">
+            <button class="ld-icon-btn" type="button" aria-label="Notifications">
+              <span class="material-symbols-outlined" aria-hidden="true">notifications</span>
+            </button>
+            <div class="ld-avatar" aria-label="User profile avatar">
+              <span class="material-symbols-outlined" aria-hidden="true">person</span>
+            </div>
+          </div>
+        </header>
+
+        <section class="anl-card" aria-label="Add listing form">
+          <div class="anl-progress-head">
+            <ol class="anl-stepper" aria-label="Listing progress">
+              <li class="anl-stepper-item is-active" data-step="1">
+                <span class="anl-step-circle">
+                  <span class="anl-step-num">1</span>
+                  <span class="material-symbols-outlined anl-step-check" aria-hidden="true">check</span>
+                </span>
+                <span class="anl-step-text">Basic Info</span>
+              </li>
+              <li class="anl-stepper-item" data-step="2">
+                <span class="anl-step-circle">
+                  <span class="anl-step-num">2</span>
+                  <span class="material-symbols-outlined anl-step-check" aria-hidden="true">check</span>
+                </span>
+                <span class="anl-step-text">Features</span>
+              </li>
+              <li class="anl-stepper-item" data-step="3">
+                <span class="anl-step-circle">
+                  <span class="anl-step-num">3</span>
+                  <span class="material-symbols-outlined anl-step-check" aria-hidden="true">check</span>
+                </span>
+                <span class="anl-step-text">Photos</span>
+              </li>
+              <li class="anl-stepper-item" data-step="4">
+                <span class="anl-step-circle">
+                  <span class="anl-step-num">4</span>
+                  <span class="material-symbols-outlined anl-step-check" aria-hidden="true">check</span>
+                </span>
+                <span class="anl-step-text">Publish</span>
+              </li>
+            </ol>
+          </div>
+
+          <form class="anl-form" id="add-listing-form">
+            <section class="anl-step is-active" id="anl-step-1" aria-label="Step 1 Basic Info">
+              <h2>Basic Information</h2>
+              <div class="anl-field-grid">
+                <div class="anl-field anl-field-full">
+                  <label for="listing-title">Property Title</label>
+                  <input id="listing-title" name="title" type="text" placeholder="e.g. Modern 2-Bedroom Apartment in Kilimani" />
+                </div>
+
+                <div class="anl-field">
+                  <label for="property-type">Category</label>
+                  <select id="property-type" name="property_type">
+                    <option value="">Select property type</option>
+                    <option>Apartment</option>
+                    <option>Studio</option>
+                    <option>Bedsitter</option>
+                    <option>Townhouse</option>
+                    <option>Maisonette</option>
+                  </select>
+                </div>
+
+                <div class="anl-field">
+                  <label for="monthly-rent">Monthly Rent (KES)</label>
+                  <input id="monthly-rent" name="monthly_rent" type="number" min="0" placeholder="KES e.g 50,000" />
+                </div>
+
+                <div class="anl-field anl-field-full">
+                  <label for="listing-location">Location (Area / Estate)</label>
+                  <input id="listing-location" name="location" type="text" placeholder="e.g. Kilimani, Nairobi" />
+                </div>
+
+              </div>
+            </section>
+
+            <section class="anl-step" id="anl-step-2" aria-label="Step 2 Features">
+              <h2>Property Features</h2>
+              <div class="anl-field-grid">
+                <div class="anl-field">
+                  <label for="bedrooms">Number of Bedrooms</label>
+                  <div class="anl-counter" role="group" aria-label="Bedrooms counter">
+                    <button type="button" class="anl-counter-btn" data-target="bedrooms" data-action="dec" aria-label="Decrease bedrooms">
+                      <span class="material-symbols-outlined" aria-hidden="true">remove</span>
+                    </button>
+                    <input id="bedrooms" name="bedrooms" type="number" min="0" value="1" readonly />
+                    <button type="button" class="anl-counter-btn" data-target="bedrooms" data-action="inc" aria-label="Increase bedrooms">
+                      <span class="material-symbols-outlined" aria-hidden="true">add</span>
+                    </button>
+                  </div>
+                </div>
+
+                <div class="anl-field">
+                  <label for="bathrooms">Number of Bathrooms</label>
+                  <div class="anl-counter" role="group" aria-label="Bathrooms counter">
+                    <button type="button" class="anl-counter-btn" data-target="bathrooms" data-action="dec" aria-label="Decrease bathrooms">
+                      <span class="material-symbols-outlined" aria-hidden="true">remove</span>
+                    </button>
+                    <input id="bathrooms" name="bathrooms" type="number" min="0" value="1" readonly />
+                    <button type="button" class="anl-counter-btn" data-target="bathrooms" data-action="inc" aria-label="Increase bathrooms">
+                      <span class="material-symbols-outlined" aria-hidden="true">add</span>
+                    </button>
+                  </div>
+                </div>
+
+                <div class="anl-field anl-field-full">
+                  <label>Amenities &amp; Utilities</label>
+                  <div class="anl-amenities-grid">
+                    <input class="anl-amenity-input" type="checkbox" id="amenity-wifi" />
+                    <label class="anl-amenity-card" for="amenity-wifi">
+                      <span class="material-symbols-outlined" aria-hidden="true">wifi</span>
+                      <span class="anl-amenity-copy"><strong>WiFi</strong><small>High-speed fiber</small></span>
+                    </label>
+
+                    <input class="anl-amenity-input" type="checkbox" id="amenity-borehole" />
+                    <label class="anl-amenity-card" for="amenity-borehole">
+                      <span class="material-symbols-outlined" aria-hidden="true">water_drop</span>
+                      <span class="anl-amenity-copy"><strong>Borehole</strong><small>24/7 water supply</small></span>
+                    </label>
+
+                    <input class="anl-amenity-input" type="checkbox" id="amenity-parking" />
+                    <label class="anl-amenity-card" for="amenity-parking">
+                      <span class="material-symbols-outlined" aria-hidden="true">local_parking</span>
+                      <span class="anl-amenity-copy"><strong>Parking</strong><small>Secure parking</small></span>
+                    </label>
+
+                    <input class="anl-amenity-input" type="checkbox" id="amenity-security" />
+                    <label class="anl-amenity-card" for="amenity-security">
+                      <span class="material-symbols-outlined" aria-hidden="true">shield</span>
+                      <span class="anl-amenity-copy"><strong>24/7 Security</strong><small>CCTV and guards</small></span>
+                    </label>
+
+                    <input class="anl-amenity-input" type="checkbox" id="amenity-token" />
+                    <label class="anl-amenity-card" for="amenity-token">
+                      <span class="material-symbols-outlined" aria-hidden="true">bolt</span>
+                      <span class="anl-amenity-copy"><strong>Token Meter</strong><small>Prepaid electricity</small></span>
+                    </label>
+
+                    <input class="anl-amenity-input" type="checkbox" id="amenity-gym" />
+                    <label class="anl-amenity-card" for="amenity-gym">
+                      <span class="material-symbols-outlined" aria-hidden="true">fitness_center</span>
+                      <span class="anl-amenity-copy"><strong>Gym</strong><small>On-site access</small></span>
+                    </label>
+
+                    <input class="anl-amenity-input" type="checkbox" id="amenity-pool" />
+                    <label class="anl-amenity-card" for="amenity-pool">
+                      <span class="material-symbols-outlined" aria-hidden="true">pool</span>
+                      <span class="anl-amenity-copy"><strong>Swimming Pool</strong><small>Shared amenity</small></span>
+                    </label>
+
+                    <input class="anl-amenity-input" type="checkbox" id="amenity-play" />
+                    <label class="anl-amenity-card" for="amenity-play">
+                      <span class="material-symbols-outlined" aria-hidden="true">toys_and_games</span>
+                      <span class="anl-amenity-copy"><strong>Play-area</strong><small>Family friendly</small></span>
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <section class="anl-step" id="anl-step-3" aria-label="Step 3 Photos">
+              <h2>Photo Gallery</h2>
+              <div class="anl-photo-upload-head">
+                <p>Upload up to 4 photos. Use "Select Photos" or click a specific card to replace it.</p>
+                <input class="anl-file-input" id="listing-photos" type="file" name="photos" accept="image/*" multiple />
+                <label class="anl-upload-btn" for="listing-photos">
+                  <span class="material-symbols-outlined" aria-hidden="true">photo_library</span>
+                  Select Photos
+                </label>
+                <input class="anl-file-input anl-slot-input" id="listing-photo-slot-0" type="file" accept="image/*" data-slot-index="0" />
+                <input class="anl-file-input anl-slot-input" id="listing-photo-slot-1" type="file" accept="image/*" data-slot-index="1" />
+                <input class="anl-file-input anl-slot-input" id="listing-photo-slot-2" type="file" accept="image/*" data-slot-index="2" />
+                <input class="anl-file-input anl-slot-input" id="listing-photo-slot-3" type="file" accept="image/*" data-slot-index="3" />
+              </div>
+
+              <div class="anl-photo-grid">
+                <button class="anl-photo-slot is-cover" type="button" data-slot-index="0" aria-label="Upload main cover photo">
+                  <img class="anl-photo-thumb" alt="Main cover preview" />
+                  <span class="material-symbols-outlined" aria-hidden="true">add</span>
+                  <small>Main / Cover Photo</small>
+                </button>
+                <button class="anl-photo-slot" type="button" data-slot-index="1" aria-label="Upload living area photo">
+                  <img class="anl-photo-thumb" alt="Living area preview" />
+                  <span class="material-symbols-outlined" aria-hidden="true">add</span>
+                  <small>Living Area</small>
+                </button>
+                <button class="anl-photo-slot" type="button" data-slot-index="2" aria-label="Upload bedroom photo">
+                  <img class="anl-photo-thumb" alt="Bedroom preview" />
+                  <span class="material-symbols-outlined" aria-hidden="true">add</span>
+                  <small>Bedroom</small>
+                </button>
+                <button class="anl-photo-slot" type="button" data-slot-index="3" aria-label="Upload kitchen photo">
+                  <img class="anl-photo-thumb" alt="Kitchen preview" />
+                  <span class="material-symbols-outlined" aria-hidden="true">add</span>
+                  <small>Kitchen</small>
+                </button>
+              </div>
+            </section>
+
+            <section class="anl-step" id="anl-step-4" aria-label="Step 4 Review and Publish">
+              <h2>Final Review</h2>
+              <p class="anl-review-note">Double check your listing details before publishing.</p>
+
+              <div class="anl-review-grid">
+                <article class="anl-preview-panel">
+                  <h3>Property Preview</h3>
+                  <div class="anl-preview-image">
+                    <span class="material-symbols-outlined" aria-hidden="true">image</span>
+                  </div>
+                </article>
+
+                <article class="anl-details-panel">
+                  <h3>Listing Details</h3>
+                  <dl>
+                    <div><dt>Property Title</dt><dd id="review-title">--</dd></div>
+                    <div><dt>Monthly Rent</dt><dd id="review-rent">--</dd></div>
+                    <div><dt>Location</dt><dd id="review-location">--</dd></div>
+                    <div><dt>Key Features</dt><dd id="review-features">--</dd></div>
+                  </dl>
+
+                  <h4>Amenities</h4>
+                  <ul class="anl-review-amenities" id="review-amenities">
+                    <li>--</li>
+                  </ul>
+                </article>
+              </div>
+            </section>
+
+            <div class="anl-actions">
+              <button type="button" class="anl-btn anl-btn-ghost" id="btn-back" disabled>Back</button>
+              <a href="#anl-step-1" class="anl-back-link" id="btn-back-edit" style="display: none;">
+                <span class="material-symbols-outlined" aria-hidden="true">arrow_back</span>
+                Back to Edit
+              </a>
+              <button type="button" class="anl-btn anl-btn-primary" id="btn-next">
+                Next Step <span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span>
+              </button>
+              <button type="submit" class="anl-btn anl-btn-primary anl-btn-publish" id="btn-publish" style="display: none;">
+                Publish Listing <span class="material-symbols-outlined" aria-hidden="true">publish</span>
+              </button>
+            </div>
+          </form>
+
+          <section class="anl-success" id="anl-success-view" aria-label="Listing submitted successfully" hidden>
+            <div class="anl-success-icon" aria-hidden="true">
+              <span class="material-symbols-outlined">check</span>
+            </div>
+            <h2>Listing Submitted Successfully!</h2>
+            <p>
+              Your listing is currently <strong>Pending Approval</strong> and will be reviewed by
+              the Makazi team within 24 hours.
+            </p>
+
+            <article class="anl-success-summary" aria-label="Submission summary">
+              <header>
+                <span>Submission Summary</span>
+                <span id="success-listing-id">ID: MKZ-00000</span>
+              </header>
+              <div class="anl-success-summary-body">
+                <div class="anl-success-preview" aria-hidden="true">
+                  <span class="material-symbols-outlined">image</span>
+                </div>
+                <div class="anl-success-meta">
+                  <h3 id="success-title">--</h3>
+                  <p id="success-location">
+                    <span class="material-symbols-outlined" aria-hidden="true">location_on</span>
+                    --
+                  </p>
+                  <span class="anl-status-pill">
+                    <span class="material-symbols-outlined" aria-hidden="true">schedule</span>
+                    Pending Review
+                  </span>
+                </div>
+              </div>
+            </article>
+
+            <div class="anl-success-actions">
+              <a class="anl-btn anl-btn-primary" href="landlord_dashboard.html">
+                <span class="material-symbols-outlined" aria-hidden="true">dashboard</span>
+                Go to Dashboard
+              </a>
+            </div>
+
+            <p class="anl-success-footnote">
+              Need to make a change? You can edit your listing after approval.
+            </p>
+          </section>
+        </section>
+      </div>
+    </main>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script type="module" src="js/add-listing.js"></script>
+</body>
+</html>
