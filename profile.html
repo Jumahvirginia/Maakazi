@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Makazi - Landlord Verification</title>
+	<link rel="icon" href="data:," />
+	<link rel="preconnect" href="https://fonts.googleapis.com" />
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+	<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+	<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1" rel="stylesheet" />
+	<link rel="stylesheet" href="css/styles.css" />
+</head>
+<body class="landlord-dashboard-page">
+	<div class="landlord-dashboard">
+		<aside class="ld-sidebar" id="ld-sidebar" aria-label="Landlord sidebar">
+			<div class="ld-sidebar-top">
+				<a href="index.html" class="logo ld-sidebar-logo" aria-label="Makazi Home">
+					<span class="material-symbols-outlined logo-icon" aria-hidden="true">home_work</span>
+					<span class="ld-brand-copy">
+						<span class="logo-text ld-logo-text">Makazi</span>
+						<span class="ld-logo-meta">Landlord Portal</span>
+					</span>
+				</a>
+
+				<button class="ld-sidebar-toggle" id="ld-sidebar-toggle" type="button" aria-label="Collapse sidebar" aria-expanded="true">
+					<span class="material-symbols-outlined" id="ld-sidebar-toggle-icon" aria-hidden="true">chevron_left</span>
+				</button>
+			</div>
+
+			<nav class="ld-nav" aria-label="Dashboard navigation">
+				<a href="landlord_dashboard.html" class="ld-nav-link">
+					<span class="material-symbols-outlined" aria-hidden="true">dashboard</span>
+					<span class="ld-link-text">Overview</span>
+				</a>
+				<a href="my_listings.html" class="ld-nav-link">
+					<span class="material-symbols-outlined" aria-hidden="true">home</span>
+					<span class="ld-link-text">My Listings</span>
+				</a>
+				<a href="inquiries.html" class="ld-nav-link">
+					<span class="material-symbols-outlined" aria-hidden="true">chat</span>
+					<span class="ld-link-text">Inquiries</span>
+				</a>
+				<a href="calendar.html" class="ld-nav-link">
+					<span class="material-symbols-outlined" aria-hidden="true">calendar_month</span>
+					<span class="ld-link-text">Calendar</span>
+				</a>
+				<a href="profile.html" class="ld-nav-link is-active">
+					<span class="material-symbols-outlined" aria-hidden="true">person</span>
+					<span class="ld-link-text">Profile</span>
+				</a>
+			</nav>
+
+			<div class="ld-sidebar-footer">
+				<a href="add_new_listing.html" class="ld-add-listing-btn">
+					<span class="material-symbols-outlined" aria-hidden="true">add</span>
+					<span class="ld-link-text">Add New Listing</span>
+				</a>
+				<button type="button" class="ld-logout-btn" id="ld-logout-btn">
+					<span class="material-symbols-outlined" aria-hidden="true">logout</span>
+					<span class="ld-link-text">Logout</span>
+				</button>
+			</div>
+		</aside>
+
+		<main class="ld-main">
+			<div class="ld-content-shell">
+				<header class="ld-topbar">
+					<div class="ld-topbar-left">
+						<button class="ld-mobile-menu-btn" id="ld-mobile-menu-btn" type="button" aria-label="Open sidebar" aria-expanded="false">
+							<span class="material-symbols-outlined" aria-hidden="true">menu</span>
+						</button>
+						<h1 class="ld-title">Landlord Verification</h1>
+					</div>
+				</header>
+
+				<div id="state-pending" style="display: none;">
+					<div id="kyc-pending-alert" class="kyc-alert" role="status">
+						<span class="material-symbols-outlined" aria-hidden="true">hourglass_top</span>
+						<div>
+							<p>Verification in Progress. Your documents are under review by the Makazi team.</p>
+							<p class="kyc-alert-subtext">We will notify you via email once your documents are approved.</p>
+						</div>
+					</div>
+				</div>
+
+				<div id="state-verified" style="display: none;">
+					<div id="kyc-verified-card" class="ld-panel kyc-verified-card">
+						<span class="material-symbols-outlined" aria-hidden="true">check_circle</span>
+						<h2>Congratulations! Your profile is now Verified.</h2>
+						<p>Your Trust Badge is active and your listings can now receive higher visibility.</p>
+					</div>
+				</div>
+
+				<div id="state-not-started" style="display: none;">
+					<form id="kyc-form" class="kyc-form" novalidate>
+					<section class="ld-panel kyc-header-card" aria-label="Security verification progress">
+						<p class="kyc-flag"><span class="material-symbols-outlined" aria-hidden="true">shield</span>Security Verification</p>
+						<h2>Verify Your Identity</h2>
+						<p class="kyc-header-copy">Complete your profile to earn the <strong>Makazi Trust Badge</strong>. Verified landlords receive better listing priority and higher tenant confidence.</p>
+					</section>
+
+					<section class="ld-panel" aria-labelledby="kyc-identity-title">
+						<div class="ld-panel-header">
+							<h2 id="kyc-identity-title" class="kyc-section-title">
+								<span class="material-symbols-outlined" aria-hidden="true">badge</span>
+								National ID Verification
+							</h2>
+							<p>Please upload a clear scan or photo of your Kenyan National ID or Passport. Ensure all details are legible.</p>
+						</div>
+
+						<div class="kyc-identity-grid">
+							<article class="kyc-upload-zone" data-zone="id-front" tabindex="0" role="button" aria-label="Upload front of ID">
+								<span class="material-symbols-outlined" aria-hidden="true">id_card</span>
+								<h3>Front of ID</h3>
+								<p>Drag &amp; drop or browse</p>
+								<small>Supported: JPG, PNG, PDF (Max 5MB)</small>
+								<div class="kyc-upload-file"><span id="kyc-id-front-name">No file selected</span></div>
+								<input id="kyc-id-front-input" type="file" accept="image/*,.pdf" hidden />
+								<button id="kyc-id-front-btn" class="kyc-zone-trigger kyc-upload-btn" type="button">Browse</button>
+							</article>
+
+							<article class="kyc-upload-zone" data-zone="id-back" tabindex="0" role="button" aria-label="Upload back of ID">
+								<span class="material-symbols-outlined" aria-hidden="true">id_card</span>
+								<h3>Back of ID</h3>
+								<p>Drag &amp; drop or browse</p>
+								<small>Supported: JPG, PNG, PDF (Max 5MB)</small>
+								<div class="kyc-upload-file"><span id="kyc-id-back-name">No file selected</span></div>
+								<input id="kyc-id-back-input" type="file" accept="image/*,.pdf" hidden />
+								<button id="kyc-id-back-btn" class="kyc-zone-trigger kyc-upload-btn" type="button">Browse</button>
+							</article>
+						</div>
+					</section>
+
+					<section class="ld-panel" aria-labelledby="kyc-contact-title">
+						<div class="ld-panel-header">
+							<h2 id="kyc-contact-title" class="kyc-section-title">
+								<span class="material-symbols-outlined" aria-hidden="true">call</span>
+								Telephone Contact
+							</h2>
+						</div>
+						<label class="kyc-input-label" for="kyc-phone">Kenyan Telephone Number</label>
+						<input id="kyc-phone" class="kyc-phone-input" type="tel" inputmode="numeric" placeholder="+254 7XX XXX XXX" autocomplete="tel" />
+					</section>
+
+					<section class="ld-panel" aria-labelledby="kyc-ownership-title">
+						<div class="ld-panel-header">
+							<h2 id="kyc-ownership-title" class="kyc-section-title">
+								<span class="material-symbols-outlined" aria-hidden="true">description</span>
+								Property Ownership Documents
+							</h2>
+							<p>Upload proof of ownership (Title Deed, Share Certificate, or Management Agreement) for your listed property.</p>
+						</div>
+
+						<div id="kyc-ownership-dropzone" class="kyc-dropzone" tabindex="0" role="button" aria-label="Upload ownership document">
+							<span class="material-symbols-outlined" aria-hidden="true">cloud_upload</span>
+							<h3>Upload Ownership Document</h3>
+							<p>Select files or drag and drop your property certificates here</p>
+							<div class="kyc-upload-file"><span id="kyc-ownership-name" class="kyc-file-name">No file selected</span></div>
+							<input id="kyc-ownership-input" type="file" accept="application/pdf,image/*" hidden />
+							<button id="kyc-ownership-btn" class="kyc-zone-trigger kyc-upload-btn" type="button">Browse</button>
+						</div>
+					</section>
+
+					<section class="ld-panel kyc-privacy-box" aria-label="Privacy guarantee">
+						<h3><span class="material-symbols-outlined" aria-hidden="true">lock</span>Privacy Guarantee</h3>
+						<p>Your documents are encrypted and stored securely. They are only used for identity verification purposes and will never be shared with third parties or tenants.</p>
+					</section>
+
+					<div class="kyc-actions">
+						<button id="kyc-save-link" class="kyc-save-link" type="button">Save for Later</button>
+						<button id="kyc-submit-btn" class="kyc-submit-btn" type="submit">
+							<span class="material-symbols-outlined" aria-hidden="true">check_circle</span>
+							Submit for Verification
+						</button>
+					</div>
+					</form>
+				</div>
+			</div>
+		</main>
+	</div>
+
+	<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+	<script type="module" src="js/profile.js"></script>
+</body>
+</html>
