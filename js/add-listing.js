@@ -21,6 +21,7 @@ const dom = {
   collapseBtn: document.getElementById("ld-sidebar-toggle"),
   collapseIcon: document.getElementById("ld-sidebar-toggle-icon"),
   mobileBtn: document.getElementById("ld-mobile-menu-btn"),
+  logoutBtn: document.getElementById("ld-logout-btn"),
 
   form: document.getElementById("add-listing-form"),
   card: document.querySelector(".anl-card"),
@@ -92,6 +93,13 @@ function setupSidebar() {
     dom.mobileBtn.addEventListener("click", function () {
       const open = dom.sidebar.classList.toggle("is-open");
       dom.mobileBtn.setAttribute("aria-expanded", String(open));
+    });
+  }
+
+  if (dom.logoutBtn && supabaseClient) {
+    dom.logoutBtn.addEventListener("click", async function () {
+      await supabaseClient.auth.signOut();
+      window.location.href = "login.html";
     });
   }
 }
