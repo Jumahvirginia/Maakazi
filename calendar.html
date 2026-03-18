@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Makazi - Booking Calendar</title>
+	<link rel="icon" href="data:," />
+	<link rel="preconnect" href="https://fonts.googleapis.com" />
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+	<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+	<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.15/index.global.min.css" />
+	<link rel="stylesheet" href="css/styles.css" />
+</head>
+<body class="landlord-dashboard-page">
+	<div class="landlord-dashboard">
+		<aside class="ld-sidebar" id="ld-sidebar" aria-label="Landlord sidebar">
+			<div class="ld-sidebar-top">
+				<a href="index.html" class="logo ld-sidebar-logo" aria-label="Makazi Home">
+					<span class="material-symbols-outlined logo-icon" aria-hidden="true">home_work</span>
+					<span class="ld-brand-copy">
+						<span class="logo-text ld-logo-text">Makazi</span>
+						<span class="ld-logo-meta">Landlord Portal</span>
+					</span>
+				</a>
+
+				<button class="ld-sidebar-toggle" id="ld-sidebar-toggle" type="button" aria-label="Collapse sidebar" aria-expanded="true">
+					<span class="material-symbols-outlined" id="ld-sidebar-toggle-icon" aria-hidden="true">chevron_left</span>
+				</button>
+			</div>
+
+			<nav class="ld-nav" aria-label="Dashboard navigation">
+				<a href="landlord_dashboard.html" class="ld-nav-link">
+					<span class="material-symbols-outlined" aria-hidden="true">dashboard</span>
+					<span class="ld-link-text">Overview</span>
+				</a>
+				<a href="my_listings.html" class="ld-nav-link">
+					<span class="material-symbols-outlined" aria-hidden="true">home</span>
+					<span class="ld-link-text">My Listings</span>
+				</a>
+				<a href="inquiries.html" class="ld-nav-link">
+					<span class="material-symbols-outlined" aria-hidden="true">chat</span>
+					<span class="ld-link-text">Inquiries</span>
+				</a>
+				<a href="calendar.html" class="ld-nav-link is-active">
+					<span class="material-symbols-outlined" aria-hidden="true">calendar_month</span>
+					<span class="ld-link-text">Calendar</span>
+				</a>
+				<a href="profile.html" class="ld-nav-link">
+					<span class="material-symbols-outlined" aria-hidden="true">person</span>
+					<span class="ld-link-text">Profile</span>
+				</a>
+			</nav>
+
+			<div class="ld-sidebar-footer">
+				<a href="add_new_listing.html" class="ld-add-listing-btn cal-burgundy-btn">
+					<span class="material-symbols-outlined" aria-hidden="true">add</span>
+					<span class="ld-link-text">Add New Listing</span>
+				</a>
+				<button type="button" class="ld-logout-btn" id="ld-logout-btn">
+					<span class="material-symbols-outlined" aria-hidden="true">logout</span>
+					<span class="ld-link-text">Logout</span>
+				</button>
+			</div>
+		</aside>
+
+		<main class="ld-main calendar-page-main">
+			<div class="ld-content-shell calendar-shell">
+				<header class="ld-topbar">
+					<div class="ld-topbar-left">
+						<button class="ld-mobile-menu-btn" id="ld-mobile-menu-btn" type="button" aria-label="Open sidebar" aria-expanded="false">
+							<span class="material-symbols-outlined" aria-hidden="true">menu</span>
+						</button>
+						<h1 class="ld-title" style="color: #800020;">Booking Calendar</h1>
+					</div>
+
+					<div class="cal-toolbar-actions">
+						<label class="cal-filter-wrap" for="cal-property-filter">
+							<span class="material-symbols-outlined" aria-hidden="true">home_work</span>
+							<select id="cal-property-filter" aria-label="Filter by property">
+								<option value="all">All Properties</option>
+							</select>
+						</label>
+						<button type="button" class="cal-export-btn" id="cal-export-btn">
+							<span class="material-symbols-outlined" aria-hidden="true">print</span>
+							Export Schedule
+						</button>
+					</div>
+				</header>
+
+				<section class="cal-layout" aria-label="Booking calendar layout">
+					<article class="ld-panel cal-main-panel">
+						<div id="booking-calendar" aria-label="Landlord bookings calendar"></div>
+					</article>
+
+					<aside class="ld-panel cal-agenda-panel" aria-label="Daily agenda sidebar">
+						<div class="cal-agenda-head">
+							<h2>Daily Agenda</h2>
+							<p id="agenda-date-label">Select a date</p>
+						</div>
+						<div id="agenda-list" class="cal-agenda-list">
+							<p class="cal-agenda-empty">No viewings scheduled for this date.</p>
+						</div>
+					</aside>
+				</section>
+			</div>
+		</main>
+	</div>
+
+	<div class="cal-modal-backdrop" id="block-date-modal">
+		<div class="cal-modal" role="dialog" aria-modal="true" aria-labelledby="block-modal-title">
+			<h2 id="block-modal-title">Block this date?</h2>
+			<p id="block-modal-text"></p>
+			<p id="block-modal-note" class="cal-modal-note"></p>
+			<div class="cal-modal-actions">
+				<button type="button" class="ml-btn ml-btn-cancel cal-block-cancel" id="btn-cancel-block">Cancel</button>
+				<button type="button" class="ml-btn ml-btn-delete cal-block-confirm" id="btn-confirm-block">Block Date</button>
+			</div>
+		</div>
+	</div>
+
+	<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+	<script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.15/index.global.min.js"></script>
+	<script type="module" src="js/calendar.js"></script>
+</body>
+</html>
