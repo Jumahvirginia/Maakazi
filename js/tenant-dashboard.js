@@ -2,10 +2,13 @@
    TENANT DASHBOARD – JavaScript
    ============================================= */
 
+import { supabase } from './config.js';
+
 const dom = {
   // Navigation
   navTabs: document.querySelectorAll('.td-nav-tab'),
-  sections: document.querySelectorAll('.td-section'),
+  logoLink: document.querySelector('.td-logo'),
+  avatarBtn: document.querySelector('.td-avatar-btn'),
   
   // Property Grid
   propertyGrid: document.getElementById('propertyGrid'),
@@ -31,70 +34,120 @@ function init() {
 
 /* ========== Navigation ========== */
 function bindNavigation() {
+  const pageMap = {
+    discover: 'tenant_dashboard.html',
+    'property-detail': 'property_detail.html',
+    favorites: 'tenant_dashboard.html#favorites',
+    safety: 'safety.html',
+    'tenant-profile': 'tenant-profile.html',
+  };
+
   dom.navTabs.forEach((tab) => {
     tab.addEventListener('click', () => {
-      const section = tab.getAttribute('data-section');
-      switchSection(section);
+      const page = tab.getAttribute('data-page');
+      const route = pageMap[page || ''];
+      if (!route) {
+        return;
+      }
+      window.location.href = route;
     });
   });
-}
 
-function switchSection(sectionName) {
-  // Update nav tabs
-  dom.navTabs.forEach((tab) => {
-    tab.classList.remove('is-active');
-    if (tab.getAttribute('data-section') === sectionName) {
-      tab.classList.add('is-active');
-    }
-  });
-
-  // Update sections
-  dom.sections.forEach((section) => {
-    section.classList.remove('is-active');
-    if (section.getAttribute('data-section') === sectionName) {
-      section.classList.add('is-active');
-    }
-  });
-
-  // Close mobile menu if open
-  const mobileMenu = document.querySelector('.td-nav');
-  if (mobileMenu) {
-    mobileMenu.style.display = 'none';
+  if (dom.logoLink) {
+    dom.logoLink.addEventListener('click', (event) => {
+      event.preventDefault();
+      window.location.href = 'tenant_dashboard.html';
+    });
   }
 }
 
 /* ========== Property Grid ========== */
-function renderPropertyGrid() {
+async function renderPropertyGrid() {
   if (!dom.propertyGrid) return;
 
-  // Show empty state when no properties are available
   dom.propertyGrid.innerHTML = `
     <div class="td-empty-state" style="grid-column: 1 / -1;">
-      <span class="material-symbols-outlined">home</span>
-      <h3>No Listings Available</h3>
-      <p>Check back soon for new property listings in your area.</p>
+      <span class="material-symbols-outlined">progress_activity</span>
+      <h3>Loading Listings...</h3>
+      <p>Fetching approved properties for you.</p>
     </div>
   `;
+
+  const listings = await fetchApprovedListings();
+
+  if (!Array.isArray(listings) || listings.length === 0) {
+    dom.propertyGrid.innerHTML = `
+      <div class="td-empty-state" style="grid-column: 1 / -1;">
+        <span class="material-symbols-outlined">home</span>
+        <h3>No Listings Available</h3>
+        <p>Check back soon for newly approved listings.</p>
+      </div>
+    `;
+    return;
+  }
+
+  dom.propertyGrid.innerHTML = listings.map(createPropertyCard).join('');
+  bindHeartButtons();
+}
+
+async function fetchApprovedListings() {
+  try {
+    const { data, error } = await supabase
+      .from('listings')
+      .select('*')
+      .eq('moderation_status', 'approved')
+      .eq('is_visible', true)
+      .order('created_at', { ascending: false });
+
+    if (!error && Array.isArray(data)) {
+      return data;
+    }
+
+    // Backward-compatibility fallback for schemas still using status.
+    const legacy = await supabase
+      .from('listings')
+      .select('*')
+      .eq('status', 'approved')
+      .eq('is_visible', true)
+      .order('created_at', { ascending: false });
+
+    if (legacy.error || !Array.isArray(legacy.data)) {
+      console.error('Failed to fetch approved listings:', error || legacy.error);
+      return [];
+    }
+
+    return legacy.data;
+  } catch (fetchError) {
+    console.error('Unexpected listing fetch error:', fetchError);
+    return [];
+  }
 }
 
 function createPropertyCard(property) {
+  const title = property.title || 'Untitled Property';
+  const imageUrl = getListingImage(property);
+  const location = property.location || 'Location unavailable';
+  const listingId = property.id;
+  const monthlyPrice = formatKES(property.price);
+  const verified = isLandlordVerified(property);
+
   return `
     <div class="td-property-card">
       <div class="td-property-image">
-        ${property.image ? `<img src="${property.image}" alt="${property.title}" />` : '🏠'}
-        ${property.verified ? '<button class="td-verified-badge" aria-label="Verified"><span class="material-symbols-outlined">verified</span> Verified</button>' : ''}
-        <button class="td-heart-btn" data-property-id="${property.id}" aria-label="Add to favorites">
+        ${imageUrl ? `<img src="${escapeHtml(imageUrl)}" alt="${escapeHtml(title)}" />` : '<span class="material-symbols-outlined">home_work</span>'}
+        ${verified ? '<button class="td-verified-badge" aria-label="Verified"><span class="material-symbols-outlined">verified</span> Verified</button>' : ''}
+        <button class="td-heart-btn" data-property-id="${escapeHtml(String(listingId || ''))}" aria-label="Add to favorites">
           <span class="material-symbols-outlined">favorite</span>
         </button>
       </div>
       <div class="td-property-content">
-        <h3 class="td-property-title">${property.title}</h3>
-        <span class="td-property-price">${property.price} / month</span>
+        <h3 class="td-property-title">${escapeHtml(title)}</h3>
+        <span class="td-property-price">${monthlyPrice} / month</span>
         <div class="td-property-location">
           <span class="material-symbols-outlined">location_on</span>
-          ${property.location}
+          ${escapeHtml(location)}
         </div>
-        <button class="td-view-btn" onclick="viewPropertyDetails(${property.id})">View Details</button>
+        <a class="td-view-btn" href="property_detail.html?id=${encodeURIComponent(String(listingId || ''))}">View Details</a>
       </div>
     </div>
   `;
@@ -120,6 +173,12 @@ function bindActions() {
         localStorage.removeItem('auth_token');
         window.location.href = 'login.html';
       }
+    });
+  }
+
+  if (dom.avatarBtn) {
+    dom.avatarBtn.addEventListener('click', () => {
+      window.location.href = 'tenant-profile.html';
     });
   }
 
@@ -251,10 +310,12 @@ async function handleSearch() {
     }
   });
 
-  const supabaseClient = window.supabase || window.supabaseClient || null;
-
-  if (supabaseClient?.from) {
-    let query = supabaseClient.from('listings').select('*');
+  if (supabase?.from) {
+    let query = supabase
+      .from('listings')
+      .select('*')
+      .eq('moderation_status', 'approved')
+      .eq('is_visible', true);
 
     if (activeFilters.location) {
       query = query.ilike('location', `%${activeFilters.location}%`);
@@ -270,13 +331,41 @@ async function handleSearch() {
       if (max !== null) query = query.lte('price', max);
     }
 
-    const { data, error } = await query;
+    let { data, error } = await query;
+
+    if (error) {
+      // Backward-compatibility fallback for legacy status schema.
+      let legacyQuery = supabase
+        .from('listings')
+        .select('*')
+        .eq('status', 'approved')
+        .eq('is_visible', true);
+
+      if (activeFilters.location) {
+        legacyQuery = legacyQuery.ilike('location', `%${activeFilters.location}%`);
+      }
+
+      if (activeFilters.houseType) {
+        legacyQuery = legacyQuery.eq('house_type', activeFilters.houseType);
+      }
+
+      if (activeFilters.priceRange) {
+        const { min, max } = parsePriceRange(activeFilters.priceRange);
+        if (min !== null) legacyQuery = legacyQuery.gte('price', min);
+        if (max !== null) legacyQuery = legacyQuery.lte('price', max);
+      }
+
+      const legacy = await legacyQuery;
+      data = legacy.data;
+      error = legacy.error;
+    }
+
     if (error) {
       console.error('Search query failed:', error.message);
       return;
     }
 
-    sessionStorage.setItem('makazi_search_results', JSON.stringify(data || []));
+    sessionStorage.setItem('makazi_search_results', JSON.stringify(Array.isArray(data) ? data : []));
   }
 
   const queryString = params.toString();
@@ -287,6 +376,54 @@ async function handleSearch() {
 function viewPropertyDetails(propertyId) {
   // Navigate to property detail page with ID
   window.location.href = `property_detail.html?id=${propertyId}`;
+}
+
+function formatKES(value) {
+  const numericValue = Number(value);
+  if (!Number.isFinite(numericValue)) {
+    return 'KES 0';
+  }
+  return `KES ${new Intl.NumberFormat('en-KE').format(numericValue)}`;
+}
+
+function getListingImage(property) {
+  if (typeof property.image_url === 'string' && property.image_url.trim()) {
+    return property.image_url.trim();
+  }
+
+  if (typeof property.cover_image_url === 'string' && property.cover_image_url.trim()) {
+    return property.cover_image_url.trim();
+  }
+
+  const images = property.images || property.image_urls;
+  if (Array.isArray(images) && images.length) {
+    const first = images[0];
+    if (typeof first === 'string' && first.trim()) {
+      return first.trim();
+    }
+    if (first && typeof first === 'object') {
+      const fromObj = first.url || first.src || first.image_url;
+      if (typeof fromObj === 'string' && fromObj.trim()) {
+        return fromObj.trim();
+      }
+    }
+  }
+
+  return '';
+}
+
+function isLandlordVerified(property) {
+  const status = String(property.verification_status || property.landlord_verification_status || '').toLowerCase();
+  return status === 'verified';
+}
+
+function escapeHtml(value) {
+  return String(value || '')
+    .replaceAll('&', '&amp;')
+    .replaceAll('<', '&lt;')
+    .replaceAll('>', '&gt;')
+    .replaceAll('"', '&quot;')
+    .replaceAll("'", '&#39;');
 }
 
 // Initialize on DOM load
