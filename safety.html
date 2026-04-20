@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Safety Center – Makazi</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:FILL@0;1&display=block" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body class="td-page">
+  <!-- ====== GLASSMORPHIC HEADER ====== -->
+  <header class="td-header">
+      <div class="td-header-inner">
+        <!-- Logo -->
+        <a href="index.html" class="td-logo">
+          <span class="material-symbols-outlined logo-icon">home_work</span>
+          <span class="td-logo-text">Makazi</span>
+        </a>
+
+        <!-- Navigation Tabs -->
+        <nav class="td-nav" id="tenantNav">
+          <button class="td-nav-tab" data-page="discover">
+            <span class="material-symbols-outlined">explore</span>
+            <span class="td-nav-label">Discover</span>
+          </button>
+          <button class="td-nav-tab" data-page="property-detail">
+            <span class="material-symbols-outlined">calendar_today</span>
+            <span class="td-nav-label">My Visits</span>
+          </button>
+          <button class="td-nav-tab" data-page="favorites">
+            <span class="material-symbols-outlined">favorite</span>
+            <span class="td-nav-label">Favorites</span>
+          </button>
+          <button class="td-nav-tab" data-page="safety">
+            <span class="material-symbols-outlined">security</span>
+            <span class="td-nav-label">Safety</span>
+          </button>
+          <button class="td-nav-tab" data-page="tenant-profile">
+            <span class="material-symbols-outlined">person</span>
+            <span class="td-nav-label">Profile</span>
+          </button>
+        </nav>
+
+        <!-- User Actions -->
+        <div class="td-header-actions">
+          <button class="td-avatar-btn">
+            <span class="material-symbols-outlined">account_circle</span>
+          </button>
+          <button class="td-logout-btn" id="tdLogoutBtn">
+            <span class="material-symbols-outlined">logout</span>
+          </button>
+        </div>
+
+        <!-- Mobile Menu Toggle -->
+        <button class="td-mobile-toggle" id="tdMobileToggle">
+          <span class="material-symbols-outlined">menu</span>
+        </button>
+      </div>
+    </header>
+
+    <!-- ====== MAIN CONTENT ====== -->
+    <main class="td-main">
+      <!-- Safety Header Section -->
+      <section class="safety-header">
+        <div class="safety-header-content">
+          <h1 class="safety-title">Safety Center</h1>
+          <p class="safety-subtitle">Protect yourself by flagging suspicious listings and reviewing reported properties</p>
+          <button class="safety-report-btn" id="reportTriggerBtn">
+            <span class="material-symbols-outlined">flag</span>
+            Report a Suspicious Listing
+          </button>
+        </div>
+      </section>
+
+      <!-- My Flagged Listings Section -->
+      <section class="safety-reports-section">
+        <h2 class="safety-section-title">My Flagged Listings</h2>
+        <div class="safety-reports-container" id="reportsContainer">
+          <!-- Reports cards will be loaded here -->
+          <div class="safety-empty-state" id="emptyState">
+            <span class="material-symbols-outlined">shield</span>
+            <h3>No Reports Yet</h3>
+            <p>You haven't flagged any suspicious listings yet. If you encounter anything unusual, report it to help keep our community safe.</p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- ====== REPORT MODAL ====== -->
+    <div class="safety-modal-overlay" id="reportModal">
+      <div class="safety-modal-content">
+        <div class="safety-modal-header">
+          <h2>Report a Suspicious Listing</h2>
+          <button class="safety-modal-close" id="closeModalBtn">
+            <span class="material-symbols-outlined">close</span>
+          </button>
+        </div>
+
+        <form class="safety-report-form" id="reportForm">
+          <!-- Property Selection -->
+          <div class="safety-form-group">
+            <label for="propertySelect">Which property are you reporting?</label>
+            <div class="safety-select-wrapper">
+              <select id="propertySelect" name="propertySelect" required>
+                <option value="">Select a property...</option>
+              </select>
+              <span class="material-symbols-outlined select-icon">expand_more</span>
+            </div>
+          </div>
+
+          <!-- Report Reason -->
+          <div class="safety-form-group">
+            <label for="reportReason">Reason for report</label>
+            <div class="safety-select-wrapper">
+              <select id="reportReason" name="reportReason" required>
+                <option value="">Select a reason...</option>
+                <option value="wrong_location">Wrong Location</option>
+                <option value="fraudulent_landlord">Fraudulent Landlord</option>
+                <option value="incorrect_pricing">Incorrect Pricing</option>
+                <option value="identity_fraud">Potential Identity Fraud</option>
+                <option value="unsafe_area">Unsafe Area</option>
+                <option value="misleading_photos">Misleading Photos</option>
+                <option value="scam">Suspected Scam</option>
+                <option value="other">Other</option>
+              </select>
+              <span class="material-symbols-outlined select-icon">expand_more</span>
+            </div>
+          </div>
+
+          <!-- Description -->
+          <div class="safety-form-group">
+            <label for="reportDescription">Additional details (optional)</label>
+            <textarea 
+              id="reportDescription" 
+              name="reportDescription" 
+              placeholder="Describe what made you suspicious about this listing..."
+              rows="4"
+            ></textarea>
+          </div>
+
+          <!-- Action Buttons -->
+          <div class="safety-form-actions">
+            <button type="button" class="safety-btn-cancel" id="cancelBtn">Cancel</button>
+            <button type="submit" class="safety-btn-submit">Submit Report</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+  <script src="js/safety.js"></script>
+</body>
+</html>
