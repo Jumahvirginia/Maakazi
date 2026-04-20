@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Makazi - Super Admin Dashboard</title>
+	<link rel="icon" href="data:," />
+	<link rel="preconnect" href="https://fonts.googleapis.com" />
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+	<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+	<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+	<link rel="stylesheet" href="css/styles.css" />
+</head>
+<body class="admin-dashboard-page">
+	<div class="ad-layout">
+		<aside class="ad-sidebar" id="ad-sidebar" aria-label="Super admin sidebar">
+			<div class="ad-sidebar-top">
+				<a href="index.html" class="logo ad-sidebar-logo" aria-label="Makazi Home">
+					<span class="material-symbols-outlined logo-icon" aria-hidden="true">home_work</span>
+					<span class="ad-brand-copy">
+						<span class="logo-text ad-logo-text">Makazi</span>
+						<span class="ad-logo-meta">Admin Portal</span>
+					</span>
+				</a>
+				<button class="ad-sidebar-toggle" id="ad-sidebar-toggle" type="button" aria-label="Collapse sidebar" aria-expanded="true">
+					<span class="material-symbols-outlined" id="ad-sidebar-toggle-icon" aria-hidden="true">chevron_left</span>
+				</button>
+			</div>
+
+			<nav class="ad-nav" aria-label="Admin navigation">
+				<a href="admin_dashboard.html" class="ad-nav-link is-active">
+					<span class="material-symbols-outlined" aria-hidden="true">dashboard</span>
+					<span class="ad-link-text">Dashboard</span>
+				</a>
+				<a href="admin_listings.html" class="ad-nav-link">
+					<span class="material-symbols-outlined" aria-hidden="true">home_work</span>
+					<span class="ad-link-text">Listing Queue</span>
+				</a>
+				<a href="admin_dashboard.html#ad-verifications-card" class="ad-nav-link">
+					<span class="material-symbols-outlined" aria-hidden="true">verified_user</span>
+					<span class="ad-link-text">Verifications</span>
+				</a>
+				<a href="admin_dashboard.html#ad-fraud-card" class="ad-nav-link">
+					<span class="material-symbols-outlined" aria-hidden="true">gpp_bad</span>
+					<span class="ad-link-text">Fraud Reports</span>
+				</a>
+			</nav>
+
+			<div class="ad-sidebar-footer">
+				<button type="button" class="ad-sidebar-logout" id="ad-sidebar-logout-btn">
+					<span class="material-symbols-outlined" aria-hidden="true">logout</span>
+					<span class="ad-link-text">Logout</span>
+				</button>
+			</div>
+		</aside>
+
+		<main class="ad-main">
+			<header class="ad-topbar">
+				<div class="ad-welcome-wrap">
+					<h1 class="ld-title" id="admin-welcome-text">Welcome, <span id="admin-name-display">...</span></h1>
+					<p>High-level analytics and system status for the Makazi platform.</p>
+				</div>
+				<div class="ad-topbar-actions">
+					<button class="ad-mobile-toggle" id="ad-mobile-toggle" type="button" aria-label="Toggle menu" aria-expanded="false">
+						<span class="material-symbols-outlined" aria-hidden="true">menu</span>
+					</button>
+					<button type="button" class="ad-logout-btn" id="ad-logout-btn">
+						<span class="material-symbols-outlined" aria-hidden="true">logout</span>
+						Logout
+					</button>
+				</div>
+			</header>
+
+			<section class="ad-stats-grid" aria-label="Stats bar">
+				<article class="ad-card ad-stat ad-stat-users">
+					<div class="ad-stat-head">
+						<p>Total Users</p>
+						<span class="material-symbols-outlined" aria-hidden="true">group</span>
+					</div>
+					<strong id="ad-total-users">0</strong>
+				</article>
+				<article class="ad-card ad-stat ad-stat-listings">
+					<div class="ad-stat-head">
+						<p>Active Listings</p>
+						<span class="material-symbols-outlined" aria-hidden="true">domain</span>
+					</div>
+					<strong id="ad-active-listings">0</strong>
+				</article>
+				<article class="ad-card ad-stat ad-stat-verifications" id="ad-verifications-card">
+					<div class="ad-stat-head">
+						<p>Pending Verifications</p>
+						<span class="material-symbols-outlined" aria-hidden="true">verified_user</span>
+					</div>
+					<strong id="ad-pending-verifications">0</strong>
+				</article>
+				<article class="ad-card ad-stat ad-stat-fraud" id="ad-fraud-card">
+					<div class="ad-stat-head">
+						<p>Reported Fraud</p>
+						<span class="material-symbols-outlined" aria-hidden="true">report</span>
+					</div>
+					<strong id="ad-reported-fraud">0</strong>
+				</article>
+			</section>
+
+			<section class="ad-grid-2">
+				<article class="ad-card">
+					<div class="ad-card-head">
+						<h2>User Growth</h2>
+					</div>
+					<div class="ad-chart-wrap">
+						<canvas id="ad-user-growth-chart" aria-label="Landlords vs Tenants last 4 weeks"></canvas>
+					</div>
+				</article>
+
+				<article class="ad-card">
+					<div class="ad-card-head">
+						<h2>Market Activity</h2>
+					</div>
+					<div class="ad-chart-wrap">
+						<canvas id="ad-market-activity-chart" aria-label="Viewings scheduled vs New Listings"></canvas>
+					</div>
+				</article>
+			</section>
+
+			<section class="ad-card ad-activity-card">
+				<div class="ad-card-head">
+					<h2>Recent Activity</h2>
+				</div>
+				<ul class="ad-activity-list" id="ad-activity-log">
+					<li class="ad-empty">Loading recent activity...</li>
+				</ul>
+			</section>
+		</main>
+	</div>
+
+	<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+	<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.6/dist/chart.umd.min.js"></script>
+	<script type="module" src="js/admin-dashboard.js"></script>
+</body>
+</html>
