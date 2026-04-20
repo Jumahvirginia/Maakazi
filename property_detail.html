@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Makazi | Property Detail</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com" />
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+	<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+	<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+	<link rel="stylesheet" href="css/styles.css" />
+</head>
+<body class="pd-page">
+	<header class="td-header">
+		<div class="td-header-inner">
+			<a href="index.html" class="td-logo">
+				<span class="material-symbols-outlined logo-icon">home_work</span>
+				<span class="td-logo-text">Makazi</span>
+			</a>
+
+			<nav class="td-nav" id="tenantNav">
+			<button class="td-nav-tab" type="button" data-page="discover">
+				<span class="material-symbols-outlined">explore</span>
+				<span class="td-nav-label">Discover</span>
+			</button>
+			<button class="td-nav-tab" type="button" data-page="property-detail">
+				<span class="material-symbols-outlined">calendar_today</span>
+				<span class="td-nav-label">My Visits</span>
+			</button>
+			<button class="td-nav-tab" type="button" data-page="favorites">
+				<span class="material-symbols-outlined">favorite</span>
+				<span class="td-nav-label">Favorites</span>
+			</button>
+			<button class="td-nav-tab" type="button" data-page="safety">
+				<span class="material-symbols-outlined">security</span>
+				<span class="td-nav-label">Safety</span>
+			</button>
+			<button class="td-nav-tab" type="button" data-page="tenant-profile">
+				<span class="material-symbols-outlined">person</span>
+				<span class="td-nav-label">Profile</span>
+			</button>
+			</nav>
+
+			<div class="td-header-actions">
+				<button class="td-avatar-btn" type="button" aria-label="User profile">
+					<span class="material-symbols-outlined">account_circle</span>
+				</button>
+				<button class="td-logout-btn" id="tdLogoutBtn" type="button" aria-label="Logout">
+					<span class="material-symbols-outlined">logout</span>
+				</button>
+			</div>
+
+			<button class="td-mobile-toggle" id="tdMobileToggle" type="button" aria-label="Toggle menu" aria-expanded="false">
+				<span class="material-symbols-outlined">menu</span>
+			</button>
+		</div>
+	</header>
+
+	<main class="pd-main">
+		<section class="pd-gallery" aria-label="Property gallery">
+			<div class="pd-gallery-mosaic">
+				<figure class="pd-gallery-main">
+					<img id="pdImageMain" alt="Property main image" loading="lazy" />
+					<figcaption class="pd-image-fallback" id="pdImageMainFallback">
+						<span class="material-symbols-outlined">image</span>
+						<p>No image</p>
+					</figcaption>
+				</figure>
+				<div class="pd-gallery-stack">
+					<figure class="pd-gallery-thumb">
+						<img id="pdImageTwo" alt="Property image two" loading="lazy" />
+						<figcaption class="pd-image-fallback" id="pdImageTwoFallback">
+							<span class="material-symbols-outlined">image</span>
+						</figcaption>
+					</figure>
+					<figure class="pd-gallery-thumb">
+						<img id="pdImageThree" alt="Property image three" loading="lazy" />
+						<figcaption class="pd-image-fallback" id="pdImageThreeFallback">
+							<span class="material-symbols-outlined">image</span>
+						</figcaption>
+					</figure>
+					<figure class="pd-gallery-thumb">
+						<img id="pdImageFour" alt="Property image four" loading="lazy" />
+						<figcaption class="pd-image-fallback" id="pdImageFourFallback">
+							<span class="material-symbols-outlined">image</span>
+						</figcaption>
+					</figure>
+				</div>
+			</div>
+		</section>
+
+		<div class="pd-layout">
+			<section class="pd-content" aria-label="Property details">
+				<section class="pd-unified-card" aria-label="Property information">
+					<header class="pd-primary-info">
+						<h1 id="pdTitle"></h1>
+						<p class="pd-price" id="pdPrice"></p>
+						<p class="pd-location-line">
+							<span class="material-symbols-outlined" aria-hidden="true">location_on</span>
+							<span id="pdLocation"></span>
+						</p>
+					</header>
+
+					<section class="pd-specs" aria-label="Quick specifications">
+						<article class="pd-spec-item">
+							<span class="material-symbols-outlined" aria-hidden="true">bed</span>
+							<div>
+								<p class="pd-spec-label">Bedrooms</p>
+								<p class="pd-spec-value" id="pdBedrooms"></p>
+							</div>
+						</article>
+						<article class="pd-spec-item">
+							<span class="material-symbols-outlined" aria-hidden="true">bathtub</span>
+							<div>
+								<p class="pd-spec-label">Bathrooms</p>
+								<p class="pd-spec-value" id="pdBathrooms"></p>
+							</div>
+						</article>
+						<article class="pd-spec-item">
+							<span class="material-symbols-outlined" aria-hidden="true">apartment</span>
+							<div>
+								<p class="pd-spec-label">Property Type</p>
+								<p class="pd-spec-value" id="pdPropertyType"></p>
+							</div>
+						</article>
+					</section>
+
+					<section class="pd-section">
+						<h2>About This Home</h2>
+						<p id="pdDescription"></p>
+					</section>
+
+					<section class="pd-section">
+						<h2>What This Place Offers</h2>
+						<div class="pd-amenities-grid" id="pdAmenitiesGrid" aria-live="polite"></div>
+					</section>
+
+					<section class="pd-landlord-inline" aria-label="Landlord information">
+						<div class="pd-landlord-avatar" aria-hidden="true">
+							<span class="material-symbols-outlined">person</span>
+						</div>
+						<div class="pd-landlord-meta">
+							<p class="pd-landlord-label">Landlord</p>
+							<p id="pdLandlordName"></p>
+						</div>
+						<span class="pd-verified-badge" id="pdLandlordVerified" hidden>
+							<span class="material-symbols-outlined">verified</span>
+							Verified
+						</span>
+					</section>
+				</section>
+			</section>
+
+			<aside class="pd-sidebar" aria-label="Viewing request">
+				<div class="pd-booking-card">
+					<h2>Book a 45min Viewing</h2>
+					<p>Property viewings are completely free,report if charged.</p>
+
+					<div class="pd-slot-grid" id="pdSlotGrid" role="group" aria-label="Available viewing slots"></div>
+
+					<button type="button" class="pd-request-btn" id="pdRequestViewingBtn">
+						Request Viewing
+					</button>
+				</div>
+
+				<button type="button" class="pd-report-btn" id="pdReportListingBtn">
+					<span class="material-symbols-outlined" aria-hidden="true">flag</span>
+					Report Listing
+				</button>
+
+				<div class="pd-mobile-price-bar" id="pdMobilePriceBar" aria-label="Mobile sticky booking bar">
+					<p class="pd-mobile-price" id="pdMobilePrice"></p>
+					<button type="button" class="pd-request-btn">Request Viewing</button>
+				</div>
+			</aside>
+		</div>
+	</main>
+
+	<script type="module" src="js/property-detail.js"></script>
+	</body>
+	</html>

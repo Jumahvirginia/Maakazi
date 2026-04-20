@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Search Results – Makazi</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:FILL@0;1&display=block" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <div class="td-page">
+    <!-- ====== GLASSMORPHIC HEADER ====== -->
+    <header class="td-header">
+      <div class="td-header-inner">
+        <!-- Logo -->
+        <a href="index.html" class="td-logo">
+          <span class="material-symbols-outlined logo-icon">home_work</span>
+          <span class="td-logo-text">Makazi</span>
+        </a>
+
+        <!-- Navigation Tabs -->
+        <nav class="td-nav" id="tenantNav">
+          <button class="td-nav-tab" data-page="discover">
+            <span class="material-symbols-outlined">explore</span>
+            <span class="td-nav-label">Discover</span>
+          </button>
+          <button class="td-nav-tab" data-page="property-detail">
+            <span class="material-symbols-outlined">calendar_today</span>
+            <span class="td-nav-label">My Visits</span>
+          </button>
+          <button class="td-nav-tab" data-page="favorites">
+            <span class="material-symbols-outlined">favorite</span>
+            <span class="td-nav-label">Favorites</span>
+          </button>
+          <button class="td-nav-tab" data-page="safety">
+            <span class="material-symbols-outlined">security</span>
+            <span class="td-nav-label">Safety</span>
+          </button>
+          <button class="td-nav-tab" data-page="tenant-profile">
+            <span class="material-symbols-outlined">person</span>
+            <span class="td-nav-label">Profile</span>
+          </button>
+        </nav>
+
+        <!-- User Actions -->
+        <div class="td-header-actions">
+          <button class="td-avatar-btn" aria-label="User profile">
+            <span class="material-symbols-outlined">account_circle</span>
+          </button>
+          <button class="td-logout-btn" id="tdLogoutBtn" aria-label="Logout">
+            <span class="material-symbols-outlined">logout</span>
+          </button>
+        </div>
+
+        <!-- Mobile Menu Toggle -->
+        <button class="td-mobile-toggle" id="tdMobileToggle" aria-label="Toggle menu">
+          <span class="material-symbols-outlined">menu</span>
+        </button>
+      </div>
+    </header>
+
+    <!-- ====== MAIN CONTENT ====== -->
+    <main class="td-main">
+      <!-- SEARCH RESULTS SECTION -->
+      <section class="td-section is-active" data-section="search-results">
+        <div class="td-container">
+          <!-- Search Results Header -->
+          <div class="td-search-hero">
+            <h1 class="td-hero-title">Search Results</h1>
+            <p class="td-hero-subtitle">Browse properties matching your criteria</p>
+
+            <!-- Filters Bar -->
+            <div class="td-search-wrap" id="tdSearchWrap">
+              <div class="td-filter-segment-wrap" data-filter="location">
+                <button class="td-filter-segment" type="button" data-filter-trigger="location" aria-expanded="false" aria-controls="tdLocationDropdown">
+                  <span class="material-symbols-outlined">location_on</span>
+                  <span class="td-filter-label" data-filter-label="location">Nairobi, Kenya</span>
+                  <span class="material-symbols-outlined td-chevron">expand_more</span>
+                </button>
+                <div class="td-filter-dropdown" id="tdLocationDropdown" role="listbox" aria-label="Location options">
+                  <button type="button" data-filter-option="location" data-value="Nairobi, Kenya">Nairobi, Kenya</button>
+                  <button type="button" data-filter-option="location" data-value="Westlands">Westlands</button>
+                  <button type="button" data-filter-option="location" data-value="Kilimani">Kilimani</button>
+                  <button type="button" data-filter-option="location" data-value="Karen">Karen</button>
+                  <button type="button" data-filter-option="location" data-value="Runda">Runda</button>
+                </div>
+              </div>
+
+              <span class="td-search-separator" aria-hidden="true"></span>
+
+              <div class="td-filter-segment-wrap" data-filter="priceRange">
+                <button class="td-filter-segment" type="button" data-filter-trigger="priceRange" aria-expanded="false" aria-controls="tdPriceDropdown">
+                  <span class="material-symbols-outlined">payments</span>
+                  <span class="td-filter-label" data-filter-label="priceRange">Price Range</span>
+                  <span class="material-symbols-outlined td-chevron">expand_more</span>
+                </button>
+                <div class="td-filter-dropdown" id="tdPriceDropdown" role="listbox" aria-label="Price range options">
+                  <button type="button" data-filter-option="priceRange" data-value="0-25000">Up to KSh 25,000</button>
+                  <button type="button" data-filter-option="priceRange" data-value="25001-50000">KSh 25,001 - 50,000</button>
+                  <button type="button" data-filter-option="priceRange" data-value="50001-100000">KSh 50,001 - 100,000</button>
+                  <button type="button" data-filter-option="priceRange" data-value="100001-250000">KSh 100,001 - 250,000</button>
+                  <button type="button" data-filter-option="priceRange" data-value="250001-">KSh 250,001+</button>
+                </div>
+              </div>
+
+              <span class="td-search-separator" aria-hidden="true"></span>
+
+              <div class="td-filter-segment-wrap" data-filter="houseType">
+                <button class="td-filter-segment" type="button" data-filter-trigger="houseType" aria-expanded="false" aria-controls="tdTypeDropdown">
+                  <span class="material-symbols-outlined">home_work</span>
+                  <span class="td-filter-label" data-filter-label="houseType">House Type</span>
+                  <span class="material-symbols-outlined td-chevron">expand_more</span>
+                </button>
+                <div class="td-filter-dropdown" id="tdTypeDropdown" role="listbox" aria-label="House type options">
+                  <button type="button" data-filter-option="houseType" data-value="Bedsitter">Bedsitter</button>
+                  <button type="button" data-filter-option="houseType" data-value="Studio">Studio</button>
+                  <button type="button" data-filter-option="houseType" data-value="1 Bedroom">1 Bedroom</button>
+                  <button type="button" data-filter-option="houseType" data-value="2 Bedroom">2 Bedroom</button>
+                  <button type="button" data-filter-option="houseType" data-value="Maisonette">Maisonette</button>
+                </div>
+              </div>
+
+              <button class="td-search-btn" id="tdSearchBtn" type="button" aria-label="Search listings">
+                <span class="material-symbols-outlined">search</span>
+                <span>Search</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Property Grid -->
+          <div class="td-property-grid" id="propertyGrid">
+            <!-- Property cards will be loaded here -->
+            <div class="td-empty-state" style="grid-column: 1 / -1;">
+              <span class="material-symbols-outlined">search</span>
+              <h3>No Results Found</h3>
+              <p>Try adjusting your search filters</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- Scripts -->
+  <script>
+    /* ======= NAVBAR ACTIVE STATE BASED ON CURRENT PAGE ======= */
+    function initializeNavbarActiveState() {
+      const currentPage = window.location.pathname.split('/').pop().replace('.html', '');
+      const pageMap = {
+        'discover': ['tenant-dashboard', 'index'],
+        'property-detail': ['property-detail'],
+        'favorites': ['favorites'],
+        'safety': ['safety'],
+        'profile': ['profile'],
+      };
+
+      let activePage = null;
+      for (const [page, pages] of Object.entries(pageMap)) {
+        if (pages.includes(currentPage)) {
+          activePage = page;
+          break;
+        }
+      }
+
+      if (!activePage) {
+        activePage = 'discover';
+      }
+
+      const allTabs = document.querySelectorAll('.td-nav-tab');
+      allTabs.forEach(tab => tab.classList.remove('is-active'));
+
+      const activeTab = document.querySelector(`.td-nav-tab[data-page="${activePage}"]`);
+      if (activeTab) {
+        activeTab.classList.add('is-active');
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', initializeNavbarActiveState);
+
+    /* ======= LOGOUT BUTTON HANDLER ======= */
+    document.addEventListener('DOMContentLoaded', function() {
+      const logoutBtn = document.getElementById('tdLogoutBtn');
+      if (logoutBtn) {
+        logoutBtn.addEventListener('click', function() {
+          localStorage.removeItem('userToken');
+          sessionStorage.clear();
+          window.location.href = 'login.html';
+        });
+      }
+    });
+
+    /* ======= MOBILE MENU TOGGLE ======= */
+    document.addEventListener('DOMContentLoaded', function() {
+      const mobileToggle = document.getElementById('tdMobileToggle');
+      const navMenu = document.getElementById('tenantNav');
+      
+      if (mobileToggle && navMenu) {
+        mobileToggle.addEventListener('click', function() {
+          if (navMenu.style.display === 'flex') {
+            navMenu.style.display = 'none';
+          } else {
+            navMenu.style.display = 'flex';
+          }
+        });
+
+        document.querySelectorAll('.td-nav-tab').forEach(tab => {
+          tab.addEventListener('click', function() {
+            navMenu.style.display = 'none';
+            const page = this.getAttribute('data-page');
+            if (page === 'discover') {
+              window.location.href = 'tenant_dashboard.html';
+            } else {
+              window.location.href = `${page}.html`;
+            }
+          });
+        });
+      }
+    });
+  </script>
+</body>
+</html>
