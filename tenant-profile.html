@@ -1,0 +1,852 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Profile & Preferences – Makazi</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:FILL@0;1&display=block" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <style>
+    /* ======= TENANT PROFILE PAGE STYLES (HIGH DENSITY) ======= */
+    
+    .tp-page {
+      background: var(--clr-cream);
+      min-height: 100vh;
+    }
+
+    .tp-main {
+      padding: 1rem var(--space-lg);
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    /* Page Header */
+    .tp-page-header {
+      margin-bottom: 1rem;
+    }
+
+    .tp-page-title {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--clr-slate-900);
+      margin-bottom: 0.25rem;
+      letter-spacing: -0.02em;
+    }
+
+    .tp-page-subtitle {
+      font-size: 0.85rem;
+      color: var(--clr-slate-500);
+      font-weight: 500;
+    }
+
+    /* Two-Column Grid */
+    .tp-content-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+      margin-bottom: 1rem;
+    }
+
+    @media (min-width: 1024px) {
+      .tp-content-grid {
+        grid-template-columns: 38% 62%;
+      }
+    }
+
+    /* Card Styling */
+    .tp-card {
+      background: var(--clr-white);
+      border-radius: 1.25rem;
+      padding: 1.25rem;
+      box-shadow: 0 4px 20px rgba(15, 23, 42, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.5);
+    }
+
+    .tp-card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 0.75rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid var(--clr-slate-100);
+    }
+
+    .tp-card-title {
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: var(--clr-slate-900);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .tp-card-title .material-symbols-outlined {
+      font-size: 1.2rem;
+      color: var(--clr-primary);
+    }
+
+    .tp-edit-icon {
+      width: 1.75rem;
+      height: 1.75rem;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(4, 139, 123, 0.1);
+      color: var(--clr-primary);
+      cursor: pointer;
+      font-size: 0.95rem;
+      transition: background 0.2s var(--ease);
+    }
+
+    .tp-edit-icon:hover {
+      background: rgba(4, 139, 123, 0.2);
+    }
+
+    /* Form Groups */
+    .tp-form-group {
+      margin-bottom: 0.85rem;
+    }
+
+    .tp-form-group:last-child {
+      margin-bottom: 0;
+    }
+
+    .tp-form-label {
+      display: block;
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: var(--clr-slate-500);
+      margin-bottom: 0.35rem;
+      letter-spacing: 0.05em;
+    }
+
+    .tp-form-input,
+    .tp-form-select {
+      width: 100%;
+      padding: 0.65rem 0.85rem;
+      border: 1.5px solid var(--clr-slate-200);
+      border-radius: 0.65rem;
+      font-size: 0.95rem;
+      font-family: var(--ff-body);
+      color: var(--clr-slate-900);
+      transition: border-color 0.2s var(--ease), box-shadow 0.2s var(--ease);
+      background: var(--clr-white);
+    }
+
+    .tp-form-input:focus,
+    .tp-form-select:focus {
+      outline: none;
+      border-color: var(--clr-primary);
+      box-shadow: 0 0 0 3px rgba(4, 139, 123, 0.1);
+    }
+
+    .tp-form-input::placeholder {
+      color: var(--clr-slate-400);
+    }
+
+    /* Button Styling */
+    .tp-update-btn {
+      width: 100%;
+      padding: 0.8rem 1.25rem;
+      background: linear-gradient(135deg, var(--clr-primary) 0%, var(--clr-primary-dark) 100%);
+      color: var(--clr-white);
+      border: none;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      cursor: pointer;
+      transition: transform 0.2s var(--ease), filter 0.2s var(--ease);
+      box-shadow: 0 8px 20px rgba(4, 139, 123, 0.2);
+      margin-top: 0.85rem;
+    }
+
+    .tp-update-btn:hover {
+      transform: translateY(-2px);
+      filter: brightness(1.08);
+    }
+
+    .tp-update-btn:active {
+      transform: translateY(0);
+    }
+
+    /* Preferences Grid */
+    .tp-preferences-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0.85rem;
+    }
+
+    @media (min-width: 768px) {
+      .tp-preferences-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    /* Budget Slider */
+    .tp-budget-section {
+      grid-column: 1 / -1;
+    }
+
+    .tp-budget-display {
+      font-size: 1.2rem;
+      font-weight: 800;
+      color: var(--clr-primary);
+      margin-bottom: 0.5rem;
+      text-align: center;
+    }
+
+    .tp-budget-container {
+      position: relative;
+      margin: 0.5rem 0;
+    }
+
+    .tp-budget-range {
+      width: 100%;
+      height: 5px;
+      border-radius: 2px;
+      background: var(--clr-slate-200);
+      outline: none;
+      -webkit-appearance: none;
+    }
+
+    .tp-budget-range::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: var(--clr-primary);
+      cursor: pointer;
+      box-shadow: 0 2px 8px rgba(4, 139, 123, 0.3);
+      transition: transform 0.2s var(--ease);
+    }
+
+    .tp-budget-range::-webkit-slider-thumb:hover {
+      transform: scale(1.1);
+    }
+
+    .tp-budget-range::-moz-range-thumb {
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: var(--clr-primary);
+      cursor: pointer;
+      border: none;
+      box-shadow: 0 2px 8px rgba(4, 139, 123, 0.3);
+      transition: transform 0.2s var(--ease);
+    }
+
+    .tp-budget-range::-moz-range-thumb:hover {
+      transform: scale(1.1);
+    }
+
+    .tp-budget-labels {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.75rem;
+      color: var(--clr-slate-500);
+      font-weight: 600;
+      margin-top: 0.3rem;
+    }
+
+    /* Amenity Chips Grid */
+    .tp-amenities-section {
+      grid-column: 1 / -1;
+    }
+
+    .tp-chips-group {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      gap: 0.6rem;
+      margin-top: 0.6rem;
+    }
+
+    .tp-chip {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.35rem;
+      padding: 0.6rem 0.9rem;
+      border: 1.5px solid var(--clr-slate-200);
+      border-radius: 999px;
+      background: var(--clr-white);
+      color: var(--clr-slate-700);
+      font-size: 0.8rem;
+      font-weight: 600;
+      cursor: pointer;
+      text-align: center;
+      transition: all 0.2s var(--ease);
+      flex-wrap: wrap;
+    }
+
+    .tp-chip:hover {
+      border-color: var(--clr-primary);
+      color: var(--clr-primary);
+    }
+
+    .tp-chip.is-active {
+      background: rgba(4, 139, 123, 0.15);
+      border-color: var(--clr-primary);
+      color: var(--clr-primary);
+    }
+
+    .tp-chip .material-symbols-outlined {
+      font-size: 1rem;
+    }
+
+    .tp-chip-label {
+      display: inline;
+    }
+
+    .tp-chip-check {
+      display: none;
+      font-size: 0.9rem;
+      font-weight: 800;
+    }
+
+    .tp-chip.is-active .tp-chip-check {
+      display: inline;
+    }
+
+    /* Dropdown with Icon */
+    .tp-dropdown-wrapper {
+      position: relative;
+    }
+
+    .tp-dropdown-wrapper .material-symbols-outlined {
+      position: absolute;
+      left: 0.85rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--clr-primary);
+      pointer-events: none;
+      font-size: 1rem;
+    }
+
+    .tp-form-select-icon {
+      padding-left: 2.5rem;
+    }
+
+    /* Mobile Responsive */
+    @media (max-width: 768px) {
+      .tp-main {
+        padding: 0.75rem var(--space-md);
+      }
+
+      .tp-card {
+        padding: 1rem;
+      }
+
+      .tp-page-title {
+        font-size: 1.35rem;
+      }
+
+      .tp-preferences-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .tp-chips-group {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    /* Success Message */
+    .tp-success-message {
+      display: none;
+      position: fixed;
+      top: 100px;
+      right: var(--space-lg);
+      background: var(--clr-primary);
+      color: var(--clr-white);
+      padding: 0.75rem 1.25rem;
+      border-radius: 0.65rem;
+      box-shadow: 0 8px 24px rgba(4, 139, 123, 0.3);
+      z-index: 999;
+      animation: slide-in 0.3s var(--ease);
+      font-size: 0.9rem;
+    }
+
+    .tp-success-message.show {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    @keyframes slide-in {
+      from {
+        opacity: 0;
+        transform: translateX(100px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    /* Loading State */
+    .tp-loading {
+      opacity: 0.6;
+      pointer-events: none;
+    }
+  </style>
+</head>
+<body class="tp-page">
+  <!-- ====== GLASSMORPHIC HEADER ====== -->
+  <header class="td-header">
+    <div class="td-header-inner">
+      <!-- Logo -->
+      <a href="index.html" class="td-logo">
+        <span class="material-symbols-outlined logo-icon">home_work</span>
+        <span class="td-logo-text">Makazi</span>
+      </a>
+
+      <!-- Navigation Tabs -->
+      <nav class="td-nav" id="tenantNav">
+        <button class="td-nav-tab" data-page="discover">
+          <span class="material-symbols-outlined">explore</span>
+          <span class="td-nav-label">Discover</span>
+        </button>
+        <button class="td-nav-tab" data-page="property-detail">
+          <span class="material-symbols-outlined">calendar_today</span>
+          <span class="td-nav-label">My Visits</span>
+        </button>
+        <button class="td-nav-tab" data-page="favorites">
+          <span class="material-symbols-outlined">favorite</span>
+          <span class="td-nav-label">Favorites</span>
+        </button>
+        <button class="td-nav-tab" data-page="safety">
+          <span class="material-symbols-outlined">security</span>
+          <span class="td-nav-label">Safety</span>
+        </button>
+        <button class="td-nav-tab" data-page="tenant-profile">
+          <span class="material-symbols-outlined">person</span>
+          <span class="td-nav-label">Profile</span>
+        </button>
+      </nav>
+
+      <!-- User Actions -->
+      <div class="td-header-actions">
+        <button class="td-avatar-btn" aria-label="User profile">
+          <span class="material-symbols-outlined">account_circle</span>
+        </button>
+        <button class="td-logout-btn" id="tdLogoutBtn" aria-label="Logout">
+          <span class="material-symbols-outlined">logout</span>
+        </button>
+      </div>
+
+      <!-- Mobile Menu Toggle -->
+      <button class="td-mobile-toggle" id="tdMobileToggle" aria-label="Toggle menu">
+        <span class="material-symbols-outlined">menu</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ====== MAIN CONTENT ====== -->
+  <main class="tp-main">
+    <!-- Page Header -->
+    <div class="tp-page-header">
+      <h1 class="tp-page-title">Profile & Preferences</h1>
+      <p class="tp-page-subtitle">Manage your account and search filters.</p>
+    </div>
+
+    <!-- Content Grid -->
+    <div class="tp-content-grid">
+      <!-- Left Column: Personal Info -->
+      <div class="tp-card">
+        <div class="tp-card-header">
+          <h2 class="tp-card-title">
+            <span class="material-symbols-outlined">person</span>
+            Personal Info
+          </h2>
+          <div class="tp-edit-icon" id="editPersonalBtn">
+            <span class="material-symbols-outlined">edit</span>
+          </div>
+        </div>
+
+        <form id="personalInfoForm">
+          <!-- Full Name -->
+          <div class="tp-form-group">
+            <label class="tp-form-label" for="fullName">Full Name</label>
+            <input
+              type="text"
+              id="fullName"
+              class="tp-form-input"
+              placeholder="Enter your full name"
+              required
+            />
+          </div>
+
+          <!-- Email Address -->
+          <div class="tp-form-group">
+            <label class="tp-form-label" for="emailAddress">Email Address</label>
+            <input
+              type="email"
+              id="emailAddress"
+              class="tp-form-input"
+              placeholder="Enter your email"
+              required
+            />
+          </div>
+
+          <!-- Phone Number -->
+          <div class="tp-form-group">
+            <label class="tp-form-label" for="phoneNumber">Phone Number</label>
+            <input
+              type="tel"
+              id="phoneNumber"
+              class="tp-form-input"
+              placeholder="Enter your phone number"
+            />
+          </div>
+
+          <!-- Update Button -->
+          <button type="submit" class="tp-update-btn">Update Account</button>
+        </form>
+      </div>
+
+      <!-- Right Column: My Preferences -->
+      <div class="tp-card">
+        <div class="tp-card-header">
+          <h2 class="tp-card-title">
+            <span class="material-symbols-outlined">tune</span>
+            My Preferences
+          </h2>
+          <div class="tp-edit-icon" id="editPreferencesBtn">
+            <span class="material-symbols-outlined">edit</span>
+          </div>
+        </div>
+
+        <form id="preferencesForm">
+          <!-- Location & Type Grid -->
+          <div class="tp-preferences-grid">
+            <!-- Preferred Location -->
+            <div class="tp-form-group">
+              <label class="tp-form-label" for="preferredLocation">Preferred Location</label>
+              <div class="tp-dropdown-wrapper">
+                <span class="material-symbols-outlined">location_on</span>
+                <select id="preferredLocation" class="tp-form-select tp-form-select-icon">
+                  <option value="">Select location</option>
+                  <option value="Nairobi, Kenya">Nairobi, Kenya</option>
+                  <option value="Westlands">Westlands</option>
+                  <option value="Kilimani">Kilimani</option>
+                  <option value="Karen">Karen</option>
+                  <option value="Runda">Runda</option>
+                  <option value="Lavington">Lavington</option>
+                  <option value="Upper Hill">Upper Hill</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Property Type -->
+            <div class="tp-form-group">
+              <label class="tp-form-label" for="propertyType">Property Type</label>
+              <div class="tp-dropdown-wrapper">
+                <span class="material-symbols-outlined">home_work</span>
+                <select id="propertyType" class="tp-form-select tp-form-select-icon">
+                  <option value="">Select type</option>
+                  <option value="Bedsitter">Bedsitter</option>
+                  <option value="Studio">Studio</option>
+                  <option value="1 Bedroom">1 Bedroom</option>
+                  <option value="2 Bedroom">2 Bedroom</option>
+                  <option value="3 Bedroom">3 Bedroom</option>
+                  <option value="Maisonette">Maisonette</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <!-- Monthly Budget Slider -->
+          <div class="tp-form-group tp-budget-section">
+            <label class="tp-form-label">Monthly Budget (KES)</label>
+            <div class="tp-budget-display" id="budgetDisplay">15,000</div>
+            <div class="tp-budget-container">
+              <input
+                type="range"
+                id="budgetRange"
+                class="tp-budget-range"
+                min="1000"
+                max="100000"
+                value="15000"
+                step="1000"
+              />
+            </div>
+            <div class="tp-budget-labels">
+              <span>1k</span>
+              <span>25k</span>
+              <span>50k</span>
+              <span>100k+</span>
+            </div>
+          </div>
+
+          <!-- Must-Have Amenities -->
+          <div class="tp-form-group tp-amenities-section">
+            <label class="tp-form-label">Must-Have Amenities</label>
+            <div class="tp-chips-group">
+              <button type="button" class="tp-chip" data-amenity="Swimming Pool">
+                <span class="material-symbols-outlined">pool</span>
+                <span class="tp-chip-label">Pool</span>
+              </button>
+              <button type="button" class="tp-chip" data-amenity="Parking">
+                <span class="material-symbols-outlined">directions_car</span>
+                <span class="tp-chip-label">Parking</span>
+              </button>
+              <button type="button" class="tp-chip" data-amenity="24/7 Security">
+                <span class="material-symbols-outlined">security</span>
+                <span class="tp-chip-label">Security</span>
+              </button>
+              <button type="button" class="tp-chip" data-amenity="Gym">
+                <span class="material-symbols-outlined">fitness_center</span>
+                <span class="tp-chip-label">Gym</span>
+              </button>
+              <button type="button" class="tp-chip" data-amenity="Play-area">
+                <span class="material-symbols-outlined">sports_soccer</span>
+                <span class="tp-chip-label">Play-area</span>
+              </button>
+              <button type="button" class="tp-chip" data-amenity="Token Metre">
+                <span class="material-symbols-outlined">power_input</span>
+                <span class="tp-chip-label">Token Metre</span>
+              </button>
+              <button type="button" class="tp-chip" data-amenity="Borehole">
+                <span class="material-symbols-outlined">water</span>
+                <span class="tp-chip-label">Borehole</span>
+              </button>
+              <button type="button" class="tp-chip" data-amenity="Wifi">
+                <span class="material-symbols-outlined">wifi</span>
+                <span class="tp-chip-label">Wifi</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Update Button -->
+          <button type="submit" class="tp-update-btn" style="margin-top: var(--space-xl);">Save Preferences</button>
+        </form>
+      </div>
+    </div>
+  </main>
+
+  <!-- Success Message -->
+  <div class="tp-success-message" id="successMessage">
+    <span class="material-symbols-outlined">check_circle</span>
+    <span id="successText">Preferences saved successfully!</span>
+  </div>
+
+  <!-- Scripts -->
+  <script>
+    /* ======= NAVBAR ACTIVE STATE ======= */
+    function initializeNavbarActiveState() {
+      const currentPage = window.location.pathname.split('/').pop().replace('.html', '');
+      const pageMap = {
+        'discover': ['tenant-dashboard', 'index'],
+        'property-detail': ['property-detail'],
+        'favorites': ['favorites'],
+        'safety': ['safety'],
+        'tenant-profile': ['tenant-profile'],
+      };
+
+      let activePage = null;
+      for (const [page, pages] of Object.entries(pageMap)) {
+        if (pages.includes(currentPage)) {
+          activePage = page;
+          break;
+        }
+      }
+
+      if (!activePage) {
+        activePage = 'discover';
+      }
+
+      const allTabs = document.querySelectorAll('.td-nav-tab');
+      allTabs.forEach(tab => tab.classList.remove('is-active'));
+
+      const activeTab = document.querySelector(`.td-nav-tab[data-page="${activePage}"]`);
+      if (activeTab) {
+        activeTab.classList.add('is-active');
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', initializeNavbarActiveState);
+
+    /* ======= LOGOUT BUTTON HANDLER ======= */
+    document.addEventListener('DOMContentLoaded', function() {
+      const logoutBtn = document.getElementById('tdLogoutBtn');
+      if (logoutBtn) {
+        logoutBtn.addEventListener('click', function() {
+          localStorage.removeItem('userToken');
+          sessionStorage.clear();
+          window.location.href = 'login.html';
+        });
+      }
+    });
+
+    /* ======= MOBILE MENU TOGGLE ======= */
+    document.addEventListener('DOMContentLoaded', function() {
+      const mobileToggle = document.getElementById('tdMobileToggle');
+      const navMenu = document.getElementById('tenantNav');
+      
+      if (mobileToggle && navMenu) {
+        mobileToggle.addEventListener('click', function() {
+          if (navMenu.style.display === 'flex') {
+            navMenu.style.display = 'none';
+          } else {
+            navMenu.style.display = 'flex';
+          }
+        });
+
+        document.querySelectorAll('.td-nav-tab').forEach(tab => {
+          tab.addEventListener('click', function() {
+            navMenu.style.display = 'none';
+            const page = this.getAttribute('data-page');
+            if (page === 'discover') {
+              window.location.href = 'tenant_dashboard.html';
+            } else if (page === 'tenant-profile') {
+              window.location.href = 'tenant-profile.html';
+            } else {
+              window.location.href = `${page}.html`;
+            }
+          });
+        });
+      }
+    });
+
+    /* ======= PROFILE PAGE FUNCTIONALITY ======= */
+    document.addEventListener('DOMContentLoaded', function() {
+      const personalForm = document.getElementById('personalInfoForm');
+      const preferencesForm = document.getElementById('preferencesForm');
+      const budgetRange = document.getElementById('budgetRange');
+      const budgetDisplay = document.getElementById('budgetDisplay');
+      const amenityChips = document.querySelectorAll('.tp-chip');
+      const successMessage = document.getElementById('successMessage');
+      const successText = document.getElementById('successText');
+
+      // Load data on page load
+      loadTenantData();
+
+      // Budget Slider Sync
+      function syncBudgetSlider() {
+        const budgetValue = parseInt(budgetRange.value);
+        budgetDisplay.textContent = formatCurrency(budgetValue);
+      }
+
+      budgetRange.addEventListener('input', syncBudgetSlider);
+
+      // Amenity Chips Toggle
+      amenityChips.forEach(chip => {
+        chip.addEventListener('click', function(e) {
+          e.preventDefault();
+          this.classList.toggle('is-active');
+        });
+      });
+
+      // Personal Info Form Submit
+      personalForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        const personalData = {
+          fullName: document.getElementById('fullName').value,
+          email: document.getElementById('emailAddress').value,
+          phone: document.getElementById('phoneNumber').value,
+        };
+
+        // In production: Replace with Supabase update
+        // const { error } = await supabase
+        //   .from('profiles')
+        //   .update(personalData)
+        //   .eq('id', userId);
+        
+        localStorage.setItem('tenantProfile', JSON.stringify(personalData));
+        showSuccessMessage('Account updated successfully!');
+      });
+
+      // Preferences Form Submit
+      preferencesForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        const selectedAmenities = Array.from(amenityChips)
+          .filter(chip => chip.classList.contains('is-active'))
+          .map(chip => chip.getAttribute('data-amenity'));
+
+        const preferencesData = {
+          location: document.getElementById('preferredLocation').value,
+          property_type: document.getElementById('propertyType').value,
+          budget: parseInt(budgetRange.value),
+          amenities: selectedAmenities,
+        };
+
+        // In production: Replace with Supabase update
+        // const { error } = await supabase
+        //   .from('profiles')
+        //   .update({ tenant_preferences: preferencesData })
+        //   .eq('id', userId);
+        
+        localStorage.setItem('tenantPreferences', JSON.stringify(preferencesData));
+        showSuccessMessage('Preferences saved successfully!');
+      });
+
+      // Helper Functions
+      function formatCurrency(value) {
+        return (value / 1000).toFixed(0) + 'k';
+      }
+
+      function loadTenantData() {
+        // In production: Fetch from Supabase
+        // const { data: profile, error } = await supabase
+        //   .from('profiles')
+        //   .select('*')
+        //   .eq('id', userId)
+        //   .single();
+
+        // For now, load from localStorage
+        const profileData = localStorage.getItem('tenantProfile');
+        if (profileData) {
+          const data = JSON.parse(profileData);
+          document.getElementById('fullName').value = data.fullName || '';
+          document.getElementById('emailAddress').value = data.email || '';
+          document.getElementById('phoneNumber').value = data.phone || '';
+        }
+
+        const preferencesData = localStorage.getItem('tenantPreferences');
+        if (preferencesData) {
+          const prefs = JSON.parse(preferencesData);
+          document.getElementById('preferredLocation').value = prefs.location || '';
+          document.getElementById('propertyType').value = prefs.property_type || '';
+          budgetRange.value = prefs.budget || 15000;
+
+          // Set amenities
+          amenityChips.forEach(chip => {
+            const amenity = chip.getAttribute('data-amenity');
+            if (prefs.amenities && prefs.amenities.includes(amenity)) {
+              chip.classList.add('is-active');
+            }
+          });
+
+          syncBudgetSlider();
+        }
+      }
+
+      function showSuccessMessage(message) {
+        successText.textContent = message;
+        successMessage.classList.add('show');
+        setTimeout(() => {
+          successMessage.classList.remove('show');
+        }, 3000);
+      }
+
+      // Edit Buttons
+      document.getElementById('editPersonalBtn').addEventListener('click', function() {
+        document.getElementById('fullName').focus();
+      });
+
+      document.getElementById('editPreferencesBtn').addEventListener('click', function() {
+        document.getElementById('preferredLocation').focus();
+      });
+    });
+  </script>
+</body>
+</html>
