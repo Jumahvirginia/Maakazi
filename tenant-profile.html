@@ -213,6 +213,7 @@
       border-radius: 2px;
       background: var(--clr-slate-200);
       outline: none;
+      appearance: none;
       -webkit-appearance: none;
     }
 
@@ -361,7 +362,7 @@
     .tp-success-message {
       display: none;
       position: fixed;
-      top: 100px;
+      top: 90px;
       right: var(--space-lg);
       background: var(--clr-primary);
       color: var(--clr-white);
@@ -565,7 +566,7 @@
           <!-- Monthly Budget Slider -->
           <div class="tp-form-group tp-budget-section">
             <label class="tp-form-label">Monthly Budget (KES)</label>
-            <div class="tp-budget-display" id="budgetDisplay">15,000</div>
+            <div class="tp-budget-display" id="budgetDisplay">15k</div>
             <div class="tp-budget-container">
               <input
                 type="range"
@@ -692,16 +693,12 @@
       
       if (mobileToggle && navMenu) {
         mobileToggle.addEventListener('click', function() {
-          if (navMenu.style.display === 'flex') {
-            navMenu.style.display = 'none';
-          } else {
-            navMenu.style.display = 'flex';
-          }
+          navMenu.classList.toggle('is-active');
         });
 
         document.querySelectorAll('.td-nav-tab').forEach(tab => {
           tab.addEventListener('click', function() {
-            navMenu.style.display = 'none';
+            navMenu.classList.remove('is-active');
             const page = this.getAttribute('data-page');
             if (page === 'discover') {
               window.location.href = 'tenant_dashboard.html';
