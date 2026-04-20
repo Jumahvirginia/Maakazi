@@ -1,5 +1,6 @@
 node_modules/
 .env
 .DS_Store
-js/config.jsSAFETY_CENTER_QA_REPORT.md
+js/config.js
+SAFETY_CENTER_QA_REPORT.md
 SAFETY_CENTER_TEST_REPORT.md
