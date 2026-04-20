@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Makazi - Listing Queue</title>
+	<link rel="icon" href="data:," />
+	<link rel="preconnect" href="https://fonts.googleapis.com" />
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+	<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+	<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+	<link rel="stylesheet" href="css/styles.css" />
+</head>
+<body class="admin-dashboard-page alq-page">
+	<div class="ad-layout">
+		<aside class="ad-sidebar" id="ad-sidebar" aria-label="Super admin sidebar">
+			<div class="ad-sidebar-top">
+				<a href="index.html" class="logo ad-sidebar-logo" aria-label="Makazi Home">
+					<span class="material-symbols-outlined logo-icon" aria-hidden="true">home_work</span>
+					<span class="ad-brand-copy">
+						<span class="logo-text ad-logo-text">Makazi</span>
+						<span class="ad-logo-meta">Admin Portal</span>
+					</span>
+				</a>
+				<button class="ad-sidebar-toggle" id="ad-sidebar-toggle" type="button" aria-label="Collapse sidebar" aria-expanded="true">
+					<span class="material-symbols-outlined" id="ad-sidebar-toggle-icon" aria-hidden="true">chevron_left</span>
+				</button>
+			</div>
+
+			<nav class="ad-nav" aria-label="Admin navigation">
+				<a href="admin_dashboard.html" class="ad-nav-link">
+					<span class="material-symbols-outlined" aria-hidden="true">dashboard</span>
+					<span class="ad-link-text">Dashboard</span>
+				</a>
+				<a href="admin_listings.html" class="ad-nav-link is-active">
+					<span class="material-symbols-outlined" aria-hidden="true">home_work</span>
+					<span class="ad-link-text">Listing Queue</span>
+				</a>
+				<a href="admin_dashboard.html#ad-verifications-card" class="ad-nav-link">
+					<span class="material-symbols-outlined" aria-hidden="true">verified_user</span>
+					<span class="ad-link-text">Verifications</span>
+				</a>
+				<a href="admin_dashboard.html#ad-fraud-card" class="ad-nav-link">
+					<span class="material-symbols-outlined" aria-hidden="true">gpp_bad</span>
+					<span class="ad-link-text">Fraud Reports</span>
+				</a>
+			</nav>
+
+			<div class="ad-sidebar-footer">
+				<button type="button" class="ad-sidebar-logout" id="ad-sidebar-logout-btn">
+					<span class="material-symbols-outlined" aria-hidden="true">logout</span>
+					<span class="ad-link-text">Logout</span>
+				</button>
+			</div>
+		</aside>
+
+		<main class="ad-main">
+			<header class="ad-topbar">
+				<div class="ad-welcome-wrap">
+					<h1 class="ld-title">Listing Queue</h1>
+					<p>Review submitted properties, approve quality listings, and reject unsafe or low-quality posts.</p>
+				</div>
+				<div class="ad-topbar-actions">
+					<button class="ad-mobile-toggle" id="ad-mobile-toggle" type="button" aria-label="Toggle menu" aria-expanded="false">
+						<span class="material-symbols-outlined" aria-hidden="true">menu</span>
+					</button>
+					<button type="button" class="ad-logout-btn" id="ad-logout-btn">
+						<span class="material-symbols-outlined" aria-hidden="true">logout</span>
+						Logout
+					</button>
+				</div>
+			</header>
+
+			<section class="ad-stats-grid alq-stats-grid" aria-label="Listing queue metrics">
+				<article class="ad-card ad-stat alq-stat-total">
+					<div class="ad-stat-head">
+						<p>Total Listings</p>
+						<span class="material-symbols-outlined" aria-hidden="true">home_work</span>
+					</div>
+					<strong id="alq-total-listings">0</strong>
+				</article>
+				<article class="ad-card ad-stat alq-stat-live">
+					<div class="ad-stat-head">
+						<p>Live Listings</p>
+						<span class="material-symbols-outlined" aria-hidden="true">public</span>
+					</div>
+					<strong id="alq-live-listings">0</strong>
+				</article>
+				<article class="ad-card ad-stat alq-stat-rejected">
+					<div class="ad-stat-head">
+						<p>Rejected Listings</p>
+						<span class="material-symbols-outlined" aria-hidden="true">block</span>
+					</div>
+					<strong id="alq-rejected-listings">0</strong>
+				</article>
+				<article class="ad-card ad-stat alq-stat-wait">
+					<div class="ad-stat-head">
+						<p>Avg Wait Time</p>
+						<span class="material-symbols-outlined" aria-hidden="true">schedule</span>
+					</div>
+					<strong id="alq-avg-wait-time">2.4 hrs</strong>
+				</article>
+			</section>
+
+			<section class="ad-card alq-table-card" aria-label="Listings moderation queue">
+				<div class="alq-filter-tabs" role="tablist" aria-label="Listing status filters">
+					<button type="button" class="alq-tab is-active" data-filter="pending" role="tab" aria-selected="true">Pending</button>
+					<button type="button" class="alq-tab" data-filter="live" role="tab" aria-selected="false">Live</button>
+					<button type="button" class="alq-tab" data-filter="rejected" role="tab" aria-selected="false">Rejected</button>
+				</div>
+
+				<div class="alq-table-wrap">
+					<table class="alq-table" aria-label="Listing moderation table">
+						<thead>
+							<tr>
+								<th>Property</th>
+								<th>Price</th>
+								<th>Landlord</th>
+								<th>Submitted</th>
+								<th>Actions</th>
+							</tr>
+						</thead>
+						<tbody id="alq-listing-rows">
+							<tr>
+								<td colspan="5" class="ad-empty">Loading listings...</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</section>
+		</main>
+	</div>
+
+	<div class="alq-toast" id="alq-toast" hidden></div>
+
+	<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+	<script type="module" src="js/admin-listings.js"></script>
+</body>
+</html>
